@@ -29,13 +29,16 @@ public class Spawner : MonoBehaviour {
             foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Began) {
                     camRay = Camera.main.ScreenPointToRay(new Vector3(touch.position.x, touch.position.y, 0));
-                    RaycastHit hit;
-                    if (Physics.Raycast(camRay, out hit)) {
+                    if (Physics.Raycast(camRay, out RaycastHit hit)) {
                         Debug.Log("found char");
-                        Controller bodyPart = hit.transform.gameObject.GetComponentInParent<Controller>();
-                        if (bodyPart != null) {
-                            currentCharacter = bodyPart.transform;
+                        if (hit.collider.CompareTag("Player")) {
+                            currentCharacter = hit.transform.gameObject.GetComponentInParent<Controller>().transform;
                         }
+                        else {
+                            // if hit ground
+                            currentCharacter = Instantiate(character, hit.point + (Vector3.up * 5), Random.rotation);
+                        }
+                        
                     }
                     else {
                         Debug.Log("creating char");
