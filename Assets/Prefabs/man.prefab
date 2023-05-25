@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 1773560182107611615}
   - component: {fileID: 1348005583}
   - component: {fileID: 1348005582}
-  - component: {fileID: 1991013749}
+  - component: {fileID: 3906841806494462121}
   m_Layer: 6
   m_Name: man
   m_TagString: Untagged
@@ -319,7 +319,7 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1991013749
+--- !u!114 &3906841806494462121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
