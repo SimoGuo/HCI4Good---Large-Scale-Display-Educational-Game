@@ -40,6 +40,14 @@ public class Spawner : MonoBehaviour {
             }
         }
         
+        foreach (KeyValuePair<int, Transform> i in fingerToCharacter) {
+            foreach (Touch touch in Input.touches) {
+                if (touch.fingerId == i.Key) {
+                    MoveCharacter(touch, i.Value);
+                }
+            }
+        }
+        
         // foreach (KeyValuePair<int, Transform> i in fingerToCharacter) {
         //     if (Input.touchCount == 0) break;
         //     Touch touch = Input.touches[0];
