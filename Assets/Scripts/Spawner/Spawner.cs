@@ -22,16 +22,15 @@ public class Spawner : MonoBehaviour {
     }
 
     void MoveCharacter(Touch touch, Transform currentCharacter) {
-        // if (touch.phase == TouchPhase.Began) {
-        //     
-        // }
         if (touch.phase == TouchPhase.Moved) {
             currentCharacter.GetComponent<Controller>().Move(Camera.main.ScreenPointToRay(new Vector3(touch.position.x, touch.position.y, 0)).GetPoint(30));
         }
     }
 
     private void Update() {
-
+        if (Input.touchCount == 0) {
+            fingerToCharacter.Clear();
+        }
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Began) {
@@ -44,21 +43,11 @@ public class Spawner : MonoBehaviour {
             foreach (Touch touch in Input.touches) {
                 if (touch.fingerId == i.Key) {
                     MoveCharacter(touch, i.Value);
+                    break;
                 }
             }
         }
-        
-        // foreach (KeyValuePair<int, Transform> i in fingerToCharacter) {
-        //     if (Input.touchCount == 0) break;
-        //     Touch touch = Input.touches[0];
-        //     for (int j = 0; j < Input.touchCount; j++) {
-        //         if (Input.touches[j].fingerId == i.Key) {
-        //             touch = Input.touches[j];
-        //             break;
-        //         }
-        //     }
-        //     MoveCharacter(touch, i.Value);
-        // }
+
     }
 
     void OnGUI() {
