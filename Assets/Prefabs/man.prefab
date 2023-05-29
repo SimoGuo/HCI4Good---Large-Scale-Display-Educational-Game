@@ -311,7 +311,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429650140221504357}
-  m_ConnectedBody: {fileID: 2240060240621967141}
+  m_ConnectedBody: {fileID: 2240060241225311963}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
