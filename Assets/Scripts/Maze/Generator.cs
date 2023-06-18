@@ -7,11 +7,13 @@ using System.Collections.Generic;
 public static class Generator {
     [Flags]
     public enum NodeState : byte {
-        Left  = 1 << 0,
-        Up    = 1 << 1,
-        Right = 1 << 2,
-        Down  = 1 << 3,
-        Visited = 1 << 7
+        Left      = 1 << 0, // 00000001
+        UpLeft    = 1 << 1, // 00000010
+        UpRight   = 1 << 2, // 00000100
+        Right     = 1 << 3, // 00001000
+        DownLeft  = 1 << 4, // 00010000
+        DownRight = 1 << 5, // 00100000
+        Visited   = 1 << 7  // 10000000
     }
 
     public struct Position {
@@ -28,9 +30,9 @@ public static class Generator {
         switch (node) {
             case NodeState.Right: return NodeState.Left;            
             case NodeState.Left: return NodeState.Right;            
-            case NodeState.Up: return NodeState.Down;            
-            case NodeState.Down: return NodeState.Up;
-            default: return NodeState.Up;
+            case NodeState.UpLeft: return NodeState.DownLeft;            
+            case NodeState.DownLeft: return NodeState.UpLeft;
+            default: return NodeState.UpLeft;
         }
     }
 
@@ -51,6 +53,7 @@ public static class Generator {
             List<Neighbour> neighbours = GetUnvisitedNeighbours(current, maze, width, height);
 
             if (neighbours.Count > 0) {
+                // push because this node still has unvisited neighbours
                 positions.Push(current);
                 Neighbour randNeighbour = neighbours[rng.Next(0, neighbours.Count)];
                 
@@ -61,8 +64,6 @@ public static class Generator {
                 maze[randNeighbour.Position.x, randNeighbour.Position.y] |= NodeState.Visited;
                 
                 positions.Push(randNeighbour.Position);
-
-
             }
         }
         
@@ -87,7 +88,7 @@ public static class Generator {
             if (!maze[p.x, p.y - 1].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
                     Position = new Position { x = p.x, y = p.y - 1 },
-                    SharedWall = NodeState.Down
+                    SharedWall = NodeState.DownLeft
                 });
             }
         }
@@ -105,7 +106,7 @@ public static class Generator {
             if (!maze[p.x, p.y + 1].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
                     Position = new Position { x = p.x, y = p.y + 1 },
-                    SharedWall = NodeState.Up 
+                    SharedWall = NodeState.UpLeft 
                 });
             }
         }
@@ -116,7 +117,7 @@ public static class Generator {
     
     public static NodeState[,] Generate(int width, int height) {
         NodeState[,] maze = new NodeState[width, height];
-        NodeState start = NodeState.Down | NodeState.Left | NodeState.Right | NodeState.Up;
+        NodeState start = NodeState.DownLeft | NodeState.Left | NodeState.Right | NodeState.UpLeft | NodeState.DownRight | NodeState.UpRight;
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -124,6 +125,8 @@ public static class Generator {
             }
         }
 
-        return RecursiveBacktracker(maze, width, height);
+        // return RecursiveBacktracker(maze, width, height);
+        return maze;
     }
+    
 }
