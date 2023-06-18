@@ -19,10 +19,10 @@ public class Renderer : MonoBehaviour {
 
                 string name = i.ToString() + j.ToString();
                 horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
-                vertical = wall.localScale.x + Mathf.Sin(30 * Mathf.Deg2Rad);
+                vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
                 
-                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, 0, (j - height / 2) * wall.localScale.x * vertical); // center of node
-
+                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, 0, (j - height / 2) * vertical); // center of node
+                
                 if (j % 2 == 0) {
                     pos -= new Vector3(horizontal, 0, 0);
                 }
