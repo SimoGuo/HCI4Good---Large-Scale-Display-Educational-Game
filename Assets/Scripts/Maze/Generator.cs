@@ -3,7 +3,7 @@
 using System.Collections.Generic;
  using UnityEditor;
 
- // this is just a regular c# class no monobehaviour
+ // this is just a regular c# class no monobehaviour NO TOUCH!!!
 public static class Generator {
     [Flags]
     public enum NodeState : byte {
@@ -97,7 +97,7 @@ public static class Generator {
             }
         }
         
-        // downLeft = x, y - 1 downRight = x, y - 1
+        // if odd: downLeft = x, y - 1 if even: downRight = x, y - 1
         if (p.y > 0) {
             if (!maze[p.x, p.y - 1].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
@@ -106,7 +106,7 @@ public static class Generator {
                 });
             }
         }
-        // upLeft = x, y + 1 upRight = x, y + 1
+        // if odd: upLeft = x, y + 1 if even: upRight = x, y + 1
         if (p.y < height - 1) {
             if (!maze[p.x, p.y + 1].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
@@ -178,7 +178,7 @@ public static class Generator {
         }
 
         return RecursiveBacktracker(maze, width, height);
-        return maze;
+        
     }
     
 }
