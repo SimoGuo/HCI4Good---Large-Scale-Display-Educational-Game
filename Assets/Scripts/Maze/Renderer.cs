@@ -53,6 +53,7 @@ public class Renderer : MonoBehaviour {
                     downLeft.name = "downLeft" + name;
                 }
 
+
                 // if (i == width - 1) {
                 //     if (node.HasFlag(Generator.NodeState.Right)) {
                 //         Transform right = Instantiate(wall, transform);
@@ -77,10 +78,12 @@ public class Renderer : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space)) {
+            
             foreach (Transform t in transform) {
                 Destroy(t.gameObject);
             }
+
             Render(Generator.Generate(width, height));
         }
     }

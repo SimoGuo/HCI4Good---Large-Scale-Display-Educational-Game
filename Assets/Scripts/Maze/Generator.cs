@@ -28,10 +28,14 @@ public static class Generator {
 
     private static NodeState GetOppositeWall(NodeState node) {
         switch (node) {
-            case NodeState.Right: return NodeState.Left;            
-            case NodeState.Left: return NodeState.Right;            
-            case NodeState.UpLeft: return NodeState.DownLeft;            
-            case NodeState.DownLeft: return NodeState.UpLeft;
+            case NodeState.Right: return NodeState.Left;     
+            case NodeState.Left: return NodeState.Right;
+            
+            case NodeState.UpLeft: return NodeState.DownRight;         
+            case NodeState.DownRight: return NodeState.UpLeft;
+            
+            case NodeState.DownLeft: return NodeState.UpRight;
+            case NodeState.UpRight: return NodeState.DownLeft;
             default: return NodeState.UpLeft;
         }
     }
@@ -42,8 +46,8 @@ public static class Generator {
         Stack<Position> positions = new Stack<Position>();
         
         // random start
-        // Position pos = new Position { x = rng.Next(0, width), y = rng.Next(0, height) };
-        Position pos = new Position { x = 0, y = 0 };
+        Position pos = new Position { x = rng.Next(0, width), y = rng.Next(0, height) };
+        // Position pos = new Position { x = 0, y = 0 };
         maze[pos.x, pos.y] |= NodeState.Visited;
         positions.Push(pos);
 
@@ -74,7 +78,7 @@ public static class Generator {
 
     private static List<Neighbour> GetUnvisitedNeighbours(Position p, NodeState[,] maze, int width, int height) {
         List<Neighbour> list = new List<Neighbour>();
-        // if left wall unvisited
+        // left = x - 1, y
         if (p.x > 0) {
             if (!maze[p.x - 1, p.y].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
@@ -83,16 +87,7 @@ public static class Generator {
                 });
             }
         }
-        
-        if (p.y > 0) {
-            if (!maze[p.x, p.y - 1].HasFlag(NodeState.Visited)) {
-                list.Add(new Neighbour {
-                    Position = new Position { x = p.x, y = p.y - 1 },
-                    SharedWall = NodeState.DownLeft
-                });
-            }
-        }
-        
+        // right = x + 1, y
         if (p.x < width - 1) {
             if (!maze[p.x + 1, p.y].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
@@ -102,15 +97,72 @@ public static class Generator {
             }
         }
         
+        // downLeft = x, y - 1 downRight = x, y - 1
+        if (p.y > 0) {
+            if (!maze[p.x, p.y - 1].HasFlag(NodeState.Visited)) {
+                list.Add(new Neighbour {
+                    Position = new Position { x = p.x, y = p.y - 1 },
+                    SharedWall = p.y % 2 == 0 ? NodeState.DownRight : NodeState.DownLeft
+                });
+            }
+        }
+        // upLeft = x, y + 1 upRight = x, y + 1
         if (p.y < height - 1) {
             if (!maze[p.x, p.y + 1].HasFlag(NodeState.Visited)) {
                 list.Add(new Neighbour {
                     Position = new Position { x = p.x, y = p.y + 1 },
-                    SharedWall = NodeState.UpLeft 
+                    SharedWall = p.y % 2 == 0 ? NodeState.UpRight : NodeState.UpLeft
                 });
             }
         }
+
+        if (p.y % 2 != 0) {
+            // upRight = x + 1, y + 1
+            if (p.x < width - 1 && p.y < height - 1) {
+                if (!maze[p.x + 1, p.y + 1].HasFlag(NodeState.Visited)) {
+                    list.Add(new Neighbour {
+                        Position = new Position { x = p.x + 1, y = p.y + 1 },
+                        SharedWall = NodeState.UpRight
+                    });
+                }
+            }
         
+            // 
+            
+            // downRight = x + 1, y - 1
+            if (p.x < width - 1 && p.y > 0) {
+                if (!maze[p.x + 1, p.y - 1].HasFlag(NodeState.Visited)) {
+                    list.Add(new Neighbour {
+                        Position = new Position { x = p.x + 1, y = p.y - 1 },
+                        SharedWall = NodeState.DownRight
+                    });
+                }
+            }
+        }
+        else {
+            // 
+            // upLeft = x - 1, y + 1
+            if (p.x > 0 && p.y < height - 1) {
+                if (!maze[p.x - 1, p.y + 1].HasFlag(NodeState.Visited)) {
+                    list.Add(new Neighbour {
+                        Position = new Position { x = p.x - 1, y = p.y + 1 },
+                        SharedWall = NodeState.UpLeft
+                    });
+                }
+            }
+            
+            // 
+            // downLeft = x - 1, y - 1
+            if (p.x > 0 && p.y > 0) {
+                if (!maze[p.x - 1, p.y - 1].HasFlag(NodeState.Visited)) {
+                    list.Add(new Neighbour() {
+                        Position = new Position { x = p.x - 1, y = p.y - 1 },
+                        SharedWall = NodeState.DownLeft
+                    });
+                }
+            }
+        }
+
         return list;
     }
     
@@ -125,7 +177,7 @@ public static class Generator {
             }
         }
 
-        // return RecursiveBacktracker(maze, width, height);
+        return RecursiveBacktracker(maze, width, height);
         return maze;
     }
     
