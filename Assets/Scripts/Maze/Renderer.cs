@@ -54,20 +54,14 @@ public class Renderer : MonoBehaviour {
                 }
 
 
-                // if (i == width - 1) {
-                //     if (node.HasFlag(Generator.NodeState.Right)) {
-                //         Transform right = Instantiate(wall, transform);
-                //         right.eulerAngles = new Vector3(0, 90, 0);
-                //         right.position = pos + new Vector3(wall.localScale.x / 2, 0, 0);
-                //     }
-                // }
-                //
-                // if (j == 0) {
-                //     if (node.HasFlag(Generator.NodeState.DownLeft)) {
-                //         Transform down = Instantiate(wall, transform);
-                //         down.position = pos + new Vector3(0, 0, -wall.localScale.x / 2);
-                //     }
-                // }
+                if (j == 0) {
+                    if (node.HasFlag(Generator.NodeState.DownRight)) {
+                        Transform downRight = Instantiate(wall, transform);
+                        downRight.eulerAngles = new Vector3(0, -30, 0);
+                        downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
+                        downRight.name = "downLeft" + name;
+                    }
+                }
             }
         }    
     }
