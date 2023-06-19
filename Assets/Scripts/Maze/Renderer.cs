@@ -78,7 +78,7 @@ public class Renderer : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             
             foreach (Transform t in transform) {
                 Destroy(t.gameObject);
