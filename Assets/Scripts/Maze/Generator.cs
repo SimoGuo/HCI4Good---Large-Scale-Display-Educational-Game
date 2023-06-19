@@ -13,6 +13,7 @@ public static class Generator {
         Right     = 1 << 3, // 00001000
         DownLeft  = 1 << 4, // 00010000
         DownRight = 1 << 5, // 00100000
+        Current   = 1 << 6,
         Visited   = 1 << 7  // 10000000
     }
 
@@ -40,20 +41,20 @@ public static class Generator {
         }
     }
 
-    private static NodeState[,] RecursiveBacktracker(NodeState[,] maze, int width, int height) {
+    private static IEnumerable<NodeState[,]> RecursiveBacktracker(NodeState[,] maze, int width, int height) {
 
         Random rng = new Random();
         Stack<Position> positions = new Stack<Position>();
         
         // random start
-        Position pos = new Position { x = rng.Next(0, width), y = rng.Next(0, height) };
-        // Position pos = new Position { x = 0, y = 0 };
+        // Position pos = new Position { x = rng.Next(0, width), y = rng.Next(0, height) };
+        Position pos = new Position { x = 0, y = 0 };
         maze[pos.x, pos.y] |= NodeState.Visited;
         positions.Push(pos);
 
         while (positions.Count > 0) {
             Position current = positions.Pop();
-
+            maze[current.x, current.y] |= NodeState.Current;
             List<Neighbour> neighbours = GetUnvisitedNeighbours(current, maze, width, height);
 
             if (neighbours.Count > 0) {
@@ -68,12 +69,11 @@ public static class Generator {
                 maze[randNeighbour.Position.x, randNeighbour.Position.y] |= NodeState.Visited;
                 
                 positions.Push(randNeighbour.Position);
+                yield return maze;
+                maze[current.x, current.y] &= ~NodeState.Current;
             }
         }
-        
-        
-        
-        return maze;
+        yield return maze;
     }
 
     private static List<Neighbour> GetUnvisitedNeighbours(Position p, NodeState[,] maze, int width, int height) {
@@ -167,7 +167,7 @@ public static class Generator {
     }
     
     
-    public static NodeState[,] Generate(int width, int height) {
+    public static IEnumerable<NodeState[,]> Generate(int width, int height) {
         NodeState[,] maze = new NodeState[width, height];
         NodeState start = NodeState.DownLeft | NodeState.Left | NodeState.Right | NodeState.UpLeft | NodeState.DownRight | NodeState.UpRight;
 
@@ -177,8 +177,9 @@ public static class Generator {
             }
         }
 
-        return RecursiveBacktracker(maze, width, height);
-        
+        foreach (NodeState[,] mazeStep in RecursiveBacktracker(maze, width, height)) {
+            yield return mazeStep;
+        }
     }
     
 }
