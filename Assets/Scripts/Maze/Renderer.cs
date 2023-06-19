@@ -59,7 +59,52 @@ public class Renderer : MonoBehaviour {
                         Transform downRight = Instantiate(wall, transform);
                         downRight.eulerAngles = new Vector3(0, -30, 0);
                         downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
-                        downRight.name = "downLeft" + name;
+                        downRight.name = "downRight" + name;
+                    }
+                }
+
+                if (i == width - 1) {
+                    if (node.HasFlag(Generator.NodeState.Right)) {
+                        Transform left = Instantiate(wall, transform);
+                        left.eulerAngles = new Vector3(0, 90, 0);
+                        left.position = pos + new Vector3(horizontal, 0, 0);
+                        left.name = "right" + name;
+                    }
+
+                    if (j != height - 1 && i == width - 1) {
+                        if (node.HasFlag(Generator.NodeState.UpRight)) {
+                            Transform upRight = Instantiate(wall, transform);
+                            upRight.eulerAngles = new Vector3(0, 30, 0);
+                            upRight.position = pos + new Vector3(horizontal / 2, 0, vertical / 2);
+                            upRight.name = "upRight" + name;
+                        }
+                                            
+                        if (node.HasFlag(Generator.NodeState.DownRight)) {
+                            Transform downRight = Instantiate(wall, transform);
+                            downRight.eulerAngles = new Vector3(0, -30, 0);
+                            downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
+                            downRight.name = "downRight" + name;
+                        }
+                    }
+                }
+
+                
+
+                if (j == height - 1) {
+                    if (node.HasFlag(Generator.NodeState.UpRight)) {
+                        Transform upRight = Instantiate(wall, transform);
+                        upRight.eulerAngles = new Vector3(0, 30, 0);
+                        upRight.position = pos + new Vector3(horizontal / 2, 0, vertical / 2);
+                        upRight.name = "upRight" + name;
+                    }
+
+                    if (i == width - 1) {
+                        if (node.HasFlag(Generator.NodeState.DownRight)) {
+                            Transform downRight = Instantiate(wall, transform);
+                            downRight.eulerAngles = new Vector3(0, -30, 0);
+                            downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
+                            downRight.name = "downRight" + name;
+                        } 
                     }
                 }
             }

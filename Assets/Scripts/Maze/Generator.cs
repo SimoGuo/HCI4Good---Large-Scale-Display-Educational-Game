@@ -178,7 +178,7 @@ public static class Generator {
         }
 
         return RecursiveBacktracker(maze, width, height);
-        
+        // return maze;
     }
     
 }
