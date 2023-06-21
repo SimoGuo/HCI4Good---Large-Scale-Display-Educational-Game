@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
 
+
             //On default, use Raycast with Mouse position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
