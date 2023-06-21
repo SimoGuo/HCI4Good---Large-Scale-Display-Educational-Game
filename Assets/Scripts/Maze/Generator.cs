@@ -177,9 +177,8 @@ public static class Generator {
             }
         }
 
-        foreach (NodeState[,] mazeStep in RecursiveBacktracker(maze, width, height)) {
-            yield return mazeStep;
-        }
+        return RecursiveBacktracker(maze, width, height);
+        // return maze;
     }
     
 }
