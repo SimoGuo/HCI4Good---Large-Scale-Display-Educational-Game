@@ -28,9 +28,6 @@ public class Renderer : MonoBehaviour {
                     pos += new Vector3(horizontal, 0, 0); // even rows shifted left
                 }
                 
-                Instantiate(center, transform);
-                center.position = pos;
-                center.name = name;
 
                 if (node.HasFlag(Generator.NodeState.UpLeft)) {
                     Transform upLeft = Instantiate(wall, transform);

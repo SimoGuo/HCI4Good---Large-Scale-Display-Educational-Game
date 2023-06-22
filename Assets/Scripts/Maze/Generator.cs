@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public static class Generator {
     [Flags]
     public enum NodeState : byte {
+        // negate and & to add, | to add 
         Left      = 1 << 0, // 00000001
         UpLeft    = 1 << 1, // 00000010
         UpRight   = 1 << 2, // 00000100
@@ -17,7 +18,7 @@ public static class Generator {
         Visited   = 1 << 7  // 10000000
     }
 
-    public struct Position {
+    private struct Position {
         public int X;
         public int Y;
     }
@@ -37,7 +38,9 @@ public static class Generator {
             
             case NodeState.DownLeft: return NodeState.UpRight;
             case NodeState.UpRight: return NodeState.DownLeft;
-            default: return NodeState.UpLeft;
+            
+            
+            default: return NodeState.None; // shouldn't happend
         }
     }
 
