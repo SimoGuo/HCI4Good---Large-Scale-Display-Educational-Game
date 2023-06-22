@@ -97,7 +97,10 @@ public class Renderer : MonoBehaviour {
             }
         }    
     }
-    
+
+    private void Start() {
+        Render(Generator.Generate(width, height));
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
