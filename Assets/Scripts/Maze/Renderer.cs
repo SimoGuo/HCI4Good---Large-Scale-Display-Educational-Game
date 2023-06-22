@@ -12,19 +12,20 @@ public class Renderer : MonoBehaviour {
     [SerializeField] private Transform wall;
     [SerializeField] private Transform center;
     
+    // TODO: can be simplified
     void Render(Generator.NodeState[,] maze) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Generator.NodeState node = maze[i, j];
 
                 string name = i.ToString() + j.ToString();
+                
+                // normalize coordinates to get hexagon coordinates
                 horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
                 vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
-                
-                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, 0, (j - height / 2) * vertical); // center of node
-                
-                if (j % 2 == 0) {
-                    pos -= new Vector3(horizontal, 0, 0); // even rows shifted left
+                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, 0, (j - height / 2) * vertical);
+                if (j % 2 != 0) {
+                    pos += new Vector3(horizontal, 0, 0); // even rows shifted left
                 }
                 
                 Instantiate(center, transform);
@@ -36,7 +37,6 @@ public class Renderer : MonoBehaviour {
                     upLeft.eulerAngles = new Vector3(0, -30, 0);
                     upLeft.position = pos + new Vector3(-horizontal / 2, 0, vertical / 2);
                     upLeft.name = "upLeft" + name;
-                    
                 }
                 // //
                 if (node.HasFlag(Generator.NodeState.Left)) {
@@ -101,10 +101,6 @@ public class Renderer : MonoBehaviour {
         }    
     }
     
-    private void Start() {
-        
-        
-    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
