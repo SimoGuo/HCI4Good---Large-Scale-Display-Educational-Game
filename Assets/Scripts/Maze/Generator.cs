@@ -22,7 +22,7 @@ public static class Generator {
         public int y;
     }
 
-    public struct Neighbour {
+    private struct Neighbour {
         public Position Position;
         public NodeState SharedWall;
     }
@@ -71,9 +71,7 @@ public static class Generator {
                 positions.Push(randNeighbour.Position);
             }
         }
-        
-        
-        
+
         return maze;
     }
 
@@ -84,17 +82,19 @@ public static class Generator {
         int[] dx = { -1, 1,  0, 0, 1,  1, -1, -1 };
         int[] dy = {  0, 0, -1, 1, 1, -1,  1, -1 };
         // neighbourPos = (x + dx[i], y + dy[i]), sharedWall = states[i][p.y % 2]
+        // assumes even rows shifted left
         NodeState[,] states = { 
-            { NodeState.Left, NodeState.Left }, 
-            { NodeState.Right, NodeState.Right },
-            { NodeState.DownRight, NodeState.DownLeft },
-            { NodeState.UpRight, NodeState.UpLeft },
-            
-            { NodeState.None, NodeState.UpRight},
-            { NodeState.None, NodeState.DownRight},
-            
-            { NodeState.UpLeft, NodeState.None},
-            { NodeState.DownLeft, NodeState.None}
+            // when y even    when y odd
+            { NodeState.Left, NodeState.Left }, // x - 1, y 
+            { NodeState.Right, NodeState.Right }, // x + 1, y
+            { NodeState.DownRight, NodeState.DownLeft }, // x, y - 1
+            { NodeState.UpRight, NodeState.UpLeft }, // x, y + 1
+            // not a neighbour
+            { NodeState.None, NodeState.UpRight}, // x + 1, y + 1
+            { NodeState.None, NodeState.DownRight}, // x + 1, y - 1
+            //                  not a neighbour
+            { NodeState.UpLeft, NodeState.None}, // x - 1, y + 1
+            { NodeState.DownLeft, NodeState.None} // x - 1, y - 1
         };
 
         for (int i = 0; i < dx.Length; i++) {
@@ -129,8 +129,8 @@ public static class Generator {
             }
         }
 
-        return RecursiveBacktracker(maze, width, height);
-        // return maze;
+        // return RecursiveBacktracker(maze, width, height);
+        return maze;
     }
     
 }
