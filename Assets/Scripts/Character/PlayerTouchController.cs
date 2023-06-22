@@ -8,6 +8,7 @@ public class PlayerTouchController : MonoBehaviour {
     private Rigidbody rb;
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     private void FixedUpdate() {
@@ -17,7 +18,7 @@ public class PlayerTouchController : MonoBehaviour {
             if (Physics.Raycast(r, out RaycastHit hit)) {
                 if (hit.collider.CompareTag("Ground")) {
                     transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-                    rb.AddForce((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized * speed, ForceMode.Acceleration);
+                    rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
                 }
             }
         }
@@ -28,7 +29,7 @@ public class PlayerTouchController : MonoBehaviour {
             if (Physics.Raycast(r, out RaycastHit hit)) {
                 if (hit.collider.CompareTag("Ground")) {
                     transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-                    rb.AddForce((new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position).normalized * speed, ForceMode.Acceleration);
+                    rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
                 }
             }
         }
