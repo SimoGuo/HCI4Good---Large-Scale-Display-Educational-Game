@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMeleeUnit: MonoBehaviour
+public class SkeletonScript: MonoBehaviour
 {
     public NavMeshAgent agent;
     
@@ -24,9 +24,17 @@ public class EnemyMeleeUnit: MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Animation
+    public Animator animator;
+
     //Variables for testing
     public Vector3 distanceToWalkPoint;
     public float distance;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Awake()
     {
@@ -64,6 +72,7 @@ public class EnemyMeleeUnit: MonoBehaviour
 
         if (walkPointSet)
         {
+            //animator.SetBool("isWalking", false);
             agent.SetDestination(walkPoint);
         }
 
@@ -92,6 +101,7 @@ public class EnemyMeleeUnit: MonoBehaviour
 
     private void ChasePlayer()
     {
+        //animator.SetBool("isWalking", true);
         agent.SetDestination(player.position);
     }
 
