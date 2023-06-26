@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 154db28c19da77a449ff377adf5a21f4
+guid: 882f1f61d09d73d4ab47e813f143fcb0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 5c822e1d761450b4f80356d78f8e746c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -23,7 +28,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
