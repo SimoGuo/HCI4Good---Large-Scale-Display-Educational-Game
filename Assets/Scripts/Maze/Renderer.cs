@@ -127,7 +127,9 @@ public class Renderer : MonoBehaviour {
             }
 
             Render(Generator.Generate(width, height));
+
             surface.BuildNavMesh();
         }
+        
     }
 }
