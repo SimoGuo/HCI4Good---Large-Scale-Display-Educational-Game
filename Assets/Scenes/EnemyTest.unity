@@ -377,7 +377,7 @@ MonoBehaviour:
   walkPointRange: 13.7
   timeBetweenAttacks: 5.33
   sightRange: 8.93
-  attackRange: 0
+  attackRange: 1.93
   playerInSightRange: 1
   playerInAttackRange: 0
   distanceToWalkPoint: {x: 0, y: 0, z: 0}
@@ -426,7 +426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308924372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.890574, y: 2.93, z: -5.6013927}
+  m_LocalPosition: {x: -9.37, y: 2.93, z: -3.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -742,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302704495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 1.86, z: -17.49}
+  m_LocalPosition: {x: 0.15, y: 1.86, z: -11.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1100,7 +1100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906613172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.27, y: 1.4, z: -1.58}
+  m_LocalPosition: {x: 3.5, y: 1.4, z: -1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
