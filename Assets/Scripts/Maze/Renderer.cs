@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class Renderer : MonoBehaviour {
+    public NavMeshSurface surface;
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 10;
     private float horizontal;
@@ -99,6 +101,7 @@ public class Renderer : MonoBehaviour {
 
     private void Start() {
         Render(Generator.Generate(width, height));
+        surface.BuildNavMesh();
     }
 
     private void Update() {
@@ -109,6 +112,7 @@ public class Renderer : MonoBehaviour {
             }
 
             Render(Generator.Generate(width, height));
+            surface.BuildNavMesh();
         }
     }
 }

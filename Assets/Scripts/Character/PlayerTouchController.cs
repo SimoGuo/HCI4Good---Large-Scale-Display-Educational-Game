@@ -6,8 +6,11 @@ using UnityEngine;
 public class PlayerTouchController : MonoBehaviour {
     [SerializeField] private float speed = 5;
     private Rigidbody rb;
+    private Animator anim;
+    
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         rb.freezeRotation = true;
     }
 
@@ -32,6 +35,13 @@ public class PlayerTouchController : MonoBehaviour {
                     rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
                 }
             }
+        }
+
+        if (rb.velocity.magnitude >= 1f) {
+            anim.Play("walk");
+        }
+        else {
+            anim.Play("attack");
         }
     }
 }
