@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class Renderer : MonoBehaviour {
     private float vertical;
     [SerializeField] private Transform wall;
     [SerializeField] private Transform center;
+
+    public NavMeshSurface surface;
     
     void Render(Generator.NodeState[,] maze) {
         for (int i = 0; i < width; i++) {
@@ -21,7 +24,7 @@ public class Renderer : MonoBehaviour {
                 horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
                 vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
                 
-                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, 0, (j - height / 2) * vertical); // center of node
+                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, transform.position.y, (j - height / 2) * vertical); // center of node
                 
                 if (j % 2 == 0) {
                     pos -= new Vector3(horizontal, 0, 0);
@@ -124,6 +127,9 @@ public class Renderer : MonoBehaviour {
             }
 
             Render(Generator.Generate(width, height));
+
+            surface.BuildNavMesh();
         }
+        
     }
 }

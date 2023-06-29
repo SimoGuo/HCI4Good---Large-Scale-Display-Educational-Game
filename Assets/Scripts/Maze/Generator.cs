@@ -1,7 +1,7 @@
- using System;
- using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
- using UnityEditor;
+using UnityEditor;
 
  // this is just a regular c# class no monobehaviour NO TOUCH!!!
 public static class Generator {
