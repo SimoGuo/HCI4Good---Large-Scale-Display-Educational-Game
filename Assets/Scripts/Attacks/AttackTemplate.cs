@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackTemplate : MonoBehaviour
+[CreateAssetMenu(menuName = "Attacks/Normal Attack")]
+public class AttackTemplate : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AnimatorOverrideController animatorOveride;
+    public float damage;
 }
