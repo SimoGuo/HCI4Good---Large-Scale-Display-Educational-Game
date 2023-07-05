@@ -14,6 +14,21 @@ public class Renderer : MonoBehaviour {
     [SerializeField] private Transform center;
 
     public NavMeshSurface surface;
+
+    public Vector3 GetNodeCenter(int i, int j) {
+        if (i >= width || j >= height || i < 0 || j < 0) return Vector3.zero;
+        
+        horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
+        vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
+                
+        Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, transform.position.y, (j - height / 2) * vertical); // center of node
+                
+        if (j % 2 == 0) {
+            pos -= new Vector3(horizontal, 0, 0);
+        }
+
+        return pos;
+    }
     
     void Render(Generator.NodeState[,] maze) {
         for (int i = 0; i < width; i++) {
@@ -21,15 +36,7 @@ public class Renderer : MonoBehaviour {
                 Generator.NodeState node = maze[i, j];
 
                 string name = i.ToString() + j.ToString();
-                horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
-                vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
-                
-                Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, transform.position.y, (j - height / 2) * vertical); // center of node
-                
-                if (j % 2 == 0) {
-                    pos -= new Vector3(horizontal, 0, 0);
-                }
-                
+                Vector3 pos = GetNodeCenter(i, j);                
 
                 if (node.HasFlag(Generator.NodeState.UpLeft)) {
                     Transform upLeft = Instantiate(wall, transform);
