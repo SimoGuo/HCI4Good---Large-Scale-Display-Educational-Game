@@ -16,7 +16,8 @@ public static class Generatorv2 {
         DownRight = 1 << 5, // 000100000
         None      = 1 << 6, // 001000000
         Visited   = 1 << 7,  // 010000000
-        Current   = 1 << 8  // 010000000
+        Current   = 1 << 8,  // 010000000
+        Neighbour   = 1 << 9  // 010000000
     }
 
     private struct Position {
@@ -65,7 +66,8 @@ public static class Generatorv2 {
                 // push because this node still has unvisited neighbours
                 positions.Push(current);
                 Neighbour randNeighbour = neighbours[rng.Next(0, neighbours.Count)];
-                
+                maze[randNeighbour.Position.X, randNeighbour.Position.Y] |= NodeState.Neighbour;
+
                 // remove walls
                 maze[current.X, current.Y] &= ~randNeighbour.SharedWall;
                 maze[randNeighbour.Position.X, randNeighbour.Position.Y] &= ~GetOppositeWall(randNeighbour.SharedWall);
@@ -75,6 +77,7 @@ public static class Generatorv2 {
                 positions.Push(randNeighbour.Position);
                 yield return maze;
                 maze[current.X, current.Y] &= ~NodeState.Current;
+                maze[randNeighbour.Position.X, randNeighbour.Position.Y] &= ~NodeState.Neighbour;
             }
         }
         yield return maze;

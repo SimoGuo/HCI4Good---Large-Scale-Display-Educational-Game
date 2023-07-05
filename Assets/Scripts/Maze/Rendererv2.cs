@@ -14,6 +14,7 @@ public class Rendererv2 : MonoBehaviour {
     [SerializeField] private Transform wall;
     [SerializeField] private Transform center;
     private Transform current;
+    private Transform neighbour;
     public NavMeshSurface surface;
     
     IEnumerator Render() {
@@ -41,6 +42,9 @@ public class Rendererv2 : MonoBehaviour {
 
                     if (node.HasFlag(Generatorv2.NodeState.Current)) {
                         current.position = pos;
+                    }
+                    if (node.HasFlag(Generatorv2.NodeState.Neighbour)) {
+                        neighbour.position = pos;
                     }
 
                     if (node.HasFlag(Generatorv2.NodeState.UpLeft)) {
@@ -144,7 +148,10 @@ public class Rendererv2 : MonoBehaviour {
     private void Start() {
         surface = GetComponent<NavMeshSurface>();
         current = Instantiate(center);
+        neighbour = Instantiate(center);
         current.name = "current";
+        neighbour.name = "current";
+        neighbour.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
     private void Update() {
