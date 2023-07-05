@@ -67,7 +67,6 @@ public class Spawner : MonoBehaviour {
     
     void OnGUI() {
         GUI.skin.label.fontSize = (int)(Screen.width / 100.0f);
-        string fingers = "";
         GUI.Label(new Rect(20, 20, width, height * 0.25f), fingerToCharacter.Count.ToString());
     }
 }
