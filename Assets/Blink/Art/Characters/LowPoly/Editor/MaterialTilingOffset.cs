@@ -94,7 +94,7 @@ namespace BLINK.Tools
 
         private void Init()
         {
-            Renderer renderer = gameObjectList[0].GetComponent<Renderer>();
+            MeshRenderer renderer = gameObjectList[0].GetComponent<MeshRenderer>();
             if (renderer != null)
             {
                 cachedMaterial = renderer.sharedMaterial;
@@ -102,7 +102,7 @@ namespace BLINK.Tools
 
                 foreach (var weapon in gameObjectList)
                 {
-                    Renderer r = weapon.GetComponent<Renderer>();
+                    MeshRenderer r = weapon.GetComponent<MeshRenderer>();
                     if (r == null) continue;
                     r.sharedMaterial = newMaterial;
                 }
