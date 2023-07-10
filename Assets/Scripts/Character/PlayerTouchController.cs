@@ -1,11 +1,11 @@
 using UnityEngine;
 
 public class PlayerTouchController : MonoBehaviour {
+    public bool needsTarget { set; get; } = true;
+    public Vector3 target { set; get; }
     [SerializeField] private float speed = 5;
     private Rigidbody rb;
     private Animator anim;
-    public Vector3 target { set; private get; }
-    public bool needsTarget { set; get; } = true;
     
     private void Start() {
         rb = GetComponent<Rigidbody>();
@@ -14,8 +14,13 @@ public class PlayerTouchController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        // Debug.Log(needsTarget);
+        if (needsTarget) {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
-        if (Vector3.Distance(transform.position, target) < .1f) {
+        if (Vector3.Distance(transform.position, target) < .5f) {
             rb.velocity = Vector3.zero;
         }
         else {
