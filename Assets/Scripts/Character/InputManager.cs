@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour {
 
     [SerializeField] private Transform[] players;
     
-    public List<TouchLocation> TouchLocations = new List<TouchLocation>();
+    private List<TouchLocation> TouchLocations = new List<TouchLocation>();
     
 
     private void FixedUpdate() {

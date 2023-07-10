@@ -4,6 +4,8 @@ public class PlayerTouchController : MonoBehaviour {
     public bool needsTarget { set; get; } = true;
     public Vector3 target { set; get; }
     [SerializeField] private float speed = 5;
+    [SerializeField] private float maxSpeed = 10;
+    [SerializeField] private float stoppingDistance = .5f;
     private Rigidbody rb;
     private Animator anim;
     
@@ -27,11 +29,13 @@ public class PlayerTouchController : MonoBehaviour {
             return;
         }
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
-        if (Vector3.Distance(transform.position, target) < .5f) {
+        if (Vector3.Distance(transform.position, target) < stoppingDistance) {
             rb.velocity = Vector3.zero;
         }
         else {
-            rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+            if (rb.velocity.magnitude <= maxSpeed) {
+                rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+            }
         }
 
         
