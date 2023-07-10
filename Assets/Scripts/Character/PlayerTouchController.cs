@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerTouchController : MonoBehaviour {
     public bool needsTarget { set; get; } = true;
-    public Vector3 target { set; get; }
+    public Vector3 target { set; private get; }
     [SerializeField] private float speed = 5;
     [SerializeField] private float maxSpeed = 10;
     [SerializeField] private float stoppingDistance = .5f;
@@ -24,10 +25,12 @@ public class PlayerTouchController : MonoBehaviour {
             Debug.Log("attacking");
             anim.Play("Armature|attack");
         }
-        if (needsTarget) {
-            // rb.velocity = Vector3.zero;
-            return;
-        }
+        Move();
+    }
+
+    private void Move() {
+        if (needsTarget) return;
+        
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
         if (Vector3.Distance(transform.position, target) < stoppingDistance) {
             rb.velocity = Vector3.zero;
@@ -38,6 +41,5 @@ public class PlayerTouchController : MonoBehaviour {
             }
         }
 
-        
     }
 }
