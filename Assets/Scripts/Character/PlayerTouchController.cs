@@ -14,9 +14,16 @@ public class PlayerTouchController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        // Debug.Log(needsTarget);
+        if (rb.velocity.magnitude >= 1f) {
+            Debug.Log("walking");
+            anim.Play("walk");
+        }
+        else {
+            Debug.Log("attacking");
+            anim.Play("Armature|attack");
+        }
         if (needsTarget) {
-            rb.velocity = Vector3.zero;
+            // rb.velocity = Vector3.zero;
             return;
         }
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
@@ -27,11 +34,6 @@ public class PlayerTouchController : MonoBehaviour {
             rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
         }
 
-        if (rb.velocity.magnitude >= 1f) {
-            anim.Play("walk");
-        }
-        else {
-            anim.Play("attack");
-        }
+        
     }
 }

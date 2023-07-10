@@ -9,10 +9,7 @@ public class InputManager : MonoBehaviour {
     [SerializeField] private Transform[] players;
     
     public List<TouchLocation> TouchLocations = new List<TouchLocation>();
-
-    private void Start() {
-        
-    }
+    
 
     private void FixedUpdate() {
         foreach (Touch touch in Input.touches) {
@@ -20,7 +17,6 @@ public class InputManager : MonoBehaviour {
                 Debug.Log("began");
                 Transform closestPlayer = GetClosestPlayer(touch);
                 if (closestPlayer != null) {
-                    
                     TouchLocations.Add(new TouchLocation(touch.fingerId, closestPlayer));
                 }
             }
