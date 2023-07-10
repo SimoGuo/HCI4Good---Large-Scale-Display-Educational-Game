@@ -44,7 +44,11 @@ public class PlayerCombat : MonoBehaviour
             {
                 animator.runtimeAnimatorController = combo[comboCounter].animatorOveride;
                 animator.Play("Attack", 0, 0);
+
+                //Replace this code with other damage mechanics
                 weapon.damage = combo[comboCounter].damage;
+
+
                 comboCounter++;
                 lastComboEnd = Time.time;
 
