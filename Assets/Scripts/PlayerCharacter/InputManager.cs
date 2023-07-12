@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
+using PlayerCharacter;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour {
@@ -25,13 +26,13 @@ public class InputManager : MonoBehaviour {
                 Ray r = Camera.main.ScreenPointToRay(touch.position);
                 if (Physics.Raycast(r, out RaycastHit hit)) {
                     TouchLocation thisTouch = TouchLocations.Find(i => i.fingerID == touch.fingerId);
-                    thisTouch.player.GetComponent<PlayerTouchController>().target = hit.point;
+                    thisTouch.player.GetComponent<Player>().target = hit.point;
                 }
             }
             if (touch.phase == TouchPhase.Ended) {
                 Debug.Log("ended");
                 TouchLocation thisTouch = TouchLocations.Find(i => i.fingerID == touch.fingerId);
-                thisTouch.player.GetComponent<PlayerTouchController>().needsTarget = true;
+                thisTouch.player.GetComponent<Player>().needsTarget = true;
                 TouchLocations.RemoveAt(TouchLocations.IndexOf(thisTouch));
             }
         }
@@ -41,8 +42,8 @@ public class InputManager : MonoBehaviour {
         Ray r = Camera.main.ScreenPointToRay(touch.position);
         for (int i = 0; i < players.Length; i++) {
             if (Physics.Raycast(r, out RaycastHit hit)) {
-                if (Vector3.Distance(hit.point, players[i].position) <= 5 && players[i].GetComponent<PlayerTouchController>().needsTarget) {
-                    players[i].GetComponent<PlayerTouchController>().needsTarget = false;
+                if (Vector3.Distance(hit.point, players[i].position) <= 5 && players[i].GetComponent<Player>().needsTarget) {
+                    players[i].GetComponent<Player>().needsTarget = false;
                     return players[i];
                 }
             }

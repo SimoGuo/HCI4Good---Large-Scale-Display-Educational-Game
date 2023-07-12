@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Rendererv2 : MonoBehaviour {
+public class StaggeredRenderer : MonoBehaviour {
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 10;
     private float horizontal;
