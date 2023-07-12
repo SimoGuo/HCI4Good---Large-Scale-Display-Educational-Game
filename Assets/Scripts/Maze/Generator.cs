@@ -7,21 +7,23 @@ using UnityEditor;
 public static class Generator {
     [Flags]
     public enum NodeState : byte {
+        // negate and & to add, | to add 
         Left      = 1 << 0, // 00000001
         UpLeft    = 1 << 1, // 00000010
         UpRight   = 1 << 2, // 00000100
         Right     = 1 << 3, // 00001000
         DownLeft  = 1 << 4, // 00010000
         DownRight = 1 << 5, // 00100000
+        None      = 1 << 6, // 01000000
         Visited   = 1 << 7  // 10000000
     }
 
-    public struct Position {
-        public int x;
-        public int y;
+    private struct Position {
+        public int X;
+        public int Y;
     }
 
-    public struct Neighbour {
+    private struct Neighbour {
         public Position Position;
         public NodeState SharedWall;
     }
@@ -36,7 +38,9 @@ public static class Generator {
             
             case NodeState.DownLeft: return NodeState.UpRight;
             case NodeState.UpRight: return NodeState.DownLeft;
-            default: return NodeState.UpLeft;
+            
+            
+            default: return NodeState.None; // shouldn't happend
         }
     }
 
@@ -46,9 +50,9 @@ public static class Generator {
         Stack<Position> positions = new Stack<Position>();
         
         // random start
-        Position pos = new Position { x = rng.Next(0, width), y = rng.Next(0, height) };
+        Position pos = new Position { X = rng.Next(0, width), Y = rng.Next(0, height) };
         // Position pos = new Position { x = 0, y = 0 };
-        maze[pos.x, pos.y] |= NodeState.Visited;
+        maze[pos.X, pos.Y] |= NodeState.Visited;
         positions.Push(pos);
 
         while (positions.Count > 0) {
@@ -62,103 +66,54 @@ public static class Generator {
                 Neighbour randNeighbour = neighbours[rng.Next(0, neighbours.Count)];
                 
                 // remove walls
-                maze[current.x, current.y] &= ~randNeighbour.SharedWall;
-                maze[randNeighbour.Position.x, randNeighbour.Position.y] &= ~GetOppositeWall(randNeighbour.SharedWall);
+                maze[current.X, current.Y] &= ~randNeighbour.SharedWall;
+                maze[randNeighbour.Position.X, randNeighbour.Position.Y] &= ~GetOppositeWall(randNeighbour.SharedWall);
 
-                maze[randNeighbour.Position.x, randNeighbour.Position.y] |= NodeState.Visited;
+                maze[randNeighbour.Position.X, randNeighbour.Position.Y] |= NodeState.Visited;
                 
                 positions.Push(randNeighbour.Position);
             }
         }
-        
-        
-        
+
         return maze;
     }
 
     private static List<Neighbour> GetUnvisitedNeighbours(Position p, NodeState[,] maze, int width, int height) {
         List<Neighbour> list = new List<Neighbour>();
-        // left = x - 1, y
-        if (p.x > 0) {
-            if (!maze[p.x - 1, p.y].HasFlag(NodeState.Visited)) {
-                list.Add(new Neighbour {
-                    Position = new Position { x = p.x - 1, y = p.y },
-                    SharedWall = NodeState.Left
-                });
-            }
-        }
-        // right = x + 1, y
-        if (p.x < width - 1) {
-            if (!maze[p.x + 1, p.y].HasFlag(NodeState.Visited)) {
-                list.Add(new Neighbour {
-                    Position = new Position { x = p.x + 1, y = p.y },
-                    SharedWall = NodeState.Right
-                });
-            }
-        }
-        
-        // if odd: downLeft = x, y - 1 if even: downRight = x, y - 1
-        if (p.y > 0) {
-            if (!maze[p.x, p.y - 1].HasFlag(NodeState.Visited)) {
-                list.Add(new Neighbour {
-                    Position = new Position { x = p.x, y = p.y - 1 },
-                    SharedWall = p.y % 2 == 0 ? NodeState.DownRight : NodeState.DownLeft
-                });
-            }
-        }
-        // if odd: upLeft = x, y + 1 if even: upRight = x, y + 1
-        if (p.y < height - 1) {
-            if (!maze[p.x, p.y + 1].HasFlag(NodeState.Visited)) {
-                list.Add(new Neighbour {
-                    Position = new Position { x = p.x, y = p.y + 1 },
-                    SharedWall = p.y % 2 == 0 ? NodeState.UpRight : NodeState.UpLeft
-                });
-            }
-        }
 
-        if (p.y % 2 != 0) {
-            // upRight = x + 1, y + 1
-            if (p.x < width - 1 && p.y < height - 1) {
-                if (!maze[p.x + 1, p.y + 1].HasFlag(NodeState.Visited)) {
-                    list.Add(new Neighbour {
-                        Position = new Position { x = p.x + 1, y = p.y + 1 },
-                        SharedWall = NodeState.UpRight
-                    });
-                }
-            }
-        
-            // 
-            
-            // downRight = x + 1, y - 1
-            if (p.x < width - 1 && p.y > 0) {
-                if (!maze[p.x + 1, p.y - 1].HasFlag(NodeState.Visited)) {
-                    list.Add(new Neighbour {
-                        Position = new Position { x = p.x + 1, y = p.y - 1 },
-                        SharedWall = NodeState.DownRight
-                    });
-                }
-            }
-        }
-        else {
-            // 
-            // upLeft = x - 1, y + 1
-            if (p.x > 0 && p.y < height - 1) {
-                if (!maze[p.x - 1, p.y + 1].HasFlag(NodeState.Visited)) {
-                    list.Add(new Neighbour {
-                        Position = new Position { x = p.x - 1, y = p.y + 1 },
-                        SharedWall = NodeState.UpLeft
-                    });
-                }
-            }
-            
-            // 
-            // downLeft = x - 1, y - 1
-            if (p.x > 0 && p.y > 0) {
-                if (!maze[p.x - 1, p.y - 1].HasFlag(NodeState.Visited)) {
-                    list.Add(new Neighbour() {
-                        Position = new Position { x = p.x - 1, y = p.y - 1 },
-                        SharedWall = NodeState.DownLeft
-                    });
+        // DO NOT CHANGE ORDER OF ARRAYS
+        int[] dx = { -1, 1,  0, 0, 1,  1, -1, -1 };
+        int[] dy = {  0, 0, -1, 1, 1, -1,  1, -1 };
+        // neighbourPos = (x + dx[i], y + dy[i]), sharedWall = states[i][p.y % 2]
+        // assumes even rows shifted left
+        NodeState[,] states = { 
+            // when y even    when y odd
+            { NodeState.Left, NodeState.Left },          // x - 1, y 
+            { NodeState.Right, NodeState.Right },        // x + 1, y
+            { NodeState.DownRight, NodeState.DownLeft }, // x, y - 1
+            { NodeState.UpRight, NodeState.UpLeft },     // x, y + 1
+            // not a neighbour
+            { NodeState.None, NodeState.UpRight},        // x + 1, y + 1
+            { NodeState.None, NodeState.DownRight},      // x + 1, y - 1
+            //                  not a neighbour
+            { NodeState.UpLeft, NodeState.None},         // x - 1, y + 1
+            { NodeState.DownLeft, NodeState.None}        // x - 1, y - 1
+        };
+
+        for (int i = 0; i < dx.Length; i++) {
+            int x = p.X + dx[i];
+            int y = p.Y + dy[i];
+
+            if (x >= 0 && y >= 0 && x < width && y < height) {
+                if (!maze[x, y].HasFlag(NodeState.Visited)) {
+                    NodeState sharedWall = states[i, p.Y % 2];
+                    if (!sharedWall.HasFlag(NodeState.None)) {
+                        list.Add(new Neighbour {
+                            Position = new Position { X = x, Y = y },
+                            SharedWall = sharedWall
+                        });
+                    }
+                    
                 }
             }
         }
