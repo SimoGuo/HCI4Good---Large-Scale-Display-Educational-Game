@@ -16,6 +16,8 @@ namespace PlayerCharacter.States {
         public override void FrameUpdate() {
             base.FrameUpdate();
             player.anim.Play("attack");
+            
+            // attacking code
         }
 
         public override void PhysicsUpdate() {
