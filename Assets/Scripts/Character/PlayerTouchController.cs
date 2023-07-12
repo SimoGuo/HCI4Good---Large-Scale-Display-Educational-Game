@@ -23,7 +23,7 @@ public class PlayerTouchController : MonoBehaviour {
         }
         else {
             Debug.Log("attacking");
-            anim.Play("Armature|attack");
+            anim.Play("idle");
         }
         Move();
     }
