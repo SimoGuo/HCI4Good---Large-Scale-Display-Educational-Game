@@ -8,7 +8,7 @@ namespace PlayerCharacter {
         public bool needsTarget { set; get; } = true;
         public Vector3 target { set; get; }
         public Rigidbody rb { get; set; }
-        public Animator anim;
+        public Animator anim { get; private set; }
         private PlayerStateMachine stateMachine;
         private PlayerAttackState attackState;
         private PlayerWalkState walkState;
