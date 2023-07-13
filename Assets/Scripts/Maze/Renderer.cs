@@ -132,9 +132,6 @@ public class Renderer : MonoBehaviour {
         }    
     }
     
-    private void Start() {
-        surface = GetComponent<NavMeshSurface>();
-    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -144,7 +141,7 @@ public class Renderer : MonoBehaviour {
             }
 
             Render(Generator.Generate(width, height));
-            
+            // surface.BuildNavMesh();
             
         }
     }

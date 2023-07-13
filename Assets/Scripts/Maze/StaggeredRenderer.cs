@@ -18,7 +18,7 @@ public class StaggeredRenderer : MonoBehaviour {
     public NavMeshSurface surface;
     
     IEnumerator Render() {
-        foreach (Generatorv2.NodeState[,] maze in Generatorv2.Generate(width, height)) {
+        foreach (StaggeredGenerator.NodeState[,] maze in StaggeredGenerator.Generate(width, height)) {
             foreach (Transform t in transform) {
                 if (t.name != "current") {
                     Destroy(t.gameObject);
@@ -27,7 +27,7 @@ public class StaggeredRenderer : MonoBehaviour {
 
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
-                    Generatorv2.NodeState node = maze[i, j];
+                    StaggeredGenerator.NodeState node = maze[i, j];
 
                     string name = i.ToString() + j.ToString();
                     horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
@@ -40,14 +40,14 @@ public class StaggeredRenderer : MonoBehaviour {
                         pos -= new Vector3(horizontal, 0, 0);
                     }
 
-                    if (node.HasFlag(Generatorv2.NodeState.Current)) {
+                    if (node.HasFlag(StaggeredGenerator.NodeState.Current)) {
                         current.position = pos;
                     }
-                    if (node.HasFlag(Generatorv2.NodeState.Neighbour)) {
+                    if (node.HasFlag(StaggeredGenerator.NodeState.Neighbour)) {
                         neighbour.position = pos;
                     }
 
-                    if (node.HasFlag(Generatorv2.NodeState.UpLeft)) {
+                    if (node.HasFlag(StaggeredGenerator.NodeState.UpLeft)) {
                         Transform upLeft = Instantiate(wall, transform);
 
                         upLeft.eulerAngles = new Vector3(0, -30, 0);
@@ -57,7 +57,7 @@ public class StaggeredRenderer : MonoBehaviour {
                     }
 
                     // //
-                    if (node.HasFlag(Generatorv2.NodeState.Left)) {
+                    if (node.HasFlag(StaggeredGenerator.NodeState.Left)) {
                         Transform left = Instantiate(wall, transform);
 
                         left.eulerAngles = new Vector3(0, 90, 0);
@@ -66,7 +66,7 @@ public class StaggeredRenderer : MonoBehaviour {
                     }
 
                     // //
-                    if (node.HasFlag(Generatorv2.NodeState.DownLeft)) {
+                    if (node.HasFlag(StaggeredGenerator.NodeState.DownLeft)) {
                         Transform downLeft = Instantiate(wall, transform);
 
                         downLeft.eulerAngles = new Vector3(0, 30, 0);
@@ -76,7 +76,7 @@ public class StaggeredRenderer : MonoBehaviour {
 
 
                     if (j == 0) {
-                        if (node.HasFlag(Generatorv2.NodeState.DownRight)) {
+                        if (node.HasFlag(StaggeredGenerator.NodeState.DownRight)) {
                             Transform downRight = Instantiate(wall, transform);
 
                             downRight.eulerAngles = new Vector3(0, -30, 0);
@@ -86,7 +86,7 @@ public class StaggeredRenderer : MonoBehaviour {
                     }
 
                     if (i == width - 1) {
-                        if (node.HasFlag(Generatorv2.NodeState.Right)) {
+                        if (node.HasFlag(StaggeredGenerator.NodeState.Right)) {
                             Transform left = Instantiate(wall, transform);
 
 
@@ -96,7 +96,7 @@ public class StaggeredRenderer : MonoBehaviour {
                         }
 
                         if (j != height - 1 && i == width - 1) {
-                            if (node.HasFlag(Generatorv2.NodeState.UpRight)) {
+                            if (node.HasFlag(StaggeredGenerator.NodeState.UpRight)) {
                                 Transform upRight = Instantiate(wall, transform);
 
 
@@ -105,7 +105,7 @@ public class StaggeredRenderer : MonoBehaviour {
                                 upRight.name = "upRight" + name;
                             }
 
-                            if (node.HasFlag(Generatorv2.NodeState.DownRight)) {
+                            if (node.HasFlag(StaggeredGenerator.NodeState.DownRight)) {
                                 Transform downRight = Instantiate(wall, transform);
 
 
@@ -119,7 +119,7 @@ public class StaggeredRenderer : MonoBehaviour {
 
 
                     if (j == height - 1) {
-                        if (node.HasFlag(Generatorv2.NodeState.UpRight)) {
+                        if (node.HasFlag(StaggeredGenerator.NodeState.UpRight)) {
                             Transform upRight = Instantiate(wall, transform);
 
 
@@ -129,7 +129,7 @@ public class StaggeredRenderer : MonoBehaviour {
                         }
 
                         if (i == width - 1) {
-                            if (node.HasFlag(Generatorv2.NodeState.DownRight)) {
+                            if (node.HasFlag(StaggeredGenerator.NodeState.DownRight)) {
                                 Transform downRight = Instantiate(wall, transform);
 
 
