@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 882f1f61d09d73d4ab47e813f143fcb0,
         type: 3}
       propertyPath: m_Name
-      value: PlayerCharacter
+      value: PlayerCharacter Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882f1f61d09d73d4ab47e813f143fcb0, type: 3}
@@ -138,5 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19eb9b9c710acb43a6af71e27006d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   anim: {fileID: 886938589}
+  speed: 10
+  maxSpeed: 10
+  stoppingDistance: 0.5

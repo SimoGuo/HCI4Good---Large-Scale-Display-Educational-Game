@@ -4,6 +4,7 @@ using PlayerCharacter.States;
 using UnityEngine;
 
 namespace PlayerCharacter {
+    
     public class Player : MonoBehaviour, IMoveable, IDamageable {
         public bool needsTarget { set; get; } = true;
         public Vector3 target { set; get; }
@@ -13,16 +14,21 @@ namespace PlayerCharacter {
         private PlayerAttackState attackState;
         private PlayerWalkState walkState;
         private PlayerIdleState idleState;
+        public PlayerMeleeCombat attackZone;
+        
         
         [SerializeField] private float speed = 5;
         [SerializeField] private float maxSpeed = 10;
         [SerializeField] private float stoppingDistance = .5f;
+        
 
         private void Awake() {
             stateMachine = new PlayerStateMachine();
             idleState = new PlayerIdleState(this, stateMachine);
             walkState = new PlayerWalkState(this, stateMachine);
             attackState = new PlayerAttackState(this, stateMachine);
+            anim = GetComponent<Animator>();
+            
         }
 
         private void Start() {
@@ -31,21 +37,47 @@ namespace PlayerCharacter {
             anim = GetComponent<Animator>();
             stateMachine.Init(idleState);
         }
+       public bool _hasTarget;
+        /*public bool HasTarget()
+        {
+            if(_hasTarget = attackZone.detectedColliders.Count>0){
+                return true;
+            }
+            else return false;
+        }*/
+        
+        
+        
+        
 
         private void FixedUpdate() {
             stateMachine.currentPlayerState.PhysicsUpdate();
             Move();
         }
+        //public int radar = attackZone.detectedColliders.Count;
+        
 
         private void Update() {
+            
+            int radar = attackZone.detectedColliders.Count;
             stateMachine.currentPlayerState.FrameUpdate();
-            if (rb.velocity.magnitude == 0) {
+            if (rb.velocity.magnitude == 0 && radar == 0) {
                 stateMachine.ChangeState(idleState);
+            }
+
+            else if (radar>0) {
+                stateMachine.ChangeState(attackState);
             }
             else {
                 stateMachine.ChangeState(walkState);
             }
+            
+            
+            
         }
+       
+
+        
 
         public void Move() {
             if (needsTarget) return;
