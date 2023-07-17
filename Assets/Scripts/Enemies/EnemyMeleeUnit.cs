@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerCharacter.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
-public class EnemyMeleeUnit: MonoBehaviour
+public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 {
     private NavMeshAgent agent;
     
@@ -34,6 +37,10 @@ public class EnemyMeleeUnit: MonoBehaviour
         //Get the player position through name (Script is for 1 player only, will change to more later)
         // commented out because we can set the player from the editor instead of relying on name
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start() {
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -124,4 +131,16 @@ public class EnemyMeleeUnit: MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    public void Damage(float amount) {
+        currentHealth -= amount;
+        if (currentHealth <= 0) Kill();
+    }
+
+    public void Kill() {
+        Destroy(this.gameObject);
+    }
+
+    public float maxHealth { get; set; }
+    public float currentHealth { get; set; }
 }
