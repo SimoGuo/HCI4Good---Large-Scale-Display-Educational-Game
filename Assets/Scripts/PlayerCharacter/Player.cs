@@ -52,6 +52,7 @@ namespace PlayerCharacter {
         }
 
         private void FixedUpdate() {
+            Move();
             _stateMachine.CurrentPlayerState.PhysicsUpdate();
             
         }
@@ -63,7 +64,8 @@ namespace PlayerCharacter {
             Debug.Log(rb.velocity.magnitude);
             Anim.SetFloat("Speed", rb.velocity.magnitude);
             Anim.SetBool("Attack", InAttackRange);
-            if (rb.velocity.magnitude <= 0.1f) {
+
+            if (rb.velocity.magnitude <= 0.01f) {
                 Debug.Log("idling");
                 _stateMachine.ChangeState(_idleState);
             }
@@ -73,12 +75,27 @@ namespace PlayerCharacter {
             }
             
             if (InAttackRange) {
-                
                 Debug.Log("attacking");
             }
         }
 
-        
+        private void Move() {
+            if (NeedsTarget) {
+                rb.velocity = Vector3.zero;
+                return;
+            };
+            
+            transform.LookAt(new Vector3(Target.x, transform.position.y, Target.z));
+            if (Vector3.Distance(transform.position, Target) <= PlayerMoveInstance.StoppingDistance) {
+                rb.velocity = Vector3.zero;
+            }
+            else {
+                if (rb.velocity.magnitude <= PlayerMoveInstance.MaxSpeed) {
+                    rb.AddForce(transform.forward * PlayerMoveInstance.Speed, ForceMode.Acceleration);
+                }
+            }
+
+        }
 
         private void OnTriggerEnter(Collider other) {
             if (other.CompareTag("Enemy")) {

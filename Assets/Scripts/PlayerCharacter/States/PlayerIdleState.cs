@@ -16,7 +16,6 @@ namespace PlayerCharacter.States {
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            // player.Anim.Play("idle");
             player.PlayerIdleInstance.FrameUpdate();
             
         }
