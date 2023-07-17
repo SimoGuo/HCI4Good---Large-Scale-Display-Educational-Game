@@ -24,6 +24,9 @@ public class EnemiesBehaviour : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Stats
+    public float HP;
+
     private void Awake()
     {
         //Get the player position through name (Script is for 1 player only, will change to more later)

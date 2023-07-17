@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TouchTesting.unity
     guid: f5bb0e750693f074dbf884a85ffd0b90
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerTouchController.unity
     guid: 6a60e2af10dbd8b428d9a27b89f996d4
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 7064d350e5ce4204ebb67405f3b9c06d
+  - enabled: 1
+    path: Assets/Scenes/Characters.unity
+    guid: b32dd01ef887a474b940b1e857a174ad
   m_configObjects: {}

@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
 
-
             //On default, use Raycast with Mouse position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 agent.SetDestination(hit.point);
-            }
+        }
         }
     }
 
