@@ -11,6 +11,7 @@ public class Renderer : MonoBehaviour {
     private float horizontal;
     private float vertical;
     [SerializeField] private Transform wall;
+    [SerializeField] private float wallGap;
     [SerializeField] private Transform center;
 
     public NavMeshSurface surface;
@@ -18,8 +19,8 @@ public class Renderer : MonoBehaviour {
     public Vector3 GetNodeCenter(int i, int j) {
         if (i >= width || j >= height || i < 0 || j < 0) return Vector3.zero;
         
-        horizontal = wall.localScale.x * Mathf.Cos(30 * Mathf.Deg2Rad);
-        vertical = wall.localScale.x + (wall.localScale.x * Mathf.Sin(30 * Mathf.Deg2Rad));
+        horizontal = (wallGap + wall.localScale.x) * Mathf.Cos(30 * Mathf.Deg2Rad);
+        vertical = (wallGap + wall.localScale.x) + ((wallGap + wall.localScale.x) * Mathf.Sin(30 * Mathf.Deg2Rad));
                 
         Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, transform.position.y, (j - height / 2) * vertical); // center of node
                 
@@ -41,7 +42,7 @@ public class Renderer : MonoBehaviour {
                 if (node.HasFlag(Generator.NodeState.UpLeft)) {
                     Transform upLeft = Instantiate(wall, transform);
                     
-                    upLeft.eulerAngles = new Vector3(0, -30, 0);
+                    upLeft.eulerAngles = new Vector3(upLeft.transform.rotation.eulerAngles.x, -30, 0);
                     upLeft.position = pos + new Vector3(-horizontal / 2, 0, vertical / 2);
                     upLeft.name = "upLeft" + name;
                     
@@ -50,7 +51,7 @@ public class Renderer : MonoBehaviour {
                 if (node.HasFlag(Generator.NodeState.Left)) {
                     Transform left = Instantiate(wall, transform);
                     
-                    left.eulerAngles = new Vector3(0, 90, 0);
+                    left.eulerAngles = new Vector3(left.transform.rotation.eulerAngles.x, 90, 0);
                     left.position = pos + new Vector3(-horizontal, 0, 0);
                     left.name = "left" + name;
                 }
@@ -58,7 +59,7 @@ public class Renderer : MonoBehaviour {
                 if (node.HasFlag(Generator.NodeState.DownLeft)) {
                     Transform downLeft = Instantiate(wall, transform);
                     
-                    downLeft.eulerAngles = new Vector3(0, 30, 0);
+                    downLeft.eulerAngles = new Vector3(downLeft.transform.rotation.eulerAngles.x, 30, 0);
                     downLeft.position = pos + new Vector3(-horizontal / 2, 0, -vertical / 2);
                     downLeft.name = "downLeft" + name;
                 }
@@ -68,7 +69,7 @@ public class Renderer : MonoBehaviour {
                     if (node.HasFlag(Generator.NodeState.DownRight)) {
                         Transform downRight = Instantiate(wall, transform);
                         
-                        downRight.eulerAngles = new Vector3(0, -30, 0);
+                        downRight.eulerAngles = new Vector3(downRight.transform.rotation.eulerAngles.x, -30, 0);
                         downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
                         downRight.name = "downRight" + name;
                     }
@@ -79,7 +80,7 @@ public class Renderer : MonoBehaviour {
                         Transform left = Instantiate(wall, transform);
                         
 
-                        left.eulerAngles = new Vector3(0, 90, 0);
+                        left.eulerAngles = new Vector3(left.transform.rotation.eulerAngles.x, 90, 0);
                         left.position = pos + new Vector3(horizontal, 0, 0);
                         left.name = "right" + name;
                     }
@@ -89,7 +90,7 @@ public class Renderer : MonoBehaviour {
                             Transform upRight = Instantiate(wall, transform);
                             
 
-                            upRight.eulerAngles = new Vector3(0, 30, 0);
+                            upRight.eulerAngles = new Vector3(upRight.transform.rotation.eulerAngles.x, 30, 0);
                             upRight.position = pos + new Vector3(horizontal / 2, 0, vertical / 2);
                             upRight.name = "upRight" + name;
                         }
@@ -98,7 +99,7 @@ public class Renderer : MonoBehaviour {
                             Transform downRight = Instantiate(wall, transform);
                             
 
-                            downRight.eulerAngles = new Vector3(0, -30, 0);
+                            downRight.eulerAngles = new Vector3(downRight.transform.rotation.eulerAngles.x, -30, 0);
                             downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
                             downRight.name = "downRight" + name;
                         }
@@ -112,7 +113,7 @@ public class Renderer : MonoBehaviour {
                         Transform upRight = Instantiate(wall, transform);
                         
 
-                        upRight.eulerAngles = new Vector3(0, 30, 0);
+                        upRight.eulerAngles = new Vector3(upRight.transform.rotation.eulerAngles.x, 30, 0);
                         upRight.position = pos + new Vector3(horizontal / 2, 0, vertical / 2);
                         upRight.name = "upRight" + name;
                     }
@@ -122,7 +123,7 @@ public class Renderer : MonoBehaviour {
                             Transform downRight = Instantiate(wall, transform);
                             
 
-                            downRight.eulerAngles = new Vector3(0, -30, 0);
+                            downRight.eulerAngles = new Vector3(downRight.transform.rotation.eulerAngles.x, -30, 0);
                             downRight.position = pos + new Vector3(horizontal / 2, 0, -vertical / 2);
                             downRight.name = "downRight" + name;
                         } 

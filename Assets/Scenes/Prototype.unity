@@ -325,7 +325,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -349,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453851770}
   m_LocalRotation: {x: 0.51354116, y: 0, z: 0, w: 0.85806495}
-  m_LocalPosition: {x: -2.25, y: 23.92, z: -12.48}
+  m_LocalPosition: {x: 0, y: 23.3, z: -13.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,21 +560,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522063482822258793, guid: 2b3d409dba21e1b4abdb898c435394e8,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522063482822258793, guid: 2b3d409dba21e1b4abdb898c435394e8,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522063482822258793, guid: 2b3d409dba21e1b4abdb898c435394e8,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522063482822258793, guid: 2b3d409dba21e1b4abdb898c435394e8,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -644,6 +629,11 @@ PrefabInstance:
       objectReference: {fileID: 886938590}
     - target: {fileID: 2645481515513915428, guid: d2af6189ce8a460499ae1ba2dde975cb,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645481515513915428, guid: d2af6189ce8a460499ae1ba2dde975cb,
+        type: 3}
       propertyPath: sightRange
       value: 20.51
       objectReference: {fileID: 0}
@@ -671,6 +661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645481515513915431, guid: d2af6189ce8a460499ae1ba2dde975cb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2645481515513915433, guid: d2af6189ce8a460499ae1ba2dde975cb,
         type: 3}
@@ -748,11 +743,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 886938589, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 886938589, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: attackZone
@@ -816,7 +811,7 @@ PrefabInstance:
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -12.56
       objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
@@ -826,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
@@ -1064,8 +1059,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
+      propertyPath: kb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
+        type: 3}
       propertyPath: players.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
