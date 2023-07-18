@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c8ace471f432aa730fa9c4e2c3807, type: 3}
   m_Name: Player Walk
   m_EditorClassIdentifier: 
-  _speed: 5
-  _maxSpeed: 10
-  _stoppingDistance: 0.5
+  speed: 20
+  maxSpeed: 30
+  stoppingDistance: 2
