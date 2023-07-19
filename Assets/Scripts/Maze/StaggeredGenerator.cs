@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 
  // this is just a regular c# class no monobehaviour NO TOUCH!!!
-public static class Generatorv2 {
+public static class StaggeredGenerator {
     [Flags]
     public enum NodeState : int {
         // negate and & to add, | to add 
