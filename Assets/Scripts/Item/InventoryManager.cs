@@ -1,15 +1,13 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
     public List<Item> items = new List<Item>();
+    public int maxInventorySpace;
 
     public Transform itemContent;
     public GameObject inventoryItem;
@@ -22,9 +20,17 @@ public class InventoryManager : MonoBehaviour
         instance = this; 
     }
 
-    public void Add(Item item)
+    public Boolean Add(Item item)
     {
-        items.Add(item);
+        if (items.Count < maxInventorySpace)
+        {
+            items.Add(item);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void Remove(Item item)
@@ -34,8 +40,16 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItems()
     {
+        //Clean inventory before opening
+        foreach (Transform item  in itemContent) 
+        {
+            Destroy(item.gameObject);
+        }
+
+        
         foreach (var item in items)
         {
+            //Instantiate a new object representing each item we have in the "items" list before listing them
             GameObject obj = Instantiate(inventoryItem, itemContent);
             var removeButton = obj.GetComponent<UnityEngine.UI.Button>();
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
