@@ -11,7 +11,7 @@ public class TestController : MonoBehaviour
     [SerializeField]
 
     //Boolean variable to determine if a chracter is currently being selected by the player
-    private bool selected;
+    public bool selected;
 
     NavMeshAgent agent;
 

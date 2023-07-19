@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -490,6 +490,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &556673669
 --- !u!1001 &1205172434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,6 +823,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1463155936 stripped
 --- !u!95 &1468211212 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: de13a7420582ded45a8d7d3f96889aca,
@@ -949,6 +951,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fd506921b2c9244cb087726ec50e0c0, type: 2}
   - {fileID: 11400000, guid: 952b72785270e8842993b4aa71549528, type: 2}
   comboCounter: 0
+--- !u!4 &1468211219 stripped
   weapon: {fileID: 0}
 --- !u!1 &1720853477
 GameObject:

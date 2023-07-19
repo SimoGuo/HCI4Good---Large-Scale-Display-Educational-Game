@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class character : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
-
+    public float maxHealth = 100;
+    public float currentHealth;
+    public bool isSelected = false;
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
