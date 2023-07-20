@@ -267,15 +267,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Elina
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293783032
-  m_fontColor: {r: 0.9716981, g: 0.9295301, b: 0.9295301, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.9716981, g: 0.8666667, b: 0.7294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.7
+  m_fontSize: 38.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -411,15 +412,16 @@ MonoBehaviour:
     to inclusivity and respect for nature make them an inspiring figure in the fight
     against darkness. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4280032293
+  m_fontColor: {r: 0.14509805, g: 0.10980392, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -599,15 +601,16 @@ MonoBehaviour:
     evil; they seek to bring hope, acceptance, and understanding to all they encounter,
     especially marginalized communities.  '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4280032293
+  m_fontColor: {r: 0.14509805, g: 0.10980392, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -852,15 +855,16 @@ MonoBehaviour:
     when everyone is protected and respected. As a master with a wealth of knowledge
     and experience, she has always maintained a humble and open mind. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4280032293
+  m_fontColor: {r: 0.14509805, g: 0.10980392, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1122,8 +1126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 311.74}
-  m_SizeDelta: {x: 76.8487, y: 110.6499}
+  m_AnchoredPosition: {x: -2, y: 291.79437}
+  m_SizeDelta: {x: 76.8487, y: 150.5411}
   m_Pivot: {x: 0.38041037, y: 0.5}
 --- !u!114 &863470407
 MonoBehaviour:
@@ -1147,15 +1151,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Evans
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293783032
-  m_fontColor: {r: 0.9716981, g: 0.9295301, b: 0.9295301, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.9716981, g: 0.8666667, b: 0.7294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1172,14 +1177,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.9
-  m_fontSizeBase: 40
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1257,8 +1262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.4492, y: 13.67}
-  m_SizeDelta: {x: 193.3499, y: 201.881}
+  m_AnchoredPosition: {x: -2.3411, y: -2.9514}
+  m_SizeDelta: {x: 199.9984, y: 208.5296}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867718701
 MonoBehaviour:
@@ -1282,15 +1287,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.972549, g: 0.8666667, b: 0.7294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1307,8 +1313,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1583,15 +1589,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Haru
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293783032
-  m_fontColor: {r: 0.9716981, g: 0.9295301, b: 0.9295301, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.9716981, g: 0.8666667, b: 0.7294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1608,7 +1615,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.6
+  m_fontSize: 39.3
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2094,15 +2101,16 @@ MonoBehaviour:
     each other. He has a short temper, and he will not back down to face any form
     of obstacle or difficulty. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4279966500
+  m_fontColor: {r: 0.14150941, g: 0.10599856, b: 0.10599856, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2224,7 +2232,7 @@ GameObject:
   - component: {fileID: 1530909834}
   - component: {fileID: 1530909833}
   m_Layer: 5
-  m_Name: PowerButton
+  m_Name: Next1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2315,7 +2323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 435c7e991a729e9499727b812da5db94, type: 3}
+  m_Texture: {fileID: 2800000, guid: bca06aed994526e4685e309ba52b7a34, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2365,8 +2373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.4492, y: 13.67}
-  m_SizeDelta: {x: 193.3499, y: 201.881}
+  m_AnchoredPosition: {x: -1.2331, y: 0.3729}
+  m_SizeDelta: {x: 197.7822, y: 228.4752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1578569343
 MonoBehaviour:
@@ -2390,15 +2398,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.9716981, g: 0.8647502, b: 0.7278569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2415,8 +2424,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2478,7 +2487,7 @@ GameObject:
   - component: {fileID: 1654760950}
   - component: {fileID: 1654760949}
   m_Layer: 5
-  m_Name: PowerButton (1)
+  m_Name: Next2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2569,7 +2578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 435c7e991a729e9499727b812da5db94, type: 3}
+  m_Texture: {fileID: 2800000, guid: bca06aed994526e4685e309ba52b7a34, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2644,15 +2653,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Aiko
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
+  m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293783032
-  m_fontColor: {r: 0.9716981, g: 0.9295301, b: 0.9295301, a: 1}
+    rgba: 4290436600
+  m_fontColor: {r: 0.9716981, g: 0.8666667, b: 0.7294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2669,7 +2679,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.65
+  m_fontSize: 44.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
