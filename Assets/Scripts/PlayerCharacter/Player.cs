@@ -74,8 +74,13 @@ namespace PlayerCharacter {
             }
             
             if (InAttackRange) {
-                Debug.Log("attacking");
-                _stateMachine.ChangeState(_attackState);
+                Debug.Log("in range");
+                if (TargetedEnemy != null) {
+                    _stateMachine.ChangeState(_attackState);
+                }
+                else {
+                    InAttackRange = false;
+                }
             }
         }
 
