@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace PlayerCharacter.States {
+namespace PlayerCharacter.PlayerStateMachine.States {
     public class PlayerState {
         protected Player player;
-        protected PlayerStateMachine playerStateMachine;
+        private global::PlayerCharacter.PlayerStateMachine.PlayerStateMachine playerStateMachine;
 
-        public PlayerState(Player player, PlayerStateMachine playerStateMachine) {
+        protected PlayerState(Player player, global::PlayerCharacter.PlayerStateMachine.PlayerStateMachine playerStateMachine) {
             this.player = player;
             this.playerStateMachine = playerStateMachine;
         }

@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19eb9b9c710acb43a6af71e27006d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackZone: {fileID: 4792575682666247296}
+  attackZone: {fileID: 886938595}
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
   playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
