@@ -1,38 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerCharacter.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
-public class EnemyMeleeUnit: MonoBehaviour
+public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 {
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
     
     //Player position
-    public Transform player;
-    public LayerMask groundLayer, playerLayer;
+    [SerializeField] private Transform player;
+    [SerializeField] private LayerMask groundLayer, playerLayer;
 
     //Patrolling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    private Vector3 walkPoint;
+    private bool walkPointSet;
+    [SerializeField] private float walkPointRange;
 
     //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    [SerializeField] private float timeBetweenAttacks;
+    private bool alreadyAttacked;
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [SerializeField] private float sightRange, attackRange;
+    private bool playerInSightRange, playerInAttackRange;
 
     //Variables for testing
-    public Vector3 distanceToWalkPoint;
-    public float distance;
+    private Vector3 distanceToWalkPoint;
+    private float distance;
+        // player = GameObject.Find("PlayerCharacter").transform;
 
     private void Awake()
     {
         //Get the player position through name (Script is for 1 player only, will change to more later)
-        player = GameObject.Find("PlayerCharacter").transform;
+        // commented out because we can set the player from the editor instead of relying on name
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start() {
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -123,4 +131,16 @@ public class EnemyMeleeUnit: MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    public void Damage(float amount) {
+        currentHealth -= amount;
+        if (currentHealth <= 0) Kill();
+    }
+
+    public void Kill() {
+        Destroy(this.gameObject);
+    }
+
+    public float maxHealth { get; set; }
+    public float currentHealth { get; set; }
 }
