@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class next : MonoBehaviour
 {
+<<<<<<< Updated upstream
 
     public void loadCharacters()
     {
@@ -12,3 +13,11 @@ public class next : MonoBehaviour
     }
 
 }
+=======
+    public void loadMainLevel()
+    {
+        SceneManager.LoadScene("Player3Proto");
+    }
+
+}
+>>>>>>> Stashed changes

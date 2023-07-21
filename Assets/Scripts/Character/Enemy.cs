@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,5 +20,7 @@ public class Enemy : MonoBehaviour
     {
         // Implement what happens when the enemy dies
         Destroy(gameObject);
+        SceneManager.LoadScene("End");
+
     }
 }
