@@ -1,8 +1,6 @@
-using UnityEngine;
-
-namespace PlayerCharacter.States {
+namespace PlayerCharacter.PlayerStateMachine.States {
     public class PlayerIdleState : PlayerState {
-        public PlayerIdleState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {
+        public PlayerIdleState(Player player, global::PlayerCharacter.PlayerStateMachine.PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {
         }
         public override void EnterState() {
             base.EnterState();

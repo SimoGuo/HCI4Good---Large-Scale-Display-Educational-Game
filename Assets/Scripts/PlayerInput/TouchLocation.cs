@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Character {
+
+namespace PlayerInput {
     public class TouchLocation {
         public int fingerID;
         public Transform player;
