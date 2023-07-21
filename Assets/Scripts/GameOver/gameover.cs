@@ -4,12 +4,19 @@ using TMPro;
 
 public class gameover : MonoBehaviour
 {
-    public TextMeshProUGUI numberText;
-    private int countScore = 17; // This is demo. After game finish this value will be update. 
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
+    private int countScore = 17; // This is demo. After the game finishes, this value will be updated.
     private int jumpCount = 0;
+
+    private float endTime;
+    private float startTime;
+    private float totalTime;
+
 
     void Start()
     {
+        endTime = Time.time;
         StartCoroutine(JumpObjectRoutine());
     }
 
@@ -20,6 +27,18 @@ public class gameover : MonoBehaviour
             StartCoroutine(JumpRoutine());
             jumpCount++;
         }
+    }
+
+    private string FormatTime(float timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60);
+
+        // Convert the values to strings and add leading zeros if needed
+        string formattedMinutes = minutes.ToString("00");
+        string formattedSeconds = seconds.ToString("00");
+
+        return formattedMinutes + ":" + formattedSeconds;
     }
 
     IEnumerator JumpRoutine()
@@ -38,7 +57,29 @@ public class gameover : MonoBehaviour
             yield return new WaitForSeconds(jumpDuration);
         }
 
-        numberText.text = countScore.ToString();
+        startTime = PlayerPrefs.GetFloat("startTime");
+        totalTime = Mathf.RoundToInt(endTime - startTime);
+        Debug.Log("Total Time: " + totalTime);
+        string formattedTime = FormatTime(totalTime);
+        timeText.text = formattedTime;
+        StartCoroutine(IncrementScore(countScore));
+    }
+
+    IEnumerator IncrementScore(int targetScore)
+    {
+        int currentScore = 0;
+        int incrementStep = 1;
+        float incrementDelay = 0.1f;
+
+        while (currentScore < targetScore)
+        {
+            currentScore += incrementStep;
+            scoreText.text = currentScore.ToString();
+            yield return new WaitForSeconds(incrementDelay);
+        }
+
+        // Ensure the final score matches the target score
+        scoreText.text = targetScore.ToString();
     }
 
     IEnumerator JumpObjectRoutine()
