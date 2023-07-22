@@ -250,7 +250,7 @@ namespace PlayerCharacter
             // Only attack if not already attacking and not on cooldown
             if (!isAttacking && canAttack && InAttackRange)
             {
-                StartCoroutine(AttackRoutine());
+               /* StartCoroutine(AttackRoutine());*/
             }
 
             if (rb.velocity.magnitude <= 0.01f)
@@ -265,21 +265,21 @@ namespace PlayerCharacter
             }
         }
 
-        private IEnumerator AttackRoutine()
+        private IEnumerator AttackRoutine(Collider other)
         {
             isAttacking = true;
             Anim.SetTrigger("Attack");
             yield return new WaitForSeconds(PlayerAttackInstance.AttackDuration);
-            DealDamageToCharacter(5f);
+            DealDamageToCharacter(0.5f, other);
             canAttack = false;
             yield return new WaitForSeconds(attackCooldownDuration);
             canAttack = true;
             isAttacking = false;
         }
 
-        private void DealDamageToCharacter(float damageAmount)
+        private void DealDamageToCharacter(float damageAmount, Collider other)
         {
-            character characterComponent = GetComponent<character>();
+            character characterComponent = other.GetComponent<character>();
             if (characterComponent != null)
             {
                 characterComponent.TakeDamage(damageAmount);
@@ -314,8 +314,17 @@ namespace PlayerCharacter
             {
                 InAttackRange = true;
                 TargetedEnemy = other.GetComponent<EnemyMeleeUnit>();
-                enemy = other.GetComponent<character>();
-                enemy.TakeDamage(20f);
+                StartCoroutine(AttackRoutine(other));
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                InAttackRange = true;
+                TargetedEnemy = other.GetComponent<EnemyMeleeUnit>();
+                StartCoroutine(AttackRoutine(other));
             }
         }
 
