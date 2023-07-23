@@ -7,15 +7,16 @@ namespace PlayerInput {
 
         [SerializeField] private Transform[] players;
         [SerializeField] private bool kb = true;
+        [SerializeField] private Transform closestPlayer;
         private List<TouchLocation> TouchLocations = new List<TouchLocation>();
     
 
         private void FixedUpdate() {
             if (kb) {
                 if (UnityEngine.Input.GetMouseButton(0)) {
-                    Debug.Log("here");  
+                    // Debug.Log("here");
                     Ray r = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
-                    if (Physics.Raycast(r, out RaycastHit hit)) {
+                    if (Physics.Raycast(r, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Ground"))) {
                         Debug.Log(hit.point);
                         Transform closestPlayer = GetClosestPlayer(hit.point);
                         if (closestPlayer != null) {
@@ -29,7 +30,7 @@ namespace PlayerInput {
                 foreach (Touch touch in UnityEngine.Input.touches) {
                     if (touch.phase == TouchPhase.Began) {
                         Debug.Log("began");
-                        Transform closestPlayer = GetClosestPlayer(touch);
+                        closestPlayer = GetClosestPlayer(touch);
                         if (closestPlayer != null) {
                             TouchLocations.Add(new TouchLocation(touch.fingerId, closestPlayer));
                         }
@@ -58,8 +59,11 @@ namespace PlayerInput {
                 if (Vector3.Distance(mousePos, players[i].position) <= 5) {
                     return players[i];
                 }
+                else {
+                    Debug.Log("too far");
+                }
             }
-
+            
             return null;
         }
     

@@ -15,9 +15,8 @@ namespace PlayerCharacter {
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
         [SerializeField] public SphereCollider attackZone;
-        public bool InAttackRange { get; private set; }
-        public EnemyMeleeUnit TargetedEnemy { get; private set; }
-
+        [field: SerializeField] public bool InAttackRange { get; private set; }
+        [field: SerializeField] public EnemyMeleeUnit TargetedEnemy { get; private set; }
         [SerializeField] private PlayerIdleSO playerIdleBase;
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
@@ -57,24 +56,25 @@ namespace PlayerCharacter {
         }
 
         private void Update() {
-            if (_stateMachine == null) Debug.Log("statemachine null");
-            if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            // if (_stateMachine == null) Debug.Log("statemachine null");
+            // if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            Debug.Log(NeedsTarget + " " + Target);
             _stateMachine.CurrentPlayerState.FrameUpdate();
-            Debug.Log(rb.velocity.magnitude);
+            // Debug.Log(rb.velocity.magnitude);
             _anim.SetFloat("Speed", rb.velocity.magnitude);
             _anim.SetBool("Attack", InAttackRange);
 
             if (rb.velocity.magnitude <= 0.01f) {
-                Debug.Log("idling");
+                // Debug.Log("idling");
                 _stateMachine.ChangeState(_idleState);
             }
             else {
-                Debug.Log("moving");
+                // Debug.Log("moving");
                 _stateMachine.ChangeState(_moveState);
             }
             
             if (InAttackRange) {
-                Debug.Log("in range");
+                // Debug.Log("in range");
                 if (TargetedEnemy != null) {
                     _stateMachine.ChangeState(_attackState);
                 }
@@ -88,10 +88,11 @@ namespace PlayerCharacter {
             if (NeedsTarget) {
                 rb.velocity = Vector3.zero;
                 return;
-            };
+            }
             
             transform.LookAt(new Vector3(Target.x, transform.position.y, Target.z));
-            if (Vector3.Distance(transform.position, Target) <= PlayerMoveInstance.StoppingDistance) {
+            Debug.Log("Stopping" + PlayerMoveInstance.StoppingDistance);
+            if (Vector3.Distance(transform.position, new Vector3(Target.x, transform.position.y, Target.z)) <= PlayerMoveInstance.StoppingDistance) {
                 rb.velocity = Vector3.zero;
             }
             else {
