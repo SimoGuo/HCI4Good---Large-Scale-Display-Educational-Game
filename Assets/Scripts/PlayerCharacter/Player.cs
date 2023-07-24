@@ -5,6 +5,33 @@ using PlayerCharacter.PlayerStateMachine.States;
 using UnityEngine;
 
 namespace PlayerCharacter {
+<<<<<<< HEAD
+    
+    public class Player : MonoBehaviour, IMoveable, IDamageable {
+        public bool needsTarget { set; get; } = true;
+        public Vector3 target { set; get; }
+        public Rigidbody rb { get; set; }
+        public Animator anim;
+        private PlayerStateMachine stateMachine;
+        private PlayerAttackState attackState;
+        private PlayerWalkState walkState;
+        private PlayerIdleState idleState;
+        public PlayerMeleeCombat attackZone;
+        
+        
+        [SerializeField] private float speed = 5;
+        [SerializeField] private float maxSpeed = 10;
+        [SerializeField] private float stoppingDistance = .5f;
+        
+
+        private void Awake() {
+            stateMachine = new PlayerStateMachine();
+            idleState = new PlayerIdleState(this, stateMachine);
+            walkState = new PlayerWalkState(this, stateMachine);
+            attackState = new PlayerAttackState(this, stateMachine);
+            anim = GetComponent<Animator>();
+            
+=======
     public class Player : MonoBehaviour, IDamageable, IMoveable {
         public bool NeedsTarget { set; get; } = true;
         public Vector3 Target { set; get; }
@@ -36,6 +63,7 @@ namespace PlayerCharacter {
             _idleState = new PlayerIdleState(this, _stateMachine);
             _moveState = new PlayerMoveState(this, _stateMachine);
             _attackState = new PlayerAttackState(this, _stateMachine);
+>>>>>>> dev
         }
 
         private void Start() {
@@ -49,14 +77,35 @@ namespace PlayerCharacter {
 
             _stateMachine.Init(_idleState);
         }
+       public bool _hasTarget;
+        /*public bool HasTarget()
+        {
+            if(_hasTarget = attackZone.detectedColliders.Count>0){
+                return true;
+            }
+            else return false;
+        }*/
+        
+        
+        
+        
 
         private void FixedUpdate() {
             Move();
             _stateMachine.CurrentPlayerState.PhysicsUpdate();
             
         }
+        //public int radar = attackZone.detectedColliders.Count;
+        
 
         private void Update() {
+<<<<<<< HEAD
+            
+            int radar = attackZone.detectedColliders.Count;
+            stateMachine.currentPlayerState.FrameUpdate();
+            if (rb.velocity.magnitude == 0 && radar == 0) {
+                stateMachine.ChangeState(idleState);
+=======
             if (_stateMachine == null) Debug.Log("statemachine null");
             if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
             _stateMachine.CurrentPlayerState.FrameUpdate();
@@ -67,6 +116,11 @@ namespace PlayerCharacter {
             if (rb.velocity.magnitude <= 0.01f) {
                 Debug.Log("idling");
                 _stateMachine.ChangeState(_idleState);
+>>>>>>> dev
+            }
+
+            else if (radar>0) {
+                stateMachine.ChangeState(attackState);
             }
             else {
                 Debug.Log("moving");
@@ -82,7 +136,13 @@ namespace PlayerCharacter {
                     InAttackRange = false;
                 }
             }
+            
+            
+            
         }
+       
+
+        
 
         private void Move() {
             if (NeedsTarget) {
