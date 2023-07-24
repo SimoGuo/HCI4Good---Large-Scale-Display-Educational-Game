@@ -1,9 +1,11 @@
 using System;
 using PlayerCharacter.Interfaces;
-using PlayerCharacter.States;
+using PlayerCharacter.PlayerStateMachine.ScriptableObjectsBase;
+using PlayerCharacter.PlayerStateMachine.States;
 using UnityEngine;
 
 namespace PlayerCharacter {
+<<<<<<< HEAD
     
     public class Player : MonoBehaviour, IMoveable, IDamageable {
         public bool needsTarget { set; get; } = true;
@@ -29,13 +31,51 @@ namespace PlayerCharacter {
             attackState = new PlayerAttackState(this, stateMachine);
             anim = GetComponent<Animator>();
             
+=======
+    public class Player : MonoBehaviour, IDamageable, IMoveable {
+        public bool NeedsTarget { set; get; } = true;
+        public Vector3 Target { set; get; }
+        public Rigidbody rb { get; set; }
+        private Animator _anim;
+        private PlayerStateMachine.PlayerStateMachine _stateMachine;
+        private PlayerAttackState _attackState;
+        private PlayerMoveState _moveState;
+        private PlayerIdleState _idleState;
+        [SerializeField] public SphereCollider attackZone;
+        public bool InAttackRange { get; private set; }
+        public EnemyMeleeUnit TargetedEnemy { get; private set; }
+
+        [SerializeField] private PlayerIdleSO playerIdleBase;
+        [SerializeField] private PlayerMoveSO playerMoveBase;
+        [SerializeField] private PlayerAttackSO playerAttackBase;
+
+        public PlayerIdleSO PlayerIdleInstance { get; private set; }
+        public PlayerMoveSO PlayerMoveInstance { get; private set; }
+        public PlayerAttackSO PlayerAttackInstance { get; private set; }
+
+        private void Awake() {
+            PlayerIdleInstance = Instantiate(playerIdleBase);
+            PlayerMoveInstance = Instantiate(playerMoveBase);
+            PlayerAttackInstance = Instantiate(playerAttackBase);
+            
+            _stateMachine = new PlayerStateMachine.PlayerStateMachine();
+            
+            _idleState = new PlayerIdleState(this, _stateMachine);
+            _moveState = new PlayerMoveState(this, _stateMachine);
+            _attackState = new PlayerAttackState(this, _stateMachine);
+>>>>>>> dev
         }
 
         private void Start() {
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
-            anim = GetComponent<Animator>();
-            stateMachine.Init(idleState);
+            _anim = GetComponent<Animator>();
+            
+            PlayerIdleInstance.Initialize(gameObject, this);
+            PlayerMoveInstance.Initialize(gameObject, this);
+            PlayerAttackInstance.Initialize(gameObject, this);
+
+            _stateMachine.Init(_idleState);
         }
        public bool _hasTarget;
         /*public bool HasTarget()
@@ -51,25 +91,50 @@ namespace PlayerCharacter {
         
 
         private void FixedUpdate() {
-            stateMachine.currentPlayerState.PhysicsUpdate();
             Move();
+            _stateMachine.CurrentPlayerState.PhysicsUpdate();
+            
         }
         //public int radar = attackZone.detectedColliders.Count;
         
 
         private void Update() {
+<<<<<<< HEAD
             
             int radar = attackZone.detectedColliders.Count;
             stateMachine.currentPlayerState.FrameUpdate();
             if (rb.velocity.magnitude == 0 && radar == 0) {
                 stateMachine.ChangeState(idleState);
+=======
+            if (_stateMachine == null) Debug.Log("statemachine null");
+            if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            _stateMachine.CurrentPlayerState.FrameUpdate();
+            Debug.Log(rb.velocity.magnitude);
+            _anim.SetFloat("Speed", rb.velocity.magnitude);
+            _anim.SetBool("Attack", InAttackRange);
+
+            if (rb.velocity.magnitude <= 0.01f) {
+                Debug.Log("idling");
+                _stateMachine.ChangeState(_idleState);
+>>>>>>> dev
             }
 
             else if (radar>0) {
                 stateMachine.ChangeState(attackState);
             }
             else {
-                stateMachine.ChangeState(walkState);
+                Debug.Log("moving");
+                _stateMachine.ChangeState(_moveState);
+            }
+            
+            if (InAttackRange) {
+                Debug.Log("in range");
+                if (TargetedEnemy != null) {
+                    _stateMachine.ChangeState(_attackState);
+                }
+                else {
+                    InAttackRange = false;
+                }
             }
             
             
@@ -79,19 +144,36 @@ namespace PlayerCharacter {
 
         
 
-        public void Move() {
-            if (needsTarget) return;
-        
-            transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
-            if (Vector3.Distance(transform.position, target) < stoppingDistance) {
+        private void Move() {
+            if (NeedsTarget) {
+                rb.velocity = Vector3.zero;
+                return;
+            };
+            
+            transform.LookAt(new Vector3(Target.x, transform.position.y, Target.z));
+            if (Vector3.Distance(transform.position, Target) <= PlayerMoveInstance.StoppingDistance) {
                 rb.velocity = Vector3.zero;
             }
             else {
-                if (rb.velocity.magnitude <= maxSpeed) {
-                    rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+                if (rb.velocity.magnitude <= PlayerMoveInstance.MaxSpeed) {
+                    rb.AddForce(transform.forward * PlayerMoveInstance.Speed, ForceMode.Acceleration);
                 }
             }
 
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Enemy")) {
+                InAttackRange = true;
+                TargetedEnemy = other.GetComponent<EnemyMeleeUnit>();
+            }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if (other.CompareTag("Enemy")) {
+                InAttackRange = false;
+                TargetedEnemy = null;
+            }
         }
 
         public void Damage(float amount) {
