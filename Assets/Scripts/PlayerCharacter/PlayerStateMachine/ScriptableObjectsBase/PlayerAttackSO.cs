@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace PlayerCharacter.PlayerStateMachine.ScriptableObjectsBase {
     public class PlayerAttackSO : ScriptableObject {
-        protected Player player;
-        protected GameObject gameObject;
+        protected Player Player;
+        protected GameObject GameObject;
     
         public virtual void Initialize(GameObject gameObject, Player player) {
-            this.gameObject = gameObject;
-            this.player = player;
+            this.GameObject = gameObject;
+            this.Player = player;
         }
     
         public virtual void EnterState(){}
