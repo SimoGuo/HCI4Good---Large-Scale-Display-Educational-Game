@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5020070656978420986, guid: 6165d4512779c984498316ad39fa0a59,
     type: 3}
-  speed: 50
-  damageAmount: 5
+  speed: 10
+  damageAmount: 1
   attackRange: 10
   coolDown: 1

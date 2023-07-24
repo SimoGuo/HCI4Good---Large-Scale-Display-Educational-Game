@@ -20,10 +20,12 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            if (player.InAttackRange && Time.time > (_lastAttacked + coolDown)) {
+            if (Player.InAttackRange && Time.time > (_lastAttacked + coolDown)) {
                 _lastAttacked = Time.time;
-                Transform handle = Instantiate(projectile);
-                handle.LookAt(player.TargetedEnemy.transform);
+                Transform handle = Instantiate(projectile, GameObject.transform.position, Quaternion.identity);
+                if (Player.TargetedEnemy != null) {
+                    handle.LookAt(Player.TargetedEnemy.transform);
+                }
                 handle.GetComponent<Arrow>().DamageAmount = damageAmount;
                 handle.GetComponent<Arrow>().ArrowSpeed = speed;
             }

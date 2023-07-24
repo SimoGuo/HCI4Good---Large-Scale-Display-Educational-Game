@@ -139,9 +139,9 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     }
 
     public void Kill() {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
-    public float maxHealth { get; set; } = 10;
+    public float maxHealth { get; set; } = 100;
     [field: SerializeField] public float currentHealth { get; set; }
 }
