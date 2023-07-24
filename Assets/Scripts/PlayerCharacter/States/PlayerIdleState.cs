@@ -6,20 +6,23 @@ namespace PlayerCharacter.States {
         }
         public override void EnterState() {
             base.EnterState();
+            player.PlayerIdleInstance.EnterState();
         }
 
         public override void ExitState() {
             base.ExitState();
+            player.PlayerIdleInstance.ExitState();
         }
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            player.anim.Play("idle");
+            player.PlayerIdleInstance.FrameUpdate();
             
         }
 
         public override void PhysicsUpdate() {
             base.PhysicsUpdate();
+            player.PlayerIdleInstance.PhysicsUpdate();
         }
         
     }

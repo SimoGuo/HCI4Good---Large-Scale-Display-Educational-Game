@@ -1,65 +1,114 @@
 using System;
 using PlayerCharacter.Interfaces;
 using PlayerCharacter.States;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PlayerCharacter {
-    public class Player : MonoBehaviour, IMoveable, IDamageable {
-        public bool needsTarget { set; get; } = true;
-        public Vector3 target { set; get; }
+    public class Player : MonoBehaviour, IDamageable {
+        public bool NeedsTarget { set; get; } = true;
+        public Vector3 Target { set; get; }
         public Rigidbody rb { get; set; }
-        public Animator anim;
-        private PlayerStateMachine stateMachine;
-        private PlayerAttackState attackState;
-        private PlayerWalkState walkState;
-        private PlayerIdleState idleState;
-        
-        [SerializeField] private float speed = 5;
-        [SerializeField] private float maxSpeed = 10;
-        [SerializeField] private float stoppingDistance = .5f;
+        public Animator Anim { get; private set; }
+        private PlayerStateMachine _stateMachine;
+        private PlayerAttackState _attackState;
+        private PlayerMoveState _moveState;
+        private PlayerIdleState _idleState;
+        [SerializeField] public SphereCollider attackZone;
+        public bool InAttackRange { get; private set; }
+        public EnemyMeleeUnit TargetedEnemy { get; private set; }
+
+        [SerializeField] private PlayerIdleSO playerIdleBase;
+        [SerializeField] private PlayerMoveSO playerMoveBase;
+        [SerializeField] private PlayerAttackSO playerAttackBase;
+
+        public PlayerIdleSO PlayerIdleInstance { get; private set; }
+        public PlayerMoveSO PlayerMoveInstance { get; private set; }
+        public PlayerAttackSO PlayerAttackInstance { get; private set; }
 
         private void Awake() {
-            stateMachine = new PlayerStateMachine();
-            idleState = new PlayerIdleState(this, stateMachine);
-            walkState = new PlayerWalkState(this, stateMachine);
-            attackState = new PlayerAttackState(this, stateMachine);
+            PlayerIdleInstance = Instantiate(playerIdleBase);
+            PlayerMoveInstance = Instantiate(playerMoveBase);
+            PlayerAttackInstance = Instantiate(playerAttackBase);
+            
+            _stateMachine = new PlayerStateMachine();
+            
+            _idleState = new PlayerIdleState(this, _stateMachine);
+            _moveState = new PlayerMoveState(this, _stateMachine);
+            _attackState = new PlayerAttackState(this, _stateMachine);
         }
 
         private void Start() {
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
-            anim = GetComponent<Animator>();
-            stateMachine.Init(idleState);
+            Anim = GetComponent<Animator>();
+            
+            PlayerIdleInstance.Initialize(gameObject, this);
+            PlayerMoveInstance.Initialize(gameObject, this);
+            PlayerAttackInstance.Initialize(gameObject, this);
+
+            _stateMachine.Init(_idleState);
         }
 
         private void FixedUpdate() {
-            stateMachine.currentPlayerState.PhysicsUpdate();
             Move();
+            _stateMachine.CurrentPlayerState.PhysicsUpdate();
+            
         }
 
         private void Update() {
-            stateMachine.currentPlayerState.FrameUpdate();
-            if (rb.velocity.magnitude == 0) {
-                stateMachine.ChangeState(idleState);
+            if (_stateMachine == null) Debug.Log("statemachine null");
+            if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            _stateMachine.CurrentPlayerState.FrameUpdate();
+            Debug.Log(rb.velocity.magnitude);
+            Anim.SetFloat("Speed", rb.velocity.magnitude);
+            Anim.SetBool("Attack", InAttackRange);
+
+            if (rb.velocity.magnitude <= 0.01f) {
+                Debug.Log("idling");
+                _stateMachine.ChangeState(_idleState);
             }
             else {
-                stateMachine.ChangeState(walkState);
+                Debug.Log("moving");
+                _stateMachine.ChangeState(_moveState);
+            }
+            
+            if (InAttackRange) {
+                Debug.Log("attacking");
             }
         }
 
-        public void Move() {
-            if (needsTarget) return;
-        
-            transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
-            if (Vector3.Distance(transform.position, target) < stoppingDistance) {
+        private void Move() {
+            if (NeedsTarget) {
+                rb.velocity = Vector3.zero;
+                return;
+            };
+            
+            transform.LookAt(new Vector3(Target.x, transform.position.y, Target.z));
+            if (Vector3.Distance(transform.position, Target) <= PlayerMoveInstance.StoppingDistance) {
                 rb.velocity = Vector3.zero;
             }
             else {
-                if (rb.velocity.magnitude <= maxSpeed) {
-                    rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+                if (rb.velocity.magnitude <= PlayerMoveInstance.MaxSpeed) {
+                    rb.AddForce(transform.forward * PlayerMoveInstance.Speed, ForceMode.Acceleration);
                 }
             }
 
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Enemy")) {
+                InAttackRange = true;
+                TargetedEnemy = other.GetComponent<EnemyMeleeUnit>();
+            }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if (other.CompareTag("Enemy")) {
+                InAttackRange = false;
+                TargetedEnemy = null;
+            }
         }
 
         public void Damage(float amount) {

@@ -7,21 +7,22 @@ namespace PlayerCharacter.States {
 
         public override void EnterState() {
             base.EnterState();
+            player.PlayerAttackInstance.EnterState();
         }
 
         public override void ExitState() {
             base.ExitState();
+            player.PlayerAttackInstance.ExitState();
         }
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            player.anim.Play("attack");
-            
-            // attacking code
+            player.PlayerAttackInstance.FrameUpdate();
         }
 
         public override void PhysicsUpdate() {
             base.PhysicsUpdate();
+            player.PlayerAttackInstance.PhysicsUpdate();
         }
         
     }
