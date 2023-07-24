@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91571e8124bb2834bbc6f4bcfd332b31, type: 3}
   m_Name: Ranged Attack
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2485917474916635980, guid: 598895e62e0a6704987aa5b04760272c,
+  projectilePrefab: {fileID: 919132149155446097, guid: df48acdb457194a42a0ea82912413db2,
     type: 3}
-  projectileSpeed: 1
+  projectileSpeed: 2
   cooldown: 1
