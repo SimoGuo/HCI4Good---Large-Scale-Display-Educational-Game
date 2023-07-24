@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
->>>>>>> dev
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,11 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428094791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 6.11, y: 0.96, z: 6.73}
-=======
   m_LocalPosition: {x: 0, y: 0, z: 0}
->>>>>>> dev
   m_LocalScale: {x: 0.76, y: -0.5, z: 0.87}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,10 +216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 744705257}
   - component: {fileID: 744705258}
-<<<<<<< HEAD
-  - component: {fileID: 744705259}
-=======
->>>>>>> dev
   - component: {fileID: 744705260}
   m_Layer: 7
   m_Name: DetectionZone
@@ -263,23 +251,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 14.4407215
-<<<<<<< HEAD
-  m_Center: {x: 0.05000019, y: 3.3599987, z: 9.56072}
---- !u!114 &744705259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744705256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32524e4281b5c59499fb417c67d8861e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
   m_Center: {x: 0, y: 0, z: 0}
->>>>>>> dev
 --- !u!114 &744705260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,10 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectedColliders: []
-<<<<<<< HEAD
-=======
   col: {fileID: 0}
->>>>>>> dev
 --- !u!1 &1087527049
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,10 +298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525ab9532b413ab48ade153ee4df6f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  agent: {fileID: 1087527051}
-=======
->>>>>>> dev
   player: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -340,21 +305,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-<<<<<<< HEAD
-  walkPoint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> dev
   walkPointRange: 13.7
   timeBetweenAttacks: 5.33
   sightRange: 8.93
   attackRange: 1.93
-<<<<<<< HEAD
-  playerInSightRange: 1
-  playerInAttackRange: 0
-  distanceToWalkPoint: {x: 0, y: 0, z: 0}
-  distance: 0
-=======
->>>>>>> dev
 --- !u!195 &1087527051
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -415,11 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087527049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -17.78, y: 2.93, z: -3.5}
-=======
   m_LocalPosition: {x: -26.54, y: 2.93, z: 2.09}
->>>>>>> dev
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -528,11 +478,7 @@ PrefabInstance:
     - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: attackZone
       value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 744705259}
-=======
       objectReference: {fileID: 744705260}
->>>>>>> dev
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_RootOrder
@@ -541,11 +487,7 @@ PrefabInstance:
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-      value: -9
-=======
       value: -12.79
->>>>>>> dev
       objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
@@ -555,11 +497,7 @@ PrefabInstance:
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
-      value: -10.7
-=======
       value: 0.35
->>>>>>> dev
       objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
@@ -873,11 +811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895644234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 5.97, y: -1.69, z: 5.67}
-=======
   m_LocalPosition: {x: 0, y: 0, z: 0}
->>>>>>> dev
   m_LocalScale: {x: 1, y: 2.74, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
