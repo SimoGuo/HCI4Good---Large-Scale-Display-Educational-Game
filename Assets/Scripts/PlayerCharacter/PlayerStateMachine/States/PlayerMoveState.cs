@@ -1,8 +1,6 @@
-using UnityEngine;
-
-namespace PlayerCharacter.States {
+namespace PlayerCharacter.PlayerStateMachine.States {
     public class PlayerMoveState : PlayerState {
-        public PlayerMoveState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {
+        public PlayerMoveState(Player player, global::PlayerCharacter.PlayerStateMachine.PlayerStateMachine playerStateMachine) : base(player, playerStateMachine) {
             
         }
         public override void EnterState() {

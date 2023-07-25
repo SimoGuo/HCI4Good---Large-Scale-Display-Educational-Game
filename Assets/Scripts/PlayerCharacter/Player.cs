@@ -1,17 +1,16 @@
 using System;
 using PlayerCharacter.Interfaces;
-using PlayerCharacter.States;
-using Unity.VisualScripting;
+using PlayerCharacter.PlayerStateMachine.ScriptableObjectsBase;
+using PlayerCharacter.PlayerStateMachine.States;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace PlayerCharacter {
-    public class Player : MonoBehaviour, IDamageable {
+    public class Player : MonoBehaviour, IDamageable, IMoveable {
         public bool NeedsTarget { set; get; } = true;
         public Vector3 Target { set; get; }
         public Rigidbody rb { get; set; }
-        public Animator Anim { get; private set; }
-        private PlayerStateMachine _stateMachine;
+        private Animator _anim;
+        private PlayerStateMachine.PlayerStateMachine _stateMachine;
         private PlayerAttackState _attackState;
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
@@ -32,7 +31,7 @@ namespace PlayerCharacter {
             PlayerMoveInstance = Instantiate(playerMoveBase);
             PlayerAttackInstance = Instantiate(playerAttackBase);
             
-            _stateMachine = new PlayerStateMachine();
+            _stateMachine = new PlayerStateMachine.PlayerStateMachine();
             
             _idleState = new PlayerIdleState(this, _stateMachine);
             _moveState = new PlayerMoveState(this, _stateMachine);
@@ -42,7 +41,7 @@ namespace PlayerCharacter {
         private void Start() {
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
-            Anim = GetComponent<Animator>();
+            _anim = GetComponent<Animator>();
             
             PlayerIdleInstance.Initialize(gameObject, this);
             PlayerMoveInstance.Initialize(gameObject, this);
@@ -62,8 +61,8 @@ namespace PlayerCharacter {
             if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
             _stateMachine.CurrentPlayerState.FrameUpdate();
             Debug.Log(rb.velocity.magnitude);
-            Anim.SetFloat("Speed", rb.velocity.magnitude);
-            Anim.SetBool("Attack", InAttackRange);
+            _anim.SetFloat("Speed", rb.velocity.magnitude);
+            _anim.SetBool("Attack", InAttackRange);
 
             if (rb.velocity.magnitude <= 0.01f) {
                 Debug.Log("idling");
@@ -75,7 +74,13 @@ namespace PlayerCharacter {
             }
             
             if (InAttackRange) {
-                Debug.Log("attacking");
+                Debug.Log("in range");
+                if (TargetedEnemy != null) {
+                    _stateMachine.ChangeState(_attackState);
+                }
+                else {
+                    InAttackRange = false;
+                }
             }
         }
 
