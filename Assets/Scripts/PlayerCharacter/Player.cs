@@ -283,6 +283,10 @@ namespace PlayerCharacter
             if (characterComponent != null)
             {
                 characterComponent.TakeDamage(damageAmount);
+                if(characterComponent.currentHealth <= 0) {
+                    InAttackRange = false;
+                    TargetedEnemy = null;
+                }
             }
         }
 

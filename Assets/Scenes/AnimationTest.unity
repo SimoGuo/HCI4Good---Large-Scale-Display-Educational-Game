@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 509488092}
   - component: {fileID: 509488091}
   - component: {fileID: 509488097}
+  - component: {fileID: 509488098}
   m_Layer: 6
   m_Name: PlayerCharacter (2)
   m_TagString: Enemy
@@ -495,6 +496,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &509488098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509488090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9398cf92d9ed14ca0a91160bde1c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  isSelected: 0
 --- !u!1001 &556673669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -980,6 +996,7 @@ GameObject:
   - component: {fileID: 1221495563}
   - component: {fileID: 1221495562}
   - component: {fileID: 1221495561}
+  - component: {fileID: 1221495567}
   m_Layer: 6
   m_Name: PlayerCharacter (1)
   m_TagString: Enemy
@@ -1100,6 +1117,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221495567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221495560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9398cf92d9ed14ca0a91160bde1c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  isSelected: 0
 --- !u!1001 &1360178512
 PrefabInstance:
   m_ObjectHideFlags: 0
