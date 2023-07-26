@@ -28,6 +28,8 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
                     handle.GetComponent<Arrow>().Direction =
                         (Player.TargetedEnemy.transform.position - GameObject.transform.position).normalized;
                 }
+                handle.GetComponent<Arrow>().Direction =
+                    (Player.TargetedEnemy.transform.position - GameObject.transform.position).normalized;
                 handle.GetComponent<Arrow>().DamageAmount = damageAmount;
                 handle.GetComponent<Arrow>().ArrowSpeed = speed;
             }
