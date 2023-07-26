@@ -496,4 +496,5 @@ MonoBehaviour:
   <TargetedEnemy>k__BackingField: {fileID: 0}
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
-  playerAttackBase: {fileID: 11400000, guid: cff0bdc4b0d248c4a9cd0cc1f956e3e4, type: 2}
+  playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
+  playerBuffBase: {fileID: 0}

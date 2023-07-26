@@ -14,7 +14,7 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO
 
         public override void Initialize(GameObject gameObject, Player player)
         {
-            base.Initialize(gameObject, player);
+            base.Initialize(gameObject, Player);
         }
 
         public override void EnterState()
@@ -46,11 +46,11 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO
         {
             if (projectilePrefab != null)
             {
-                GameObject projectile = Instantiate(projectilePrefab, player.transform.position, Quaternion.identity);
+                GameObject projectile = Instantiate(projectilePrefab, Player.transform.position, Quaternion.identity);
                 Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.velocity = player.transform.right * projectileSpeed;
+                    rb.velocity = Player.transform.right * projectileSpeed;
                 }
             }
         }
