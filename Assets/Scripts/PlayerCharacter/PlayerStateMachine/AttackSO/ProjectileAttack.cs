@@ -25,9 +25,9 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
                 Transform handle = Instantiate(projectile, GameObject.transform.position, Quaternion.identity);
                 if (Player.TargetedEnemy != null) {
                     handle.LookAt(Player.TargetedEnemy.transform);
+                    handle.GetComponent<Arrow>().Direction =
+                        (Player.TargetedEnemy.transform.position - GameObject.transform.position).normalized;
                 }
-                handle.GetComponent<Arrow>().Direction =
-                    (Player.TargetedEnemy.transform.position - GameObject.transform.position).normalized;
                 handle.GetComponent<Arrow>().DamageAmount = damageAmount;
                 handle.GetComponent<Arrow>().ArrowSpeed = speed;
             }

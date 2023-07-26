@@ -65,6 +65,9 @@ namespace PlayerCharacter {
             // Debug.Log(rb.velocity.magnitude);
             _anim.SetBool("Moving", _isMoving);
             _anim.SetBool("Attack", InAttackRange);
+            if (TargetedEnemy == null) {
+                InAttackRange = false;
+            }
 
             if (!_isMoving && !InAttackRange) {
                 Debug.Log("not moving, not attacking");
