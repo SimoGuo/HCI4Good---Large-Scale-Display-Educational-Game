@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/CharacterDialog.unity.meta
-guid: d5fc0347582be7b409a3f74bf08c275c
+guid: 49757a233aa05cf4691362f0de04f5b4
 DefaultImporter:
-========
-guid: cff0bdc4b0d248c4a9cd0cc1f956e3e4
-NativeFormatImporter:
->>>>>>>> d9d271b (created projectile attack asset):Assets/Scripts/PlayerCharacter/PlayerStateMachine/AttackSO/Projectile Attack.asset.meta
   externalObjects: {}
-  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
