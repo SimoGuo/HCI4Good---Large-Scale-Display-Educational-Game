@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878c2ebd67d1727468153bc3de8af176, type: 3}
   m_Name: Melee Attack
   m_EditorClassIdentifier: 
-  attackRange: 3
+  attackRange: 1.5
   damageAmount: 1
   cooldown: 1

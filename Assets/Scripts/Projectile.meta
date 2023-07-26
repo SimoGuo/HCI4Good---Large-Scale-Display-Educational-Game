@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Projectile.meta
 guid: eb16629ff8a9b8d42a94580c634b03f2
 folderAsset: yes
+========
+guid: d5fc0347582be7b409a3f74bf08c275c
+>>>>>>>> dev:Assets/Scenes/CharacterDialog.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
