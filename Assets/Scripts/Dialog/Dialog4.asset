@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49172633dc866b4384428f7575f16c3, type: 3}
+  m_Name: Dialog4
+  m_EditorClassIdentifier: 
+  dialogList:
+  - isNeedReset: 1
+    interlocutor1: 4
+    interlocutor2: 0
+    dialog: ' A maze? A mere puzzle for someone with strong magical powers like me?
+      This cannot elude me! '
+  - isNeedReset: 1
+    interlocutor1: 4
+    interlocutor2: 5
+    dialog: ' Stay outta my way monster! You dare fiddle with this land of equality
+      and harmony? You shall be punished! '
+  - isNeedReset: 1
+    interlocutor1: 4
+    interlocutor2: 1
+    dialog: 'I could use some help, do you wanna fight and survive this maze together? '
+  dialogCacheList: []
