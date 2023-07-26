@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class next : MonoBehaviour
 {
-
     public void loadCharacters()
     {
-        SceneManager.LoadScene("End");
+        SceneManager.LoadScene("Player3Proto");
     }
 
 }
