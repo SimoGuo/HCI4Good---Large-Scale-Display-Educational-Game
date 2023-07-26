@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c1404cf1d2b094480e4d0483cf412f, type: 3}
   m_Name: Projectile Attack
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5020070656978420986, guid: 6165d4512779c984498316ad39fa0a59,
+  projectile: {fileID: 3965364759460893626, guid: 6e9555779017c554f8cd5c3d2b5cc333,
     type: 3}
-  speed: 10
+  speed: 50
   damageAmount: 1
   attackRange: 10
   coolDown: 1

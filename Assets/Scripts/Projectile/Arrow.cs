@@ -10,7 +10,7 @@ namespace Projectile {
         public Vector3 Direction { private get; set; }
         void Start() {
             _rb = GetComponent<Rigidbody>();
-            _rb.AddForce(Direction * ArrowSpeed, ForceMode.Force);
+            _rb.AddForce(Direction * ArrowSpeed, ForceMode.Impulse);
         }
 
         private void OnCollisionEnter(Collision collision) {
