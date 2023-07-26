@@ -10,10 +10,12 @@ namespace PlayerCharacter {
         public Vector3 Target { set; get; }
         public Rigidbody rb { get; set; }
         private Animator _anim;
-        private PlayerStateMachine.PlayerStateMachine _stateMachine;
+        public PlayerStateMachine.PlayerStateMachine _stateMachine;
         private PlayerAttackState _attackState;
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
+        private PlayerBuffState _buffState;
+
         [SerializeField] public SphereCollider attackZone;
         public bool InAttackRange { get; private set; }
         public EnemyMeleeUnit TargetedEnemy { get; private set; }
@@ -21,10 +23,14 @@ namespace PlayerCharacter {
         [SerializeField] private PlayerIdleSO playerIdleBase;
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
+        [SerializeField] private PlayerBuffSO playerBuffBase;
+
 
         public PlayerIdleSO PlayerIdleInstance { get; private set; }
         public PlayerMoveSO PlayerMoveInstance { get; private set; }
         public PlayerAttackSO PlayerAttackInstance { get; private set; }
+        public PlayerBuffSO PlayerBuffInstance { get; private set; }
+
 
         private void Awake() {
             PlayerIdleInstance = Instantiate(playerIdleBase);
@@ -36,6 +42,8 @@ namespace PlayerCharacter {
             _idleState = new PlayerIdleState(this, _stateMachine);
             _moveState = new PlayerMoveState(this, _stateMachine);
             _attackState = new PlayerAttackState(this, _stateMachine);
+            _buffState = new PlayerBuffState(this, _stateMachine);
+
         }
 
         private void Start() {
@@ -84,7 +92,7 @@ namespace PlayerCharacter {
             }
         }
 
-        private void Move() {
+        public void Move() {
             if (NeedsTarget) {
                 rb.velocity = Vector3.zero;
                 return;
@@ -126,5 +134,20 @@ namespace PlayerCharacter {
 
         public float maxHealth { get; set; }
         public float currentHealth { get; set; }
+
+        public void ChangePlayerAbilitie(PlayerMoveSO _playerMoveInstance)
+        {
+            PlayerMoveInstance = _playerMoveInstance;
+        }
+
+        public void ChangePlayerAbilitie(PlayerAttackSO _playerAttackInstance)
+        {
+            PlayerAttackInstance = _playerAttackInstance;
+        }
+
+        public void ChangePlayerAbilitie(PlayerBuffSO _playerBuffInstance)
+        {
+            PlayerBuffInstance = _playerBuffInstance;
+        }
     }
 }
