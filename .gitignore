@@ -53,7 +53,7 @@ ExportedObj/
 *.mdb.meta
 
 # .meta and .cs.meta remove
-*.meta
+#*.meta
 *.cs.meta
 
 # Blender generated meta files
