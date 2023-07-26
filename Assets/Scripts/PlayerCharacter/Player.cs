@@ -92,8 +92,16 @@ namespace PlayerCharacter {
                 _isMoving = false;
                 return;
             }
-            
-            transform.LookAt(new Vector3(TargetFinger.x, transform.position.y, TargetFinger.z));
+
+            if (_isMoving) {
+                transform.LookAt(new Vector3(TargetFinger.x, transform.position.y, TargetFinger.z));
+            }
+            else {
+                if (TargetedEnemy != null) {
+                    
+                    transform.LookAt(new Vector3(TargetedEnemy.transform.position.x, transform.position.y, TargetedEnemy.transform.position.z));
+                }
+            }
             if (Vector3.Distance(transform.position, new Vector3(TargetFinger.x, transform.position.y, TargetFinger.z)) <= PlayerMoveInstance.StoppingDistance) {
                 rb.velocity = Vector3.zero;
                 _isMoving = false;
