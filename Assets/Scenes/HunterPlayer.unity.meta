@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/HunterPlayer.unity.meta
 guid: 561e2b7ead6e4894eb8698cb544cf94d
+========
+guid: ef859b6e9a2134a44a2b338b9bda839b
+>>>>>>>> dev:Assets/Scenes/Character1Test.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

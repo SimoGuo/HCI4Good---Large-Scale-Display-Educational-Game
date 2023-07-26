@@ -43,6 +43,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     }
 
     private void Start() {
+        maxHealth = 100000;
         currentHealth = maxHealth;
     }
 
