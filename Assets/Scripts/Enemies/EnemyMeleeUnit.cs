@@ -56,17 +56,14 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
         if (!playerInSightRange && !playerInAttackRange)
         {
-            _anim.SetBool("Attack", false);
             Patrolling();
         }
         if (playerInSightRange && !playerInAttackRange)
         {
-            _anim.SetBool("Attack", false);
             ChasePlayer();
         }
         if (playerInSightRange && playerInAttackRange)
         {
-            _anim.SetBool("Attack", true);
             AttackPlayer();
         }
     }
@@ -79,6 +76,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
         if (walkPointSet)
         {
+            _anim.SetBool("Attack", false);
             agent.SetDestination(walkPoint);
         }
 
@@ -107,6 +105,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     private void ChasePlayer()
     {
+        _anim.SetBool("Attack", false);
         agent.SetDestination(player.position);
     }
 
@@ -114,6 +113,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     {
         //Make the enemy stop before attacking
         agent.SetDestination(transform.position);
+        _anim.SetBool("Attack", true);
 
         transform.LookAt(player);
 
