@@ -1,10 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Prefabs/Level.meta
-guid: 122f8700fb9080b4d8132c9f4130b96e
+guid: ff286371c74a762439cd2dc8f717309a
 folderAsset: yes
-========
-guid: eff7a2c8477a74042b4f3eb5f6c9e32a
->>>>>>>> dev:Assets/Scenes/hitEffect.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
