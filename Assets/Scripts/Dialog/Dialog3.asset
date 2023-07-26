@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49172633dc866b4384428f7575f16c3, type: 3}
+  m_Name: Dialog3
+  m_EditorClassIdentifier: 
+  dialogList:
+  - isNeedReset: 1
+    interlocutor1: 3
+    interlocutor2: 0
+    dialog: "Huh\u2026a maze? Looks dangerous \u2026... But I am a hunter not a prey."
+  - isNeedReset: 1
+    interlocutor1: 3
+    interlocutor2: 5
+    dialog: 'I believe that it is not our differences that divide us but out inability
+      to accept and understand each other. '
+  - isNeedReset: 0
+    interlocutor1: 3
+    interlocutor2: 5
+    dialog: " Just like nature, we should embrace one\u2019s uniqueness to create
+      a safe and peaceful world for everyone."
+  - isNeedReset: 1
+    interlocutor1: 3
+    interlocutor2: 4
+    dialog: ' Hey!!! Are you looking for a Fight??? Or do you want to work with me
+      as a team??? '
+  dialogCacheList: []
