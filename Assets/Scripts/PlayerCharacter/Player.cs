@@ -5,6 +5,8 @@ using PlayerCharacter.PlayerStateMachine.States;
 using UnityEngine;
 
 namespace PlayerCharacter {
+    
+    
     public class Player : MonoBehaviour, IDamageable, IMoveable {
         public bool NeedsTarget { set; get; } = true;
         public Vector3 Target { set; get; }
