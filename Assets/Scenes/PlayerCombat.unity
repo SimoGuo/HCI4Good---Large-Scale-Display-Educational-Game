@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,8 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d74394f22fc824479b57d0f7b9d09d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedColliders: []
-  col: {fileID: 0}
 --- !u!1 &1087527049
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,17 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525ab9532b413ab48ade153ee4df6f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  walkPointRange: 13.7
-  timeBetweenAttacks: 5.33
-  sightRange: 8.93
-  attackRange: 1.93
 --- !u!195 &1087527051
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -478,7 +465,11 @@ PrefabInstance:
     - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: attackZone
       value: 
-      objectReference: {fileID: 744705260}
+      objectReference: {fileID: 2034908317}
+    - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
+      propertyPath: playerBuffBase
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_RootOrder
@@ -868,3 +859,9 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895644234}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &2034908317 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 886938595, guid: 08ab27739569f684181971d7eda8cc12,
+    type: 3}
+  m_PrefabInstance: {fileID: 1372161410}
+  m_PrefabAsset: {fileID: 0}

@@ -7,11 +7,10 @@ public class EnterGameAnimation : MonoBehaviour
 {
     public static EnterGameAnimation Instance;
 
-    
     public GameObject[] interlocutors;
-    
+
     [SerializeField] private Transform interlocutor1Transform;
-    
+
     [SerializeField] private Transform interlocutor2Transform;
     private GameObject player1Clone;
     private GameObject player2Clone;
@@ -22,7 +21,7 @@ public class EnterGameAnimation : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (isPlayingAnim)
@@ -52,7 +51,6 @@ public class EnterGameAnimation : MonoBehaviour
         }
     }
 
-    
     public void InitPlayerAndEnemy(int _interlocutor1,int interlocutor2)
     {
         Destroy(player1Clone);
