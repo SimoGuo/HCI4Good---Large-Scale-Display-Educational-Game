@@ -517,7 +517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3626435089881278387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.54, z: -7.9}
+  m_LocalPosition: {x: 0, y: 0.25, z: -7.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3626435089881278387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19eb9b9c710acb43a6af71e27006d19, type: 3}
+  m_Script: {fileID: 11500000, guid: 269ec25507ae1604fb65d8541e8fd04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 3626435089881278384}
@@ -626,7 +626,11 @@ MonoBehaviour:
   playerAttack: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
   playerSpecialAttack: {fileID: 11400000, guid: c69505ee7f5998a40b135a59ee300da4,
     type: 2}
-  playerBuff: {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
+  playerBuff:
+  - {fileID: 11400000, guid: 978dd09c3e5802c4c8c914e7f1f370fa, type: 2}
+  - {fileID: 11400000, guid: a91c1a77974d27a43a7558f537861809, type: 2}
+  - {fileID: 11400000, guid: ff03b131b0ebe7048832af7f6e434ccc, type: 2}
+  - {fileID: 11400000, guid: 00ef71c9de376de47a801c048461bf29, type: 2}
 --- !u!1 &3626435089902326727
 GameObject:
   m_ObjectHideFlags: 0
