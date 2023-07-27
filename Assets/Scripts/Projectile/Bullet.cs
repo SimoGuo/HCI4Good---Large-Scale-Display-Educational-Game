@@ -16,7 +16,7 @@ namespace Projectile {
         private void OnCollisionEnter(Collision collision) {
             if (collision.collider.CompareTag("Enemy")) {
                 collision.transform.GetComponent<IDamageable>().Damage(DamageAmount);
-                Destroy(gameObject);
+                
             }
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magic Bullet
   m_EditorClassIdentifier: 
   bullet: {fileID: 554764883776603009, guid: a438a4811d6343043931bf8869ac2947, type: 3}
-  speed: 10
+  speed: 30
   damageAmount: 1
   attackRange: 10
   coolDown: 1
