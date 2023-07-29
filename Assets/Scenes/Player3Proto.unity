@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd0ae43793906e4e971f07c9c3d3047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 20
 --- !u!1 &1412997202
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19eb9b9c710acb43a6af71e27006d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackZone: {fileID: 1460027945}
+  playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
+  playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
+  playerAttackBase: {fileID: 11400000, guid: 136d6c53a0a7e00439da3a2fa23d9668, type: 2}
 --- !u!135 &1460027945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -647,6 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada282ddc3325cd4fb5fc4cb390e9668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 10
+  defense: 20
+  movementSpeed: 2
 --- !u!1001 &1515321690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1114,7 +1122,7 @@ PrefabInstance:
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
       propertyPath: players.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
