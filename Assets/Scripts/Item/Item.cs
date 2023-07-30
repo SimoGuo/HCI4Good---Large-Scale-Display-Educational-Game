@@ -9,4 +9,11 @@ public class Item : ScriptableObject
     public string itemName;
     public int value;
     public Sprite sprite;
+    public ItemType itemType;
+
+    public enum ItemType
+    {
+        HealthPotion,
+        ManaPotion
+    }
 }

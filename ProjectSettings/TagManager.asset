@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - Ally
+  - StatusBar
   layers:
   - Default
   - TransparentFX

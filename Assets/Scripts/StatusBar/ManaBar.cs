@@ -42,7 +42,6 @@ public class ManaBar : MonoBehaviour
 
     void UpdateStatusBar()
     {
-        Debug.Log(mana);
 
         //Local variables to keep track of the back/frontManaBar's fill value (These 2 values range from 0 to 1, basically percentage)
         float fillFront = frontManaBar.fillAmount;
@@ -87,5 +86,11 @@ public class ManaBar : MonoBehaviour
         mana += increaseAmount;
         //reset lerpTimer
         lerpTimer = 0f;
+    }
+
+    public void SetMaxMana(float maxMana)
+    {
+        this.maxMana = maxMana;
+        mana = maxMana;
     }
 }

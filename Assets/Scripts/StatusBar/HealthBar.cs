@@ -42,7 +42,6 @@ public class HealthBar : MonoBehaviour
 
     void UpdateStatusBar()
     {
-        Debug.Log(health);
 
         //Local variables to keep track of the back/frontHealthbar's fill value (These 2 values range from 0 to 1, basically percentage)
         float fillFront = frontHealthBar.fillAmount;
@@ -87,5 +86,11 @@ public class HealthBar : MonoBehaviour
         health += healAmount;
         //reset lerpTimer
         lerpTimer = 0f;
+    }
+
+    public void SetMaxHealth(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+        health = maxHealth;
     }
 }

@@ -375,7 +375,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &657687398
+--- !u!114 &657687403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -384,10 +384,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 657687391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd0ae43793906e4e971f07c9c3d3047, type: 3}
+  m_Script: {fileID: 11500000, guid: 9177dd6404798d943a1238d5ef825f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 10
 --- !u!1 &1412997202
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,9 +573,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 1460027945}
+  <InAttackRange>k__BackingField: 0
+  <TargetedEnemy>k__BackingField: {fileID: 0}
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
-  playerAttackBase: {fileID: 11400000, guid: 136d6c53a0a7e00439da3a2fa23d9668, type: 2}
+  playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
+  playerBuffBase: {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
 --- !u!135 &1460027945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -588,7 +591,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.21, z: 0}
 --- !u!95 &1460027946
 Animator:
   serializedVersion: 5
@@ -599,7 +602,7 @@ Animator:
   m_GameObject: {fileID: 1460027942}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f7959d01d19faa468ddc1a02235f3dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: e918dcae476a68448a46a14e6c8da45b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -620,10 +623,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3.280061
+  m_Radius: 0.43
+  m_Height: 2.76
   m_Direction: 1
-  m_Center: {x: 0, y: 0.4360656, z: 0}
+  m_Center: {x: 0, y: 1.43, z: 0}
 --- !u!54 &1460027948
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -649,12 +652,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460027942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada282ddc3325cd4fb5fc4cb390e9668, type: 3}
+  m_Script: {fileID: 11500000, guid: 49b2988774ae13b4f97581936e1b1431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 10
-  defense: 20
-  movementSpeed: 2
+  defense: 50
+  movementSpeed: 1
 --- !u!1001 &1515321690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -825,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 4522063482822258794, guid: 2b3d409dba21e1b4abdb898c435394e8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3d409dba21e1b4abdb898c435394e8, type: 3}
@@ -849,12 +852,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: df48acdb457194a42a0ea82912413db2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: df48acdb457194a42a0ea82912413db2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: df48acdb457194a42a0ea82912413db2,
         type: 3}
@@ -930,6 +933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character3Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df48acdb457194a42a0ea82912413db2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ally
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df48acdb457194a42a0ea82912413db2, type: 3}
@@ -1122,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
       propertyPath: players.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
@@ -1133,7 +1141,7 @@ PrefabInstance:
         type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1460027943}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
       propertyPath: players.Array.data[2]
