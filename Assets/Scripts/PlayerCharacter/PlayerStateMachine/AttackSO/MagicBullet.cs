@@ -29,8 +29,8 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
                 if (Player.TargetedEnemy != null) {
                     handle.LookAt(Player.TargetedEnemy.transform);
                 }
-                handle.GetComponent<Bullet>().DamageAmount = damageAmount;
-                handle.GetComponent<Bullet>().BulletSpeed = speed;
+                //handle.GetComponent<Bullet>().DamageAmount = damageAmount;
+                //handle.GetComponent<Bullet>().BulletSpeed = speed;
             }
         }
 
