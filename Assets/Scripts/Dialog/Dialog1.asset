@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49172633dc866b4384428f7575f16c3, type: 3}
+  m_Name: Dialog1
+  m_EditorClassIdentifier: 
+  dialogList:
+  - isNeedReset: 1
+    interlocutor1: 1
+    interlocutor2: 0
+    dialog: "Huh\u2026a maze? We will have to navigate our way through and see if
+      there is anyone who can give me a challenge. "
+  - isNeedReset: 1
+    interlocutor1: 1
+    interlocutor2: 5
+    dialog: 'I have seen wars, watched my comrades fall and survived against all
+      odds, do not mistake my scars for weakness, I am a warrior through and through. '
+  - isNeedReset: 0
+    interlocutor1: 1
+    interlocutor2: 5
+    dialog: ' I have come across all kinds of enemies, allies, and the belief that
+      unity is the ultimate source of strength is stronger than any obstacle that
+      you can throw at me.'
+  - isNeedReset: 1
+    interlocutor1: 1
+    interlocutor2: 2
+    dialog: ' I am trying to get this as soon as I can, would you like to help or
+      make it harder for me? '
+  dialogCacheList:
+  - isNeedReset: 0
+    interlocutor1: 1
+    interlocutor2: 0
+    dialog: "Huh\u2026a maze? We will have to navigate our way through and see if
+      there is anyone who can give me a challenge. "
+  - isNeedReset: 0
+    interlocutor1: 1
+    interlocutor2: 5
+    dialog: 'I have seen wars, watched my comrades fall and survived against all
+      odds, do not mistake my scars for weakness, I am a warrior through and through. '
+  - isNeedReset: 0
+    interlocutor1: 1
+    interlocutor2: 5
+    dialog: ' I have come across all kinds of enemies, allies, and the belief that
+      unity is the ultimate source of strength is stronger than any obstacle that
+      you can throw at me.'
+  - isNeedReset: 0
+    interlocutor1: 1
+    interlocutor2: 2
+    dialog: ' I am trying to get this as soon as I can, would you like to help or
+      make it harder for me? '

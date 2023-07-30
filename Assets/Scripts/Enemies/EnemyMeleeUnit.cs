@@ -32,14 +32,18 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private float distance;
         // player = GameObject.Find("PlayerCharacter").transform;
 
+
+    private Animator _anim;
     private void Awake()
     {
         //Get the player position through name (Script is for 1 player only, will change to more later)
         // commented out because we can set the player from the editor instead of relying on name
         agent = GetComponent<NavMeshAgent>();
+        _anim = GetComponent<Animator>();
     }
 
     private void Start() {
+        maxHealth = 100000;
         currentHealth = maxHealth;
     }
 
@@ -72,6 +76,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
         if (walkPointSet)
         {
+            _anim.SetBool("Attack", false);
             agent.SetDestination(walkPoint);
         }
 
@@ -100,6 +105,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     private void ChasePlayer()
     {
+        _anim.SetBool("Attack", false);
         agent.SetDestination(player.position);
     }
 
@@ -107,6 +113,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     {
         //Make the enemy stop before attacking
         agent.SetDestination(transform.position);
+        _anim.SetBool("Attack", true);
 
         transform.LookAt(player);
 
@@ -138,9 +145,9 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     }
 
     public void Kill() {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
-    public float maxHealth { get; set; }
-    public float currentHealth { get; set; }
+    public float maxHealth { get; set; } = 100;
+    [field: SerializeField] public float currentHealth { get; set; }
 }

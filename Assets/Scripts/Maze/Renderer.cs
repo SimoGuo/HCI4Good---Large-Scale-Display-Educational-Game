@@ -1,3 +1,4 @@
+using System;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -129,7 +130,15 @@ namespace Maze {
                 }
             }    
         }
-    
+
+        private void Start() {
+            foreach (Transform t in transform) {
+                Destroy(t.gameObject);
+            }
+
+            Render(Generator.Generate(width, height));
+            surface.BuildNavMesh();
+        }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Space)) {

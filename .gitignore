@@ -52,6 +52,7 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+
 # Blender generated meta files
 *.blend1
 *.blend1.meta

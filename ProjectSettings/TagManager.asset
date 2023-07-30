@@ -7,7 +7,7 @@ TagManager:
   - head
   - Ground
   - Enemy
-  - Selectable
+  - Ally
   layers:
   - Default
   - TransparentFX

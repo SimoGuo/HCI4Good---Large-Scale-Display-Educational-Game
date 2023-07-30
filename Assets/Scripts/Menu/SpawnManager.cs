@@ -48,54 +48,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    /*    public void OnNextButtonClick()
-        {
-            List<GameObject> selectedPlayers = gameManager.instance.selectedPlayers;
-
-            // Get the selected character name from the gameManager
-            string selectedCharacterName = gameManager.instance.currentPlayer.name;
-
-            // Find the index of the selected character in the gameManager array
-            int selectedIndex = -1;
-            for (int i = 0; i < gameManager.instance.players.Length; i++)
-            {
-                if (gameManager.instance.players[i].name == selectedCharacterName)
-                {
-                    selectedIndex = i;
-                    break;
-                }
-            }
-
-            // Load the game scene and pass the selected character's index as a parameter
-            if (selectedIndex != -1)
-            {
-                PlayerPrefs.SetInt("SelectedCharacterIndex", selectedIndex);
-                SceneManager.LoadScene("gameDemo", LoadSceneMode.Single);
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("Selected character not found in the gameManager array!");
-            }
-        }*/
-
-    /*    private void SpawnSelectedCharacter()
-        {
-            UnityEngine.Debug.Log("spawn Selected ethod called");
-            // Get the selected character's index from the PlayerPrefs
-            int selectedIndex = PlayerPrefs.GetInt("SelectedCharacterIndex", 0);
-
-            // Check if the index is valid
-            if (selectedIndex >= 0 && selectedIndex < characterPrefab.Length)
-            {
-                // Instantiate the selected character prefab at the spawn point
-                Instantiate(characterPrefab[selectedIndex], spawnPoint.position, Quaternion.identity);
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("Invalid selected character index!");
-            }
-        }*/
-
     private void SpawnSelectedCharacter()
     {
         UnityEngine.Debug.Log("SpawnSelectedCharacters method called");
