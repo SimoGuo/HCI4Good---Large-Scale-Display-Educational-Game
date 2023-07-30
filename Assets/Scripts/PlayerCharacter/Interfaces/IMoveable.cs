@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace PlayerCharacter.Interfaces {
     public interface IMoveable {
-        Vector3 Target { set; get; }
+        public Vector3 TargetFinger { set; get; }
         Rigidbody rb { get; set; }
-        void Move();
+        private void Move() { }
     }
 }

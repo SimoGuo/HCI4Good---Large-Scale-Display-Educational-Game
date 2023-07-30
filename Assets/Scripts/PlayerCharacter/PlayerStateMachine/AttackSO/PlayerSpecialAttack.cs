@@ -13,9 +13,9 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO
         private float _lastAttacked = -9999f;
         public override void Initialize(GameObject gameObject, Player player)
         {
-            base.Initialize(gameObject, player);
-            player.attackZone.radius = attackRange;
-            player.attackZone.isTrigger = true;
+            base.Initialize(gameObject, Player);
+            Player.attackZone.radius = attackRange;
+            Player.attackZone.isTrigger = true;
         }
 
         public override void EnterState()
@@ -27,10 +27,10 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO
         public override void FrameUpdate()
         {
             base.FrameUpdate();
-            if (player.InAttackRange && (Time.time > _lastAttacked + cooldown))
+            if (Player.InAttackRange && (Time.time > _lastAttacked + cooldown))
             {
                 _lastAttacked = Time.time;
-                player.TargetedEnemy.Damage(damageAmount);
+                Player.TargetedEnemy.Damage(damageAmount);
             }
         }
 

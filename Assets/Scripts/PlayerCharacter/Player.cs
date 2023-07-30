@@ -2,26 +2,26 @@ using System;
 using PlayerCharacter.Interfaces;
 using PlayerCharacter.PlayerStateMachine.ScriptableObjectsBase;
 using PlayerCharacter.PlayerStateMachine.States;
+using TMPro;
 using UnityEngine;
 
 namespace PlayerCharacter {
     
     
     public class Player : MonoBehaviour, IDamageable, IMoveable {
-        public bool NeedsTarget { set; get; } = true;
-        public Vector3 Target { set; get; }
+        public bool NeedsPlayerFinger { set; get; } = true;
+        public Vector3 TargetFinger { set; get; }
         public Rigidbody rb { get; set; }
         private Animator _anim;
         public PlayerStateMachine.PlayerStateMachine _stateMachine;
         private PlayerAttackState _attackState;
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
+        private bool _isMoving;
         private PlayerBuffState _buffState;
-
         [SerializeField] public SphereCollider attackZone;
-        public bool InAttackRange { get; private set; }
-        public EnemyMeleeUnit TargetedEnemy { get; private set; }
-
+        [field: SerializeField] public bool InAttackRange { get; private set; }
+        [field: SerializeField] public EnemyMeleeUnit TargetedEnemy { get; private set; }
         [SerializeField] private PlayerIdleSO playerIdleBase;
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
@@ -67,44 +67,48 @@ namespace PlayerCharacter {
         }
 
         private void Update() {
-            if (_stateMachine == null) Debug.Log("statemachine null");
-            if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            // if (_stateMachine == null) Debug.Log("statemachine null");
+            // if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
+            // Debug.Log(NeedsPlayerFinger + " " + TargetFinger);
             _stateMachine.CurrentPlayerState.FrameUpdate();
-            Debug.Log(rb.velocity.magnitude);
-            _anim.SetFloat("Speed", rb.velocity.magnitude);
+            // Debug.Log(rb.velocity.magnitude);
+            _anim.SetBool("Moving", _isMoving);
             _anim.SetBool("Attack", InAttackRange);
+            if (TargetedEnemy == null) {
+                InAttackRange = false;
+            }
 
-            if (rb.velocity.magnitude <= 0.01f) {
-                Debug.Log("idling");
+            if (!_isMoving && !InAttackRange) {
+                Debug.Log("not moving, not attacking");
+                TargetedEnemy = null;
                 _stateMachine.ChangeState(_idleState);
             }
-            else {
+
+            if (!_isMoving && InAttackRange) {
+                Debug.Log("not moving, attacking");
+                _stateMachine.ChangeState(_attackState);
+            }
+
+            if (_isMoving) {
                 Debug.Log("moving");
                 _stateMachine.ChangeState(_moveState);
             }
-            
-            if (InAttackRange) {
-                Debug.Log("in range");
-                if (TargetedEnemy != null) {
-                    _stateMachine.ChangeState(_attackState);
-                }
-                else {
-                    InAttackRange = false;
-                }
-            }
         }
 
-        public void Move() {
-            if (NeedsTarget) {
+        private void Move() {
+            if (NeedsPlayerFinger) {
                 rb.velocity = Vector3.zero;
+                _isMoving = false;
                 return;
-            };
+            }
             
-            transform.LookAt(new Vector3(Target.x, transform.position.y, Target.z));
-            if (Vector3.Distance(transform.position, Target) <= PlayerMoveInstance.StoppingDistance) {
+            transform.LookAt(new Vector3(TargetFinger.x, transform.position.y, TargetFinger.z));
+            if (Vector3.Distance(transform.position, new Vector3(TargetFinger.x, transform.position.y, TargetFinger.z)) <= PlayerMoveInstance.StoppingDistance) {
                 rb.velocity = Vector3.zero;
+                _isMoving = false;
             }
             else {
+                _isMoving = true;
                 if (rb.velocity.magnitude <= PlayerMoveInstance.MaxSpeed) {
                     rb.AddForce(transform.forward * PlayerMoveInstance.Speed, ForceMode.Acceleration);
                 }

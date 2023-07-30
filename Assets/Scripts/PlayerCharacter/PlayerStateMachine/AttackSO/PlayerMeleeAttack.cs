@@ -22,9 +22,9 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
 
         public override void FrameUpdate() {
             base.FrameUpdate();
-            if (player.InAttackRange && (Time.time > _lastAttacked + cooldown)) {
+            if (Player.InAttackRange && (Time.time > _lastAttacked + cooldown)) {
                 _lastAttacked = Time.time;
-                player.TargetedEnemy.Damage(damageAmount);
+                Player.TargetedEnemy.Damage(damageAmount);
             }
         }
 
