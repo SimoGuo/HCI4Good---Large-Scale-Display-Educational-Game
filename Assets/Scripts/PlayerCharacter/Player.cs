@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 
 namespace PlayerCharacter {
+    
+    
     public class Player : MonoBehaviour, IDamageable, IMoveable {
         public bool NeedsPlayerFinger { set; get; } = true;
         public Vector3 TargetFinger { set; get; }
