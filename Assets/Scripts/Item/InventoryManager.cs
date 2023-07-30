@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -43,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         //Clean inventory before opening
         foreach (Transform item  in itemContent) 
         {
-            Destroy(item.gameObject);
+            DestroyImmediate(item.gameObject);
         }
 
         
@@ -89,7 +90,7 @@ public class InventoryManager : MonoBehaviour
     {
         inventoryItems = itemContent.GetComponentsInChildren<InventoryItemController>();
 
-        for(int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             inventoryItems[i].AddItem(items[i]);
         }
