@@ -26,6 +26,11 @@ namespace PlayerCharacter {
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
         [SerializeField] private PlayerBuffSO playerBuffBase;
+        [SerializeField] private int playerHp;
+        [SerializeField] private int playerMp;
+        [SerializeField] private int playerDef;
+        private int lowHp;
+        private int lowDef;
 
 
         public PlayerIdleSO PlayerIdleInstance { get; private set; }
@@ -136,6 +141,20 @@ namespace PlayerCharacter {
                 InAttackRange = false;
                 TargetedEnemy = null;
             }
+        }
+        public bool isLowHp(){
+            if(playerHp<=lowHp){
+                return true;
+            }
+            else return false;
+            
+        }
+        public bool isLowDef(){
+            if(playerDef<=lowDef){
+                return true;
+            }
+            else return false;
+            
         }
 
         public void Damage(float amount) {

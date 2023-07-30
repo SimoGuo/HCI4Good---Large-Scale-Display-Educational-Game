@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c1404cf1d2b094480e4d0483cf412f, type: 3}
-  m_Name: Projectile Attack
+  m_Script: {fileID: 11500000, guid: 51b04ef7c865837479ca703e4d53f79d, type: 3}
+  m_Name: Magic Bullet
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5020070656978420986, guid: 6165d4512779c984498316ad39fa0a59,
-    type: 3}
-  speed: 10
+  bullet: {fileID: 554764883776603009, guid: a438a4811d6343043931bf8869ac2947, type: 3}
+  speed: 5
   damageAmount: 1
-  attackRange: 10
+  attackRange: 20
   coolDown: 1
