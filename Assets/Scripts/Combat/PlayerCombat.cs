@@ -84,22 +84,5 @@ public class PlayerCombat : MonoBehaviour
 
 
 
-    public void ActivateDamageBoost(float duration, float amount)
-    {
-
-        StartCoroutine(DamageBoostCoroutine(duration, amount));
-    }
-
-
-    private IEnumerator DamageBoostCoroutine(float duration, float amount)
-    {
-        float originalDamage = weapon.damage;
-        weapon.damage += amount;
-
-        // Wait for the specified duration
-        yield return new WaitForSeconds(duration);
-
-        // Reset the damage to the original value after the boost duration is over
-        weapon.damage = originalDamage;
-    }
+    
 }
