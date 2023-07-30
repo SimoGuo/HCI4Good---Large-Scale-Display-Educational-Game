@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 7064d350e5ce4204ebb67405f3b9c06d
   - enabled: 1
-    path: Assets/Scenes/Characters.unity
+    path: Assets/Scenes/selectChar.unity
     guid: b32dd01ef887a474b940b1e857a174ad
   - enabled: 1
     path: Assets/Scenes/End.unity
@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Player3Proto.unity
     guid: 09d5ee182d4abac45a976a6ab8d1e64e
+  - enabled: 1
+    path: Assets/Scenes/gameDemo.unity
+    guid: 92a1a12611cd9f84f9fa403bf1f93deb
+  - enabled: 1
+    path: Assets/Scenes/Characters.unity
+    guid: a6d4d36b0d155da418ff26d912f81382
   m_configObjects: {}
