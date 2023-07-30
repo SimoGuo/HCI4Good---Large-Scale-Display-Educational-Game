@@ -25,13 +25,8 @@ public class gameManager : MonoBehaviour
 
     private void Start()
     {
-     /*   if (players.Length > 0 && currentPlayer == null)
-        {
-            currentPlayer = players[0];
-        }*/
-    }
 
-    // Remove the HandleCharacterSelection method and IsPlayerCharacter method
+    }
 
     public void setCurrentPlayer(GameObject player)
     {

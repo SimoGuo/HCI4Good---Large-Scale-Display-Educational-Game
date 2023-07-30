@@ -9,13 +9,7 @@ public class CharacterSelection : MonoBehaviour, IPointerClickHandler
 
     private Color originalColor;
     private bool isSelected = false;
-    //private UnityEngine.UI.Image image; // Use the fully qualified name for the Unity UI Image component
 
-    private void Start()
-    {
-        //image = GetComponent<UnityEngine.UI.Image>(); // Use the fully qualified name for the Unity UI Image component
-        //originalColor = image.color;
-    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
