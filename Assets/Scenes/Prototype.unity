@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 78044713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d025f9c31a6fe4bba3b08b35d4ff00, type: 3}
+  m_Script: {fileID: 11500000, guid: 49b2988774ae13b4f97581936e1b1431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 20
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 78044718}
+  <InAttackRange>k__BackingField: 0
+  <TargetedEnemy>k__BackingField: {fileID: 0}
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
   playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
@@ -585,7 +587,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1968589927}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1106740778
+--- !u!114 &1106740784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,10 +596,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1106740772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc38e489912d65b408f7c476c0cc4135, type: 3}
+  m_Script: {fileID: 11500000, guid: 9177dd6404798d943a1238d5ef825f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 10
 --- !u!1 &1154704974
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1412997203
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -1894,6 +1894,7 @@ GameObject:
   - component: {fileID: 980114551}
   - component: {fileID: 980114550}
   - component: {fileID: 980114552}
+  - component: {fileID: 980114553}
   m_Layer: 5
   m_Name: BG1
   m_TagString: Untagged
@@ -1968,6 +1969,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfd2e113f6ffa1640a25ee3a6a05a86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &980114553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980114548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c713b72979cc354ca4167bc6de066c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1003708362
@@ -2058,7 +2071,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003708362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875fa9c1698f7a4e99b27f51c3cfd23, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1003708368
@@ -2621,7 +2634,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1162395872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875fa9c1698f7a4e99b27f51c3cfd23, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1162395878
@@ -2725,7 +2738,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185908282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875fa9c1698f7a4e99b27f51c3cfd23, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1185908288
@@ -2860,7 +2873,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2142432181}
+      - m_Target: {fileID: 2142432180}
         m_TargetAssemblyTypeName: PlayerInfoController, Assembly-CSharp
         m_MethodName: ToggleImageAndText
         m_Mode: 1
@@ -3170,7 +3183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 980114552}
+      - m_Target: {fileID: 980114553}
         m_TargetAssemblyTypeName: next, Assembly-CSharp
         m_MethodName: loadCharacters
         m_Mode: 1
@@ -3637,7 +3650,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 980114552}
+      - m_Target: {fileID: 980114553}
         m_TargetAssemblyTypeName: next, Assembly-CSharp
         m_MethodName: loadCharacters
         m_Mode: 1
@@ -4391,6 +4404,7 @@ GameObject:
   - component: {fileID: 2142432177}
   - component: {fileID: 2142432179}
   - component: {fileID: 2142432178}
+  - component: {fileID: 2142432180}
   - component: {fileID: 2142432181}
   - component: {fileID: 2142432182}
   m_Layer: 5
@@ -4459,7 +4473,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142432176}
   m_CullTransparentMesh: 1
---- !u!114 &2142432181
+--- !u!114 &2142432180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4468,7 +4482,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142432176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875fa9c1698f7a4e99b27f51c3cfd23, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2142432182

@@ -7,7 +7,8 @@ public class next : MonoBehaviour
 {
     public void loadCharacters()
     {
-        SceneManager.LoadScene("Player3Proto");
+        SceneManager.LoadScene("Prototype");
+        //SceneManager.LoadScene("Player3Proto");
     }
 
 }
