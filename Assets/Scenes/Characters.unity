@@ -408,7 +408,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 694462553}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &136818772
 MeshCollider:
@@ -504,7 +504,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 694462553}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &356643936
 MonoBehaviour:
@@ -1524,13 +1524,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 980114549}
-  - {fileID: 2142432177}
-  - {fileID: 1162395873}
-  - {fileID: 1185908283}
-  - {fileID: 1003708363}
-  - {fileID: 1411586796}
   - {fileID: 136818771}
   - {fileID: 356643935}
+  - {fileID: 731460781}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1586,7 +1582,7 @@ RectTransform:
   - {fileID: 1185908283}
   - {fileID: 1003708363}
   m_Father: {fileID: 694462553}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2074,6 +2070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  text: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &1003708368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,6 +2636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  text: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &1162395878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,6 +2743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  text: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &1185908288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,18 +3073,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1411586795 stripped
+--- !u!1 &1411586795
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 4383298484659999112, guid: 9b51f94204315364393145584eb47633,
     type: 3}
   m_PrefabInstance: {fileID: 712210227}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1411586796 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4383298484659999115, guid: 9b51f94204315364393145584eb47633,
-    type: 3}
-  m_PrefabInstance: {fileID: 712210227}
-  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411586798}
+  - component: {fileID: 1411586797}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!114 &1411586797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,6 +3110,21 @@ MonoBehaviour:
   center: {fileID: 1314934300137433780, guid: 4b563f73c716602409a26955635d9168, type: 3}
   surface: {fileID: 356643936}
   clickSpace: 0
+--- !u!4 &1411586798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411586795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1530909831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,9 +3676,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 980114553}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: next, Assembly-CSharp
-        m_MethodName: loadCharacters
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4405,7 +4431,6 @@ GameObject:
   - component: {fileID: 2142432179}
   - component: {fileID: 2142432178}
   - component: {fileID: 2142432180}
-  - component: {fileID: 2142432181}
   - component: {fileID: 2142432182}
   m_Layer: 5
   m_Name: Char1BG
@@ -4485,6 +4510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  text: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &2142432182
 MonoBehaviour:
   m_ObjectHideFlags: 0

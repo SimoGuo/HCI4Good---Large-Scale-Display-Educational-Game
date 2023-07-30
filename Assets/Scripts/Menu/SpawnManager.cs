@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {   
         // Check if the current scene is not the character selection scene
-        if (SceneManager.GetActiveScene().name != "charSelection")
+        if (SceneManager.GetActiveScene().name != "Characters")
         {
             // Spawn the selected character at the spawn point
             SpawnSelectedCharacter();
@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
                 selectedCharacterNames.Add(player.name);
             }
             PlayerPrefs.SetString("SelectedCharacterNames", string.Join(",", selectedCharacterNames));
-            SceneManager.LoadScene("gameDemo", LoadSceneMode.Single);
+            SceneManager.LoadScene("Prototype", LoadSceneMode.Single);
         }
         else
         {

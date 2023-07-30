@@ -29,9 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype.unity
     guid: cdade23a37f5b9c43870f0ecb6b4ffb2
-    path: Assets/Scenes/gameDemo.unity
-    guid: 92a1a12611cd9f84f9fa403bf1f93deb
   - enabled: 1
     path: Assets/Scenes/Characters.unity
     guid: a6d4d36b0d155da418ff26d912f81382
+  - enabled: 1
+    path: Assets/Scenes/gameDemo.unity
+    guid: 92a1a12611cd9f84f9fa403bf1f93deb
   m_configObjects: {}
