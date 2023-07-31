@@ -11,7 +11,7 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO
         [SerializeField] private float damageAmount;
         [SerializeField] private float cooldown;
         private float _lastAttacked = -9999f;
-        public override void Initialize(GameObject gameObject, Player player)
+        public override void Initialize(GameObject gameObject, Player Player)
         {
             base.Initialize(gameObject, Player);
             Player.attackZone.radius = attackRange;
