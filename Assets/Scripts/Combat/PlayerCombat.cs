@@ -21,6 +21,11 @@ public class PlayerCombat : MonoBehaviour
 
     ScoreSystem scoreSystem;
 
+    //variable to store the last time an enemy was hit
+    float lastHitTime;
+    //time window for successful combo hits
+    float comboHitTimeWindow = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +106,25 @@ public class PlayerCombat : MonoBehaviour
         return comboCounter * 100; // Each successful combo attack earns 100 points
     }
 
+    // Handle collision with enemies
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Check if the collision is with an enemy
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Check if the hit is within the comboHitTimeWindow
+            if (Time.time - lastHitTime < comboHitTimeWindow)
+            {
+                comboCounter++; // Increase the comboCounter for each successful hit within the time window
+            }
+            else
+            {
+                comboCounter = 1; // Start a new combo if the hit is not within the time window
+            }
+
+            lastHitTime = Time.time; // Update the last hit time
+        }
+    }
 
     void UpdateScore()
     {
