@@ -15,10 +15,19 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField]
     Weapon weapon;
 
+    Text scoreText; 
+
+    ScoreSystem scoreSystem;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        scoreText.text = "0"; 
+        scoreSystem = GameObject.Find("ScoreManager").GetComponent<ScoreSystem>();
+
     }
 
     // Update is called once per frame
@@ -80,5 +89,14 @@ public class PlayerCombat : MonoBehaviour
     {
         comboCounter = 0;
         lastComboEnd = Time.time;
+        UpdateScore();
+
+    }
+
+    void UpdateScore()
+    {
+        int pointsEarned = CalculatePointsEarned();
+        scoreSystem.IncreaseScore(pointsEarned);
+        scoreText.text = "Score: " + scoreSystem.GetScore(); 
     }
 }
