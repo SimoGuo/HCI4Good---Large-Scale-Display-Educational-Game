@@ -26,11 +26,11 @@ public class PlayerInfoController : MonoBehaviour
         text.gameObject.SetActive(!isImageVisible);
         if(isImageVisible)
         {
-            textButton.text = "SHOW";
+            textButton.text = "STORY";
         }
         else
         {
-            textButton.text = "HIDE";
+            textButton.text = "BACK";
         }
     }
 }
