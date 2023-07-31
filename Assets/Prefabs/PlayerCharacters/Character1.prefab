@@ -593,10 +593,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackZone: {fileID: 3626435089881278384}
+  <InAttackRange>k__BackingField: 0
+  <TargetedEnemy>k__BackingField: {fileID: 0}
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
   playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
   playerBuffBase: {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
+  playerHp: 0
+  playerMp: 0
+  playerDef: 0
 --- !u!135 &3626435089881278384
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -626,7 +631,12 @@ MonoBehaviour:
   playerAttack: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
   playerSpecialAttack: {fileID: 11400000, guid: c69505ee7f5998a40b135a59ee300da4,
     type: 2}
-  playerBuff: {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
+  playerBuff:
+  - {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
+  - {fileID: 11400000, guid: 978dd09c3e5802c4c8c914e7f1f370fa, type: 2}
+  - {fileID: 11400000, guid: a91c1a77974d27a43a7558f537861809, type: 2}
+  - {fileID: 11400000, guid: ff03b131b0ebe7048832af7f6e434ccc, type: 2}
+  - {fileID: 11400000, guid: 00ef71c9de376de47a801c048461bf29, type: 2}
 --- !u!1 &3626435089902326727
 GameObject:
   m_ObjectHideFlags: 0

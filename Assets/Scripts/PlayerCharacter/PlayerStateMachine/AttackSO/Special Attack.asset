@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16a118d16cf94b4498569df5773b803, type: 3}
   m_Name: Special Attack
   m_EditorClassIdentifier: 
-  attackRange: 1
+  attackRange: 1.5
   damageAmount: 2
   cooldown: 1

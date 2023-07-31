@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af1018a7ef29e1d4c9c75975d26ab0f3, type: 2}
   - {fileID: 11400000, guid: b439292fda1e9c043bf67002729f1143, type: 2}
   characterDialog: {fileID: 11400000, guid: aa7eec4c94ef5ae48bdfbb71a33141c3, type: 2}
-  characterNumber: 1
+  characterNumber: 3
   isTalking: 0
   dlgCanvas: {fileID: 875715187843138769, guid: af1a103060bc7ae46b6e7440d778ee9d,
     type: 3}
