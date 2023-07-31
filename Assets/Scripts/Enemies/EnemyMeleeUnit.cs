@@ -11,7 +11,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private NavMeshAgent agent;
     
     //Player position
-    [SerializeField] private Transform player;
+    private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
 
     //Patrolling
@@ -30,16 +30,19 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     //Variables for testing
     private Vector3 distanceToWalkPoint;
     private float distance;
-        // player = GameObject.Find("PlayerCharacter").transform;
+    // player = GameObject.Find("PlayerCharacter").transform;
+    public float maxHealth { get; set; } = 100;
+    [field: SerializeField] public float currentHealth { get; set; }
 
-    private void Awake()
-    {
-        //Get the player position through name (Script is for 1 player only, will change to more later)
-        // commented out because we can set the player from the editor instead of relying on name
-        agent = GetComponent<NavMeshAgent>();
-    }
+    private SphereCollider _attackCollider;
+    private Animator _animator;
 
     private void Start() {
+        agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
+        _attackCollider = GetComponent<SphereCollider>();
+        _attackCollider.radius = sightRange;
+        _attackCollider.isTrigger = true;
         currentHealth = maxHealth;
     }
 
@@ -52,15 +55,33 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
         if (!playerInSightRange && !playerInAttackRange)
         {
+            _animator.SetBool("Attack", false);
+            Debug.Log("here1");
             Patrolling();
         }
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && player != null)
         {
+            _animator.SetBool("Attack", false);
+            Debug.Log("here2");
             ChasePlayer();
         }
-        if (playerInSightRange && playerInAttackRange)
+        if (playerInSightRange && playerInAttackRange && player != null)
         {
+            _animator.SetBool("Attack", true);
+            Debug.Log("here3");
             AttackPlayer();
+        }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.collider.CompareTag("Player")) {
+            player = other.transform;
+        }
+    }
+
+    private void OnCollisionExit(Collision other) {
+        if (other.collider.CompareTag("Player")) {
+            player = null;
         }
     }
 
@@ -140,7 +161,4 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     public void Kill() {
         Destroy(gameObject);
     }
-
-    public float maxHealth { get; set; } = 100;
-    [field: SerializeField] public float currentHealth { get; set; }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2202,6 +2202,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976883637}
   m_CullTransparentMesh: 1
+--- !u!4 &1033636430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
+    type: 3}
+  m_PrefabInstance: {fileID: 2767183134657794060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1052102163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,32 +3270,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 150028880693436896, guid: 9b51f94204315364393145584eb47633,
-        type: 3}
-      propertyPath: wall
-      value: 
-      objectReference: {fileID: 7266990021981612777, guid: b3b8a1ae181f04e40a766dd8048acd1e,
-        type: 3}
-    - target: {fileID: 150028880693436896, guid: 9b51f94204315364393145584eb47633,
-        type: 3}
-      propertyPath: width
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 150028880693436896, guid: 9b51f94204315364393145584eb47633,
-        type: 3}
-      propertyPath: height
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 150028880693436896, guid: 9b51f94204315364393145584eb47633,
-        type: 3}
-      propertyPath: surface
-      value: 
-      objectReference: {fileID: 1439696388}
-    - target: {fileID: 150028880693436896, guid: 9b51f94204315364393145584eb47633,
-        type: 3}
-      propertyPath: wallGap
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4383298484659999112, guid: 9b51f94204315364393145584eb47633,
         type: 3}
       propertyPath: m_Name
@@ -3560,6 +3540,16 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 1439696388}
+    - target: {fileID: 4522063482822258792, guid: 2b3d409dba21e1b4abdb898c435394e8,
+        type: 3}
+      propertyPath: <Width>k__BackingField
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522063482822258792, guid: 2b3d409dba21e1b4abdb898c435394e8,
+        type: 3}
+      propertyPath: <Height>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4522063482822258793, guid: 2b3d409dba21e1b4abdb898c435394e8,
         type: 3}
       propertyPath: m_RootOrder
@@ -4285,7 +4275,7 @@ PrefabInstance:
         type: 3}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 2032759760}
+      objectReference: {fileID: 1033636430}
     - target: {fileID: 4795795420932864853, guid: 32e4557a170c0db4889be2444d200af5,
         type: 3}
       propertyPath: players.Array.data[1]
@@ -4318,7 +4308,7 @@ PrefabInstance:
     - target: {fileID: 898406340, guid: d94c761f0ad4b7c47b37fe3a1b65d0c2, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1033636430}
     - target: {fileID: 898406340, guid: d94c761f0ad4b7c47b37fe3a1b65d0c2, type: 3}
       propertyPath: attackRange
       value: 3.36

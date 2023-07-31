@@ -84,18 +84,15 @@ namespace PlayerCharacter {
             }
 
             if (!_isMoving && !InAttackRange) {
-                Debug.Log("not moving, not attacking");
                 TargetedEnemy = null;
                 _stateMachine.ChangeState(_idleState);
             }
 
             if (!_isMoving && InAttackRange) {
-                Debug.Log("not moving, attacking");
                 _stateMachine.ChangeState(_attackState);
             }
 
             if (_isMoving) {
-                Debug.Log("moving");
                 _stateMachine.ChangeState(_moveState);
             }
         }
