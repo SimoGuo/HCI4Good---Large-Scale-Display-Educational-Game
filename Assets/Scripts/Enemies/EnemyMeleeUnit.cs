@@ -11,7 +11,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private NavMeshAgent agent;
     
     //Player position
-    private Transform player;
+    [SerializeField] private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
 
     //Patrolling
@@ -71,6 +71,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
             Debug.Log("here3");
             AttackPlayer();
         }
+        
     }
 
     private void OnCollisionEnter(Collision other) {

@@ -12,8 +12,6 @@ namespace Maze {
         [SerializeField] private float wallGap;
         [SerializeField] private Transform center;
 
-        public NavMeshSurface surface;
-
         public Vector3 GetNodeCenter(int i, int j) {
             if (i >= Width || j >= Height || i < 0 || j < 0) return Vector3.zero;
         
