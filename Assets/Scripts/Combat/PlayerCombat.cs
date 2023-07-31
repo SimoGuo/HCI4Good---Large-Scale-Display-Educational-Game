@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField]
     Weapon weapon;
 
-    Text scoreText; 
+    public Text scoreText; 
 
     ScoreSystem scoreSystem;
 
@@ -92,6 +94,13 @@ public class PlayerCombat : MonoBehaviour
         UpdateScore();
 
     }
+
+
+    int CalculatePointsEarned()
+    {
+        return comboCounter * 100; // Each successful combo attack earns 100 points
+    }
+
 
     void UpdateScore()
     {
