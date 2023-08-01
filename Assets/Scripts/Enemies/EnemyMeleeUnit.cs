@@ -18,7 +18,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     //Patrolling
     private Vector3 walkPoint;
-    private bool walkPointSet;
+    [SerializeField] private bool walkPointSet;
     [SerializeField] private float walkPointRange;
 
     //Attacking
@@ -41,6 +41,8 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     private void Start() {
         _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
+        walkPoint = transform.position;
+        walkPointSet = true;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         currentHealth = maxHealth;
@@ -53,8 +55,8 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         // foreach (GameObject t in GameObject.FindGameObjectsWithTag("Player")) {
         //     if (Vector3.Distance())
         // }
-        
-        player = Physics.OverlapSphere(transform.position, sightRange, playerLayer)?[0]?.transform;
+        Collider[] players = Physics.OverlapSphere(transform.position, sightRange, playerLayer);
+        player = players.Length > 0 ? players[0].transform : null;
         if (player != null) {
             playerInAttackRange = Vector3.Distance(transform.position, player.position) < attackRange;
             playerInSightRange = true;
@@ -62,6 +64,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         else {
             playerInAttackRange = false;
             playerInSightRange = false;
+            
         }
         Debug.Log(walkPoint);
         if (!playerInSightRange && !playerInAttackRange)
@@ -74,14 +77,14 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         if (playerInSightRange && !playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", false);
-            walkPointSet = true;
+            walkPointSet = false;
             Debug.Log("here2");
             ChasePlayer();
         }
         if (playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", true);
-            walkPointSet = true;
+            walkPointSet = false;
             Debug.Log("here3");
             AttackPlayer();
         }
@@ -90,15 +93,15 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     private void Patrolling() {
 
-        if (Vector3.Distance(transform.position, walkPoint) < .5f) {
+        if (agent.remainingDistance < .5f) {
             walkPoint = _maze.GetNodeCenter(Random.Range(0, _maze.Width), Random.Range(0, _maze.Height));
-            walkPointSet = false;
-        }
-        else {
             walkPointSet = true;
         }
+        else {
+            walkPointSet = false;
+        }
 
-        if (!walkPointSet) {
+        if (walkPointSet) {
             agent.SetDestination(walkPoint);
         }
     }
