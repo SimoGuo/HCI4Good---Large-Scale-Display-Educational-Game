@@ -7,7 +7,7 @@ public class end : MonoBehaviour
 {
     public void loadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu2");
     }
 
 }
