@@ -11,7 +11,7 @@ public class play : MonoBehaviour
     {
         startTime = Time.time;
         PlayerPrefs.SetFloat("startTime", startTime);
-        SceneManager.LoadScene("AryahShowcase");
+        SceneManager.LoadScene("Integration");
     }
 
 }
