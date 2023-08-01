@@ -41,12 +41,15 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     [SerializeField]
     private Transform canvas;
+
+    private ScoreManager _scoreManager;
     private healthBar _myHealthBar;
     
     private void Start() {
         _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
         _particles = GetComponentInChildren<ParticleSystem>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        _scoreManager = canvas.GetComponentInChildren<ScoreManager>();
         _myHealthBar = Instantiate(healthBar, canvas).GetComponent<healthBar>();
         _myHealthBar.SetMaxHealth(maxHealth);
         walkPoint = transform.position;
@@ -137,6 +140,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     public void Kill() {
         gameManager.EnemyDied(transform);
+        _scoreManager.EnemyDied();
         Destroy(_myHealthBar.transform.gameObject);
         Destroy(gameObject);
     }
