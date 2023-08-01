@@ -16,7 +16,12 @@ namespace Enemies {
                 Transform e = Instantiate(enemy,
                     maze.GetNodeCenter(Random.Range(0, maze.Width), Random.Range(0, maze.Height)) + Vector3.up,
                     Quaternion.identity);
-                e.GetComponentInChildren<UnityEngine.Renderer>().material.color = Random.ColorHSV();
+                UnityEngine.Renderer[] renderers = e.GetComponentsInChildren<UnityEngine.Renderer>();
+                foreach (UnityEngine.Renderer renderer in renderers) {
+                    foreach (Material mat in renderer.materials) {
+                        mat.color = Random.ColorHSV();
+                    }
+                }
                 Enemies.Add(e);
             }
         }

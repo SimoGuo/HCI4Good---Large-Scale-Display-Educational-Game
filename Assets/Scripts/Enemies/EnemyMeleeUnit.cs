@@ -18,19 +18,13 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     //Patrolling
     private Vector3 walkPoint;
-    [SerializeField] private bool walkPointSet;
-    [SerializeField] private float walkPointRange;
-
-    //Attacking
-    [SerializeField] private float timeBetweenAttacks;
-    private bool alreadyAttacked;
+    private bool walkPointSet;
 
     //States
     [SerializeField] private float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
     //Variables for testing
-    private Vector3 _distanceToWalkPoint;
     private float distance;
     // player = GameObject.Find("PlayerCharacter").transform;
     public float maxHealth { get; set; } = 100;
@@ -51,10 +45,6 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     // Update is called once per frame
     private void Update()
     {
-        //Check for player in sight and attack range
-        // foreach (GameObject t in GameObject.FindGameObjectsWithTag("Player")) {
-        //     if (Vector3.Distance())
-        // }
         Collider[] players = Physics.OverlapSphere(transform.position, sightRange, playerLayer);
         player = players.Length > 0 ? players[0].transform : null;
         if (player != null) {
@@ -113,9 +103,6 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     private void AttackPlayer()
     {
-        //Make the enemy stop before attacking
-        // agent.SetDestination(transform.position);
-        // agent.isStopped = true;
         transform.LookAt(player);
     }
 
