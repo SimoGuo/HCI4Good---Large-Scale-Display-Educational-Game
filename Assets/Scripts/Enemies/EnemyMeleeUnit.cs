@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using PlayerCharacter.Interfaces;
 using UnityEditorInternal;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
 
+    [SerializeField]
+    private GameManager gameManager;
     //Patrolling
     private Vector3 walkPoint;
     private bool walkPointSet;
@@ -27,8 +30,8 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     //Variables for testing
     private float distance;
     // player = GameObject.Find("PlayerCharacter").transform;
-    public float maxHealth { get; set; } = 100;
-    [field: SerializeField] public float currentHealth { get; set; }
+    [field: SerializeField] public float maxHealth { get; set; } = 100;
+    public float currentHealth { get; set; }
     private Renderer _maze;
 
     private Animator _animator;
@@ -39,6 +42,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         walkPointSet = true;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
     }
 
@@ -56,26 +60,25 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
             playerInSightRange = false;
             
         }
-        Debug.Log(walkPoint);
         if (!playerInSightRange && !playerInAttackRange)
         {
             _animator.SetBool("Attack", false);
             // walkPointSet = false;
-            Debug.Log("here1");
+            // Debug.Log("here1");
             Patrolling();
         }
         if (playerInSightRange && !playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", false);
             walkPointSet = false;
-            Debug.Log("here2");
+            // Debug.Log("here2");
             ChasePlayer();
         }
         if (playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", true);
             walkPointSet = false;
-            Debug.Log("here3");
+            // Debug.Log("here3");
             AttackPlayer();
         }
         
@@ -112,6 +115,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     }
 
     public void Kill() {
+        gameManager.EnemyDied(transform);
         Destroy(gameObject);
     }
 }

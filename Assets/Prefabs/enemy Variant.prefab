@@ -134,11 +134,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPointRange: 13.32
-  timeBetweenAttacks: 1
   sightRange: 20.51
   attackRange: 3.36
-  <currentHealth>k__BackingField: 100
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  <maxHealth>k__BackingField: 10
 --- !u!195 &898406341
 NavMeshAgent:
   m_ObjectHideFlags: 0

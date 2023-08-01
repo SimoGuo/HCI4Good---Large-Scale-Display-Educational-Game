@@ -9,12 +9,12 @@ namespace Enemies {
         [SerializeField] private Renderer maze;
         [SerializeField] private Transform enemy;
         [SerializeField] private int noOfEnemies;
-        [field: SerializeField] public List<Transform> Enemies { private set; get; }
 
-        public void Spawn() {
+        public List<Transform> Spawn() {
+            List<Transform> enemies = new List<Transform>();
             for (int i = 0; i < noOfEnemies; i++) {
                 Transform e = Instantiate(enemy,
-                    maze.GetNodeCenter(Random.Range(0, maze.Width), Random.Range(0, maze.Height)) + Vector3.up,
+                    maze.GetNodeCenter(Random.Range(maze.Width / 4, 3 * (maze.Width / 4)), Random.Range(0, maze.Height)) + Vector3.up,
                     Quaternion.identity);
                 UnityEngine.Renderer[] renderers = e.GetComponentsInChildren<UnityEngine.Renderer>();
                 foreach (UnityEngine.Renderer renderer in renderers) {
@@ -22,8 +22,10 @@ namespace Enemies {
                         mat.color = Random.ColorHSV();
                     }
                 }
-                Enemies.Add(e);
+                enemies.Add(e);
             }
+
+            return enemies;
         }
     }
 }

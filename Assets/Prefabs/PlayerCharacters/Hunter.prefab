@@ -25,22 +25,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.13
+      value: 54.499
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.55
+      value: 1.352
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.6
+      value: -11.526
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.31842723
+      value: -0.8600951
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9479474
+      value: 0.5101338
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -61.345
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 070e35b8a10e8a248aa61cd4d356439b,
         type: 3}
@@ -461,13 +461,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2335984322202519165}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bd35b2a60b090cf42bbd099d31072b17, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 3.2800605
+  m_Height: 3.42701
   m_Direction: 1
-  m_Center: {x: 0, y: 0.43606555, z: 0}
+  m_Center: {x: -0, y: 0.3625908, z: 0}
 --- !u!95 &8135258590734451455
 Animator:
   serializedVersion: 5

@@ -126,6 +126,15 @@ namespace PlayerCharacter {
             }
         }
 
+        private void OnTriggerStay(Collider other) {
+            if (other.CompareTag("Enemy")) {
+                InAttackRange = true;
+                if (TargetedEnemy == null) {
+                    TargetedEnemy = other.GetComponent<EnemyMeleeUnit>();
+                }
+            }
+        }
+
         private void OnTriggerExit(Collider other) {
             if (other.CompareTag("Enemy")) {
                 InAttackRange = false;
