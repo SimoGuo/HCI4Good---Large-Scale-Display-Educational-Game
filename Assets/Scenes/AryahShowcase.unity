@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4522063482822258794, guid: 2b3d409dba21e1b4abdb898c435394e8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Maze
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3d409dba21e1b4abdb898c435394e8, type: 3}
 --- !u!114 &277538200 stripped
@@ -357,19 +362,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 886938592, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: bd35b2a60b090cf42bbd099d31072b17,
-        type: 2}
-    - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
-      propertyPath: playerMp
-      value: 536
-      objectReference: {fileID: 0}
-    - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2444815897710466306, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_RootOrder
@@ -544,12 +536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1760723695351126579, guid: a95ce393ba9badc44806a4e2d566de8f,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: bd35b2a60b090cf42bbd099d31072b17,
-        type: 2}
     - target: {fileID: 2335984322202519165, guid: a95ce393ba9badc44806a4e2d566de8f,
         type: 3}
       propertyPath: m_Name

@@ -30,7 +30,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
     //Variables for testing
-    private Vector3 distanceToWalkPoint;
+    private Vector3 _distanceToWalkPoint;
     private float distance;
     // player = GameObject.Find("PlayerCharacter").transform;
     public float maxHealth { get; set; } = 100;
@@ -117,13 +117,6 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         // agent.SetDestination(transform.position);
         // agent.isStopped = true;
         transform.LookAt(player);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public void Damage(float amount) {

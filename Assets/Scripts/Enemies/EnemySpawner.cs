@@ -10,10 +10,14 @@ namespace Enemies {
         [SerializeField] private Transform enemy;
         [SerializeField] private int noOfEnemies;
         [field: SerializeField] public List<Transform> Enemies { private set; get; }
-        
+
         public void Spawn() {
             for (int i = 0; i < noOfEnemies; i++) {
-                Enemies.Add(Instantiate(enemy, maze.GetNodeCenter(Random.Range(0, maze.Width), Random.Range(0, maze.Height)) + Vector3.up, Quaternion.identity));
+                Transform e = Instantiate(enemy,
+                    maze.GetNodeCenter(Random.Range(0, maze.Width), Random.Range(0, maze.Height)) + Vector3.up,
+                    Quaternion.identity);
+                e.GetComponentInChildren<UnityEngine.Renderer>().material.color = Random.ColorHSV();
+                Enemies.Add(e);
             }
         }
     }
