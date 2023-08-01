@@ -16,4 +16,8 @@ public class ScoreManager : MonoBehaviour {
         score += 100;
         scoreText.text = score + "";
     }
+
+    private void OnDisable() {
+        PlayerPrefs.SetInt("Score", score);
+    }
 }
