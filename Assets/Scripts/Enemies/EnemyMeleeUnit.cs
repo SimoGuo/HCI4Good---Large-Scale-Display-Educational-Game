@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerCharacter.Interfaces;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+using Renderer = Maze.Renderer;
 using Random = UnityEngine.Random;
 
 public class EnemyMeleeUnit: MonoBehaviour, IDamageable
@@ -25,7 +27,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     //States
     [SerializeField] private float sightRange, attackRange;
-    private bool playerInSightRange, playerInAttackRange;
+    [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
     //Variables for testing
     private Vector3 distanceToWalkPoint;
@@ -33,16 +35,14 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     // player = GameObject.Find("PlayerCharacter").transform;
     public float maxHealth { get; set; } = 100;
     [field: SerializeField] public float currentHealth { get; set; }
+    private Renderer _maze;
 
-    private SphereCollider _attackCollider;
     private Animator _animator;
 
     private void Start() {
+        _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-        _attackCollider = GetComponent<SphereCollider>();
-        _attackCollider.radius = sightRange;
-        _attackCollider.isTrigger = true;
         currentHealth = maxHealth;
     }
 
@@ -50,101 +50,70 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private void Update()
     {
         //Check for player in sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-
+        // foreach (GameObject t in GameObject.FindGameObjectsWithTag("Player")) {
+        //     if (Vector3.Distance())
+        // }
+        
+        player = Physics.OverlapSphere(transform.position, sightRange, playerLayer)?[0]?.transform;
+        if (player != null) {
+            playerInAttackRange = Vector3.Distance(transform.position, player.position) < attackRange;
+            playerInSightRange = true;
+        }
+        else {
+            playerInAttackRange = false;
+            playerInSightRange = false;
+        }
+        Debug.Log(walkPoint);
         if (!playerInSightRange && !playerInAttackRange)
         {
             _animator.SetBool("Attack", false);
+            // walkPointSet = false;
             Debug.Log("here1");
             Patrolling();
         }
         if (playerInSightRange && !playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", false);
+            walkPointSet = true;
             Debug.Log("here2");
             ChasePlayer();
         }
-        if (playerInSightRange && playerInAttackRange && player != null)
+        if (playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", true);
+            walkPointSet = true;
             Debug.Log("here3");
             AttackPlayer();
         }
         
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if (other.collider.CompareTag("Player")) {
-            player = other.transform;
+    private void Patrolling() {
+
+        if (Vector3.Distance(transform.position, walkPoint) < .5f) {
+            walkPoint = _maze.GetNodeCenter(Random.Range(0, _maze.Width), Random.Range(0, _maze.Height));
+            walkPointSet = false;
         }
-    }
-
-    private void OnCollisionExit(Collision other) {
-        if (other.collider.CompareTag("Player")) {
-            player = null;
-        }
-    }
-
-    private void Patrolling()
-    {
-        if (!walkPointSet) {
-            SearchWalkPoint();
-        }
-
-        if (walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-        }
-
-        distanceToWalkPoint = transform.position - walkPoint;
-        distance = distanceToWalkPoint.magnitude;
-
-        //Walkpoint reached (Will not work if NavAgent stopping distance > 1)
-        if (distanceToWalkPoint.magnitude < 1) {
-        walkPointSet = false;
-        }
-    }
-
-    private void SearchWalkPoint()
-    {
-        //Caculate random point in range
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3 (transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
-        {
+        else {
             walkPointSet = true;
         }
+
+        if (!walkPointSet) {
+            agent.SetDestination(walkPoint);
+        }
     }
 
-    private void ChasePlayer()
-    {
+    private void ChasePlayer() {
+        // agent.isStopped = false;
         agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
         //Make the enemy stop before attacking
-        agent.SetDestination(transform.position);
-
+        // agent.SetDestination(transform.position);
+        // agent.isStopped = true;
         transform.LookAt(player);
-
-        if (!alreadyAttacked)
-        {
-            //Attack code here
-
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
     }
 
     private void OnDrawGizmosSelected()

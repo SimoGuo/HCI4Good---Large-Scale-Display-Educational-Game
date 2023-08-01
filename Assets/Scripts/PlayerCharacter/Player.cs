@@ -18,26 +18,20 @@ namespace PlayerCharacter {
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
         private bool _isMoving;
-        private PlayerBuffState _buffState;
+
         [SerializeField] public SphereCollider attackZone;
         [field: SerializeField] public bool InAttackRange { get; private set; }
         [field: SerializeField] public EnemyMeleeUnit TargetedEnemy { get; private set; }
         [SerializeField] private PlayerIdleSO playerIdleBase;
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
-        [SerializeField] private PlayerBuffSO playerBuffBase;
-        [SerializeField] private int playerHp;
-        [SerializeField] private int playerMp;
-        [SerializeField] private int playerDef;
-        private int lowHp;
-        private int lowDef;
-
+ 
+        public float maxHealth { get; set; }
+        public float currentHealth { get; set; }
 
         public PlayerIdleSO PlayerIdleInstance { get; private set; }
         public PlayerMoveSO PlayerMoveInstance { get; private set; }
         public PlayerAttackSO PlayerAttackInstance { get; private set; }
-        public PlayerBuffSO PlayerBuffInstance { get; private set; }
-
 
         private void Awake() {
             PlayerIdleInstance = Instantiate(playerIdleBase);
@@ -49,7 +43,6 @@ namespace PlayerCharacter {
             _idleState = new PlayerIdleState(this, _stateMachine);
             _moveState = new PlayerMoveState(this, _stateMachine);
             _attackState = new PlayerAttackState(this, _stateMachine);
-            _buffState = new PlayerBuffState(this, _stateMachine);
 
         }
 
@@ -139,20 +132,6 @@ namespace PlayerCharacter {
                 TargetedEnemy = null;
             }
         }
-        public bool isLowHp(){
-            if(playerHp<=lowHp){
-                return true;
-            }
-            else return false;
-            
-        }
-        public bool isLowDef(){
-            if(playerDef<=lowDef){
-                return true;
-            }
-            else return false;
-            
-        }
 
         public void Damage(float amount) {
             throw new NotImplementedException();
@@ -161,23 +140,6 @@ namespace PlayerCharacter {
         public void Kill() {
             throw new NotImplementedException();
         }
-
-        public float maxHealth { get; set; }
-        public float currentHealth { get; set; }
-
-        public void ChangePlayerAbilitie(PlayerMoveSO _playerMoveInstance)
-        {
-            PlayerMoveInstance = _playerMoveInstance;
-        }
-
-        public void ChangePlayerAbilitie(PlayerAttackSO _playerAttackInstance)
-        {
-            PlayerAttackInstance = _playerAttackInstance;
-        }
-
-        public void ChangePlayerAbilitie(PlayerBuffSO _playerBuffInstance)
-        {
-            PlayerBuffInstance = _playerBuffInstance;
-        }
+        
     }
 }
