@@ -5016,6 +5016,9 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   <maxHealth>k__BackingField: 10
+  healthBar: {fileID: 6107300435825895903, guid: 575209a74c9ce044480ecc7982a25350,
+    type: 3}
+  canvas: {fileID: 0}
 --- !u!195 &898406341
 NavMeshAgent:
   m_ObjectHideFlags: 0

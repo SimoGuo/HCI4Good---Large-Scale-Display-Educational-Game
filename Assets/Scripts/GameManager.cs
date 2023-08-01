@@ -5,6 +5,7 @@ using Enemies;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Renderer = Maze.Renderer;
 
 namespace DefaultNamespace {

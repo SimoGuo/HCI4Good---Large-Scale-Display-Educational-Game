@@ -6,6 +6,7 @@ using PlayerCharacter.Interfaces;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Renderer = Maze.Renderer;
 using Random = UnityEngine.Random;
 
@@ -36,9 +37,18 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private ParticleSystem _particles;
     private Animator _animator;
 
+    [SerializeField] private Transform healthBar;
+
+    [SerializeField]
+    private Transform canvas;
+    private healthBar _myHealthBar;
+    
     private void Start() {
         _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
         _particles = GetComponentInChildren<ParticleSystem>();
+        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        _myHealthBar = Instantiate(healthBar, canvas).GetComponent<healthBar>();
+        _myHealthBar.SetMaxHealth(maxHealth);
         walkPoint = transform.position;
         walkPointSet = true;
         agent = GetComponent<NavMeshAgent>();
@@ -48,8 +58,16 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     }
 
     // Update is called once per frame
-    private void Update()
-    {
+    private void Update() {
+        // RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        // Vector2 viewport = Camera.main.WorldToScreenPoint(transform.position);
+        // // Vector2 canvasNormalized = new Vector2((viewport.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * .5f),
+        // //     (viewport.x * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * .5f));
+        // _myHealthBar.GetComponent<RectTransform>().anchorMin = viewport;
+        // _myHealthBar.GetComponent<RectTransform>().anchorMax = viewport;
+
+        _myHealthBar.GetComponent<RectTransform>().position = transform.position + Vector3.up * 3;
+        _myHealthBar.GetComponent<RectTransform>().LookAt(new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z));
         Collider[] players = Physics.OverlapSphere(transform.position, sightRange, playerLayer);
         player = players.Length > 0 ? players[0].transform : null;
         if (player != null) {
@@ -113,11 +131,13 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     public void Damage(float amount) {
         currentHealth -= amount;
         _particles.Play();
+        _myHealthBar.TakeDamage(amount);
         if (currentHealth <= 0) Kill();
     }
 
     public void Kill() {
         gameManager.EnemyDied(transform);
+        Destroy(_myHealthBar.transform.gameObject);
         Destroy(gameObject);
     }
 }

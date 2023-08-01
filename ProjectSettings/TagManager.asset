@@ -11,6 +11,7 @@ TagManager:
   - StatusBar
   - Maze
   - GameManager
+  - Canvas
   layers:
   - Default
   - TransparentFX
