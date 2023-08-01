@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07d7fd32b1219e14db0c84fb1c8138a5,
         type: 3}
       propertyPath: m_Name
-      value: enemy
+      value: enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07d7fd32b1219e14db0c84fb1c8138a5,
         type: 3}
@@ -94,6 +94,19 @@ CapsuleCollider:
   m_Height: 3.1253738
   m_Direction: 1
   m_Center: {x: 0, y: -0.07177782, z: 0}
+--- !u!135 &2820265764038019644
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488811417151664024}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &898406339
 Animator:
   serializedVersion: 5
@@ -127,18 +140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525ab9532b413ab48ade153ee4df6f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPointRange: 0
-  timeBetweenAttacks: 5.33
+  walkPointRange: 13.32
+  timeBetweenAttacks: 1
   sightRange: 20.51
-  attackRange: 0.79
-  <currentHealth>k__BackingField: 0
+  attackRange: 3.36
+  <currentHealth>k__BackingField: 100
 --- !u!195 &898406341
 NavMeshAgent:
   m_ObjectHideFlags: 0

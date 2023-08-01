@@ -4,23 +4,21 @@ using UnityEngine;
 
 namespace Maze {
     public class Renderer : MonoBehaviour {
-        [SerializeField] private int width = 10;
-        [SerializeField] private int height = 10;
+        [field: SerializeField] public int Width { private set; get; } = 10;
+        [field: SerializeField] public int Height { private set; get; } = 10;
         private float horizontal;
         private float vertical;
         [SerializeField] private Transform wall;
         [SerializeField] private float wallGap;
         [SerializeField] private Transform center;
 
-        public NavMeshSurface surface;
-
         public Vector3 GetNodeCenter(int i, int j) {
-            if (i >= width || j >= height || i < 0 || j < 0) return Vector3.zero;
+            if (i >= Width || j >= Height || i < 0 || j < 0) return Vector3.zero;
         
             horizontal = (wallGap + wall.localScale.x) * Mathf.Cos(30 * Mathf.Deg2Rad);
             vertical = (wallGap + wall.localScale.x) + ((wallGap + wall.localScale.x) * Mathf.Sin(30 * Mathf.Deg2Rad));
                 
-            Vector3 pos = new Vector3((i - width / 2) * horizontal * 2, transform.position.y, (j - height / 2) * vertical); // center of node
+            Vector3 pos = new Vector3((i - Width / 2) * horizontal * 2, transform.position.y, (j - Height / 2) * vertical); // center of node
                 
             if (j % 2 == 0) {
                 pos -= new Vector3(horizontal, 0, 0);
@@ -30,8 +28,8 @@ namespace Maze {
         }
     
         void Render(Generator.NodeState[,] maze) {
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
+            for (int i = 0; i < Width; i++) {
+                for (int j = 0; j < Height; j++) {
                     Generator.NodeState node = maze[i, j];
 
                     string name = i.ToString() + j.ToString();
@@ -73,7 +71,7 @@ namespace Maze {
                         }
                     }
 
-                    if (i == width - 1) {
+                    if (i == Width - 1) {
                         if (node.HasFlag(Generator.NodeState.Right)) {
                             Transform left = Instantiate(wall, transform);
                         
@@ -83,7 +81,7 @@ namespace Maze {
                             left.name = "right" + name;
                         }
 
-                        if (j != height - 1 && i == width - 1) {
+                        if (j != Height - 1 && i == Width - 1) {
                             if (node.HasFlag(Generator.NodeState.UpRight)) {
                                 Transform upRight = Instantiate(wall, transform);
                             
@@ -106,7 +104,7 @@ namespace Maze {
 
                 
 
-                    if (j == height - 1) {
+                    if (j == Height - 1) {
                         if (node.HasFlag(Generator.NodeState.UpRight)) {
                             Transform upRight = Instantiate(wall, transform);
                         
@@ -116,7 +114,7 @@ namespace Maze {
                             upRight.name = "upRight" + name;
                         }
 
-                        if (i == width - 1) {
+                        if (i == Width - 1) {
                             if (node.HasFlag(Generator.NodeState.DownRight)) {
                                 Transform downRight = Instantiate(wall, transform);
                             
@@ -132,25 +130,20 @@ namespace Maze {
         }
 
         private void Start() {
+            // foreach (Transform t in transform) {
+            //     Destroy(t.gameObject);
+            // }
+            //
+            // Render(Generator.Generate(Width, Height));
+            // surface.BuildNavMesh();
+        }
+
+        public void Build() {
             foreach (Transform t in transform) {
                 Destroy(t.gameObject);
             }
 
-            Render(Generator.Generate(width, height));
-            surface.BuildNavMesh();
-        }
-
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-            
-                foreach (Transform t in transform) {
-                    Destroy(t.gameObject);
-                }
-
-                Render(Generator.Generate(width, height));
-                surface.BuildNavMesh();
-            
-            }
+            Render(Generator.Generate(Width, Height));
         }
     }
 }

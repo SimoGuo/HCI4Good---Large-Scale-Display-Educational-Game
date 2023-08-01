@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Elina
+  m_text: Noor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -912,17 +912,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Aiko Yamamoto was born into a family that embraced diversity and the LGBTQ+
-    community in the mystical realm of Hinomori. From an early age, Aiko discovered
-    they possessed extraordinary powers and dedicated themselves to honing their
-    skills to protect and empower others. Aiko can use swords to inflict damage and
-    is even able to protect themselves and parry attacks. What sets them apart is
-    their special healing ability which enables them to provide support to their
-    allies by healing and making them stronger. With their unwavering spirit and
-    the support of their family, who deeply value and advocate for acceptance and
-    compassion towards the LGBTQ+ community, their mission extends beyond fighting
-    evil; they seek to bring hope, acceptance, and understanding to all they encounter,
-    especially marginalized communities.  '
+  m_text: 'Aniya was born into a family that embraced diversity and the LGBTQ+ community
+    in the mystical realm of Hinomori. From an early age, Aniya discovered they possessed
+    extraordinary powers and dedicated themselves to honing their skills to protect
+    and empower others. Aniya can use swords to inflict damage and is even able to
+    protect themselves and parry attacks. What sets them apart is their special healing
+    ability which enables them to provide support to their allies by healing and
+    making them stronger. With their unwavering spirit and the support of their family,
+    who deeply value and advocate for acceptance and compassion towards the LGBTQ+
+    community, their mission extends beyond fighting evil; they seek to bring hope,
+    acceptance, and understanding to all they encounter, especially marginalized
+    communities.  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -1168,9 +1168,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Elina is a young mage from a country in Europe. This country is full of
+  m_text: 'Noor is a young mage from a country in Europe. This country is full of
     values of inclusion and equality, which gave her a deep understanding of the
-    importance of equality and diversity from an early age. Elina has a deep interest
+    importance of equality and diversity from an early age. Noor has a deep interest
     in magic and a desire to harness its power to change the world. She is skilled
     at casting spells to attack with fire or even protect her allies by creating
     barriers and protective shields. She understands that teams are most successful
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show
+  m_text: Story
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
   m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
@@ -1890,7 +1890,6 @@ GameObject:
   - component: {fileID: 980114551}
   - component: {fileID: 980114550}
   - component: {fileID: 980114552}
-  - component: {fileID: 980114553}
   m_Layer: 5
   m_Name: BG1
   m_TagString: Untagged
@@ -1964,18 +1963,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 980114548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd2e113f6ffa1640a25ee3a6a05a86f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &980114553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980114548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c713b72979cc354ca4167bc6de066c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -2020,7 +2007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1405, y: 95.62301}
+  m_AnchoredPosition: {x: 1405, y: 115}
   m_SizeDelta: {x: 241.5323, y: 734.4676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003708365
@@ -2070,9 +2057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  text: {fileID: 0}
-  textButton: {fileID: 0}
+  image: {fileID: 2052047900}
+  text: {fileID: 445096841}
+  textButton: {fileID: 1022014480}
 --- !u!114 &1003708368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,7 +2131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show
+  m_text: Story
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
   m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
@@ -2636,9 +2623,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  text: {fileID: 0}
-  textButton: {fileID: 0}
+  image: {fileID: 2146174835}
+  text: {fileID: 543399037}
+  textButton: {fileID: 2116481651}
 --- !u!114 &1162395878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2743,9 +2730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  text: {fileID: 0}
-  textButton: {fileID: 0}
+  image: {fileID: 1730394141}
+  text: {fileID: 485447854}
+  textButton: {fileID: 634435426}
 --- !u!114 &1185908288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,7 +3196,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 980114553}
+      - m_Target: {fileID: 980114552}
         m_TargetAssemblyTypeName: next, Assembly-CSharp
         m_MethodName: loadCharacters
         m_Mode: 1
@@ -3676,9 +3663,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 980114552}
         m_TargetAssemblyTypeName: next, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: loadCharacters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3793,7 +3780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aiko
+  m_text: Aniya
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -4109,8 +4096,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1211, y: -0.083129}
-  m_SizeDelta: {x: 179.6684, y: 734.3}
+  m_AnchoredPosition: {x: 0.0003, y: 2.4057}
+  m_SizeDelta: {x: 543.9609, y: 610.5046}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052047900
 MonoBehaviour:
@@ -4132,7 +4119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e1e12a11a1317d74a8c055bb5231a0dc, type: 3}
+  m_Texture: {fileID: 2800000, guid: df0d2b830d0058c429c877386e709533, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4205,7 +4192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show
+  m_text: Story
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
   m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
@@ -4341,7 +4328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show
+  m_text: Story
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ade12791727605a41ad84a7eddb8090d, type: 2}
   m_sharedMaterial: {fileID: -3839877319778142359, guid: ade12791727605a41ad84a7eddb8090d,
@@ -4510,9 +4497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c38710bed9d8e4d80aec2e33904492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  text: {fileID: 0}
-  textButton: {fileID: 0}
+  image: {fileID: 1151401072}
+  text: {fileID: 1267863760}
+  textButton: {fileID: 2078261852}
 --- !u!114 &2142432182
 MonoBehaviour:
   m_ObjectHideFlags: 0
