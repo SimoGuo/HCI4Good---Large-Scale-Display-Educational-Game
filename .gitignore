@@ -5,7 +5,7 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-/[Bb]uild/
+# /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
@@ -25,7 +25,7 @@
 
 # Visual Studio cache directory
 .vs/
-
+.idea/
 # Gradle cache directory
 .gradle/
 
@@ -51,6 +51,11 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+
+
+# Blender generated meta files
+*.blend1
+*.blend1.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
