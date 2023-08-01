@@ -18,6 +18,7 @@ namespace Enemies {
                     Quaternion.identity);
                 UnityEngine.Renderer[] renderers = e.GetComponentsInChildren<UnityEngine.Renderer>();
                 foreach (UnityEngine.Renderer renderer in renderers) {
+                    if (renderer.gameObject.name == "Particle System") continue;
                     foreach (Material mat in renderer.materials) {
                         mat.color = Random.ColorHSV();
                     }

@@ -33,11 +33,12 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     [field: SerializeField] public float maxHealth { get; set; } = 100;
     public float currentHealth { get; set; }
     private Renderer _maze;
-
+    private ParticleSystem _particles;
     private Animator _animator;
 
     private void Start() {
         _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
+        _particles = GetComponentInChildren<ParticleSystem>();
         walkPoint = transform.position;
         walkPointSet = true;
         agent = GetComponent<NavMeshAgent>();
@@ -111,6 +112,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     public void Damage(float amount) {
         currentHealth -= amount;
+        _particles.Play();
         if (currentHealth <= 0) Kill();
     }
 
