@@ -40,14 +40,18 @@ namespace PlayerInput {
                         Ray r = Camera.main.ScreenPointToRay(touch.position);
                         if (Physics.Raycast(r, out RaycastHit hit)) {
                             TouchLocation thisTouch = _touchLocations.Find(i => i.fingerID == touch.fingerId);
-                            thisTouch.player.GetComponent<Player>().TargetFinger = hit.point;
+                            if (thisTouch != null) {
+                                thisTouch.player.GetComponent<Player>().TargetFinger = hit.point;
+                            }
                         }
                     }
                     if (touch.phase == TouchPhase.Ended) {
                         Debug.Log("ended");
                         TouchLocation thisTouch = _touchLocations.Find(i => i.fingerID == touch.fingerId);
-                        thisTouch.player.GetComponent<Player>().NeedsPlayerFinger = true;
-                        _touchLocations.RemoveAt(_touchLocations.IndexOf(thisTouch));
+                        if (thisTouch != null) {
+                            thisTouch.player.GetComponent<Player>().NeedsPlayerFinger = true;
+                            _touchLocations.RemoveAt(_touchLocations.IndexOf(thisTouch));
+                        }
                     }
                 }    
             }
