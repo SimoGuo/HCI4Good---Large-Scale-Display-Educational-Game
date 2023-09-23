@@ -17,7 +17,6 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
 
         public override void EnterState() {
             base.EnterState();
-            anim.Play("normal attack");
         }
 
         public override void FrameUpdate() {

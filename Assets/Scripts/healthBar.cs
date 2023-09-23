@@ -20,23 +20,6 @@ public class healthBar : MonoBehaviour
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
     }
-
-    public void Update()
-    {
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            TakeDamage(10);
-            UpdateUI();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Heal(5);
-            UpdateUI();
-        }
-    }
-
     public void UpdateUI()
     {
         Debug.Log(currentHealth);
@@ -79,11 +62,13 @@ public class healthBar : MonoBehaviour
     {
         currentHealth -= damage;
         lerpTimer = 0f;
+        UpdateUI();
     }
 
     public void Heal (float heal)
     {
         currentHealth += heal;
         lerpTimer = 0f;
+        UpdateUI();
     }
 }

@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Ally
   - StatusBar
+  - Maze
+  - GameManager
+  - Canvas
   layers:
   - Default
   - TransparentFX
