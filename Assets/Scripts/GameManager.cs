@@ -18,14 +18,14 @@ namespace DefaultNamespace {
         private bool _enemyDied;
         private void Start() {
             maze.Build();
-            // enemies = spawner.Spawn();
+            enemies = spawner.Spawn();
             surface.BuildNavMesh();
         }
         
         public void EnemyDied(Transform enemy) {
             enemies.Remove(enemy);
             if (enemies.Count == 0) {
-                // SceneManager.LoadScene("End");
+                SceneManager.LoadScene("End");
             }
         }
     }
