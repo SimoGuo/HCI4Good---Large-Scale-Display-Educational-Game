@@ -23,7 +23,7 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
             base.FrameUpdate();
             if (Player.InAttackRange && (Time.time > _lastAttacked + cooldown)) {
                 _lastAttacked = Time.time;
-                Player.TargetedEnemy.Damage(damageAmount);
+                Player.TargetedEnemy.Damage(10000);
             }
         }
 
