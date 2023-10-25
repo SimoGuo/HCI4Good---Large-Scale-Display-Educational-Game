@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -10,13 +12,11 @@ namespace Maze {
         private float vertical;
         [SerializeField] private Transform wall;
         [SerializeField] private float wallGap;
-        [SerializeField] private Transform center;
-        private Transform current;
-        private Transform neighbour;
-        public NavMeshSurface surface;
-    
+
+        private bool done;
         IEnumerator Render() {
             foreach (StaggeredGenerator.NodeState[,] maze in StaggeredGenerator.Generate(width, height)) {
+                done = false;
                 foreach (Transform t in transform) {
                     if (t.name != "current") {
                         Destroy(t.gameObject);
@@ -36,13 +36,6 @@ namespace Maze {
 
                         if (j % 2 == 0) {
                             pos -= new Vector3(horizontal, 0, 0);
-                        }
-
-                        if (node.HasFlag(StaggeredGenerator.NodeState.Current)) {
-                            current.position = pos;
-                        }
-                        if (node.HasFlag(StaggeredGenerator.NodeState.Neighbour)) {
-                            neighbour.position = pos;
                         }
 
                         if (node.HasFlag(StaggeredGenerator.NodeState.UpLeft)) {
@@ -137,28 +130,26 @@ namespace Maze {
                         }
                     }
                 }
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.01f);
             }
+            done = true;
         }
-    
+
         private void Start() {
-            surface = GetComponent<NavMeshSurface>();
-            current = Instantiate(center);
-            neighbour = Instantiate(center);
-            current.name = "current";
-            neighbour.name = "current";
-            neighbour.GetComponent<MeshRenderer>().material.color = Color.red;
+            foreach (Transform t in transform) {
+                Destroy(t.gameObject);
+            }
+            StartCoroutine(Render());
         }
 
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (done) {
                 StopCoroutine(Render());
                 foreach (Transform t in transform) {
                     Destroy(t.gameObject);
                 }
-                StartCoroutine(Render());
+                StartCoroutine(Render());    
             }
-
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -13,6 +14,10 @@ public class gameover : MonoBehaviour
     private float startTime;
     private float totalTime;
 
+
+    private void OnEnable() {
+        countScore = PlayerPrefs.GetInt("Score");
+    }
 
     void Start()
     {
@@ -69,7 +74,7 @@ public class gameover : MonoBehaviour
     {
         int currentScore = 0;
         int incrementStep = 1;
-        float incrementDelay = 0.1f;
+        float incrementDelay = 0.001f;
 
         while (currentScore < targetScore)
         {

@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using PlayerCharacter.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using Renderer = Maze.Renderer;
 using Random = UnityEngine.Random;
 
 public class EnemyMeleeUnit: MonoBehaviour, IDamageable
@@ -11,155 +14,135 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private NavMeshAgent agent;
     
     //Player position
-    [SerializeField] private Transform player;
+   // [SerializeField] private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
 
+    [SerializeField]
+    private GameManager gameManager;
     //Patrolling
     private Vector3 walkPoint;
     private bool walkPointSet;
-    [SerializeField] private float walkPointRange;
-
-    //Attacking
-    [SerializeField] private float timeBetweenAttacks;
-    private bool alreadyAttacked;
 
     //States
     [SerializeField] private float sightRange, attackRange;
-    private bool playerInSightRange, playerInAttackRange;
+    [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
     //Variables for testing
-    private Vector3 distanceToWalkPoint;
     private float distance;
-    // player = GameObject.Find("PlayerCharacter").transform;
-    public float maxHealth { get; set; } = 100;
-    [field: SerializeField] public float currentHealth { get; set; }
-
-    private SphereCollider _attackCollider;
+    [field: SerializeField] public float maxHealth { get; set; } = 100;
+    public float currentHealth { get; set; }
+    private Renderer _maze;
+    private ParticleSystem _particles;
     private Animator _animator;
 
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform healthBar;
+
+    [SerializeField]
+    private Transform canvas;
+
+    private ScoreManager _scoreManager;
+    private healthBar _myHealthBar;
+    
     private void Start() {
+
         agent = GetComponent<NavMeshAgent>();
+        _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
+        _particles = GetComponentInChildren<ParticleSystem>();
+        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        _scoreManager = canvas.GetComponentInChildren<ScoreManager>();
+        _myHealthBar = Instantiate(healthBar, canvas).GetComponent<healthBar>();
+        _myHealthBar.SetMaxHealth(maxHealth);
+        walkPoint = transform.position;
+        walkPointSet = true;
+        
         _animator = GetComponent<Animator>();
-        _attackCollider = GetComponent<SphereCollider>();
-        _attackCollider.radius = sightRange;
-        _attackCollider.isTrigger = true;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
     }
 
     // Update is called once per frame
-    private void Update()
-    {
-        //Check for player in sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+    private void Update() {
+        // RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        // Vector2 viewport = Camera.main.WorldToScreenPoint(transform.position);
+        // // Vector2 canvasNormalized = new Vector2((viewport.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * .5f),
+        // //     (viewport.x * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * .5f));
+        // _myHealthBar.GetComponent<RectTransform>().anchorMin = viewport;
+        // _myHealthBar.GetComponent<RectTransform>().anchorMax = viewport;
 
+        _myHealthBar.GetComponent<RectTransform>().position = transform.position + Vector3.up * 3;
+        _myHealthBar.GetComponent<RectTransform>().LookAt(new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z));
+        Collider[] players = Physics.OverlapSphere(transform.position, sightRange, playerLayer);
+        player = players.Length > 0 ? players[0].transform : null;
+        if (player != null) {
+            playerInAttackRange = Vector3.Distance(transform.position, player.position) < attackRange;
+            playerInSightRange = true;
+        }
+        else {
+            playerInAttackRange = false;
+            playerInSightRange = false;
+            
+        }
         if (!playerInSightRange && !playerInAttackRange)
         {
             _animator.SetBool("Attack", false);
-            Debug.Log("here1");
+            // walkPointSet = false;
+            // Debug.Log("here1");
             Patrolling();
         }
         if (playerInSightRange && !playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", false);
-            Debug.Log("here2");
+            walkPointSet = false;
+            // Debug.Log("here2");
             ChasePlayer();
         }
-        if (playerInSightRange && playerInAttackRange && player != null)
+        if (playerInAttackRange && player != null)
         {
             _animator.SetBool("Attack", true);
-            Debug.Log("here3");
+            walkPointSet = false;
+            // Debug.Log("here3");
             AttackPlayer();
         }
         
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if (other.collider.CompareTag("Player")) {
-            player = other.transform;
-        }
-    }
+    private void Patrolling() {
 
-    private void OnCollisionExit(Collision other) {
-        if (other.collider.CompareTag("Player")) {
-            player = null;
-        }
-    }
-
-    private void Patrolling()
-    {
-        if (!walkPointSet) {
-            SearchWalkPoint();
-        }
-
-        if (walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-        }
-
-        distanceToWalkPoint = transform.position - walkPoint;
-        distance = distanceToWalkPoint.magnitude;
-
-        //Walkpoint reached (Will not work if NavAgent stopping distance > 1)
-        if (distanceToWalkPoint.magnitude < 1) {
-        walkPointSet = false;
-        }
-    }
-
-    private void SearchWalkPoint()
-    {
-        //Caculate random point in range
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3 (transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer))
-        {
+        if (agent.remainingDistance < .5f) {
+            walkPoint = _maze.GetNodeCenter(Random.Range(0, _maze.Width), Random.Range(0, _maze.Height));
             walkPointSet = true;
         }
+        else {
+            walkPointSet = false;
+        }
+
+        if (walkPointSet) {
+            agent.SetDestination(walkPoint);
+        }
     }
 
-    private void ChasePlayer()
-    {
+    private void ChasePlayer() {
+        // agent.isStopped = false;
         agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        //Make the enemy stop before attacking
-        agent.SetDestination(transform.position);
-
         transform.LookAt(player);
-
-        if (!alreadyAttacked)
-        {
-            //Attack code here
-
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public void Damage(float amount) {
         currentHealth -= amount;
+        _particles.Play();
+        _myHealthBar.TakeDamage(amount);
         if (currentHealth <= 0) Kill();
     }
 
     public void Kill() {
+        gameManager.EnemyDied(transform);
+        _scoreManager.EnemyDied();
+        Destroy(_myHealthBar.transform.gameObject);
         Destroy(gameObject);
     }
 }

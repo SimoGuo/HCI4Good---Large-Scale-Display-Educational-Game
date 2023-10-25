@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4383298484659999115}
+  - component: {fileID: 1420095644}
   m_Layer: 0
   m_Name: StaggeredMaze
   m_TagString: Untagged
@@ -31,3 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1420095644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383298484659999112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c826c37860233c74d8663ef7dbf55842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 27
+  height: 6
+  wall: {fileID: 7266990021981612777, guid: b3b8a1ae181f04e40a766dd8048acd1e, type: 3}
+  wallGap: 1.5

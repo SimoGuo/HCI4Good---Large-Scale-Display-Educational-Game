@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -300,10 +300,6 @@ MonoBehaviour:
   playerIdleBase: {fileID: 11400000, guid: 19749407c27483c42aff00fcea8eb2f6, type: 2}
   playerMoveBase: {fileID: 11400000, guid: 55db6891f8a7a4f47a0a459fc470aeee, type: 2}
   playerAttackBase: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef, type: 2}
-  playerBuffBase: {fileID: 11400000, guid: ad6ac8df6fd0fb84ead6403c58c9d215, type: 2}
-  playerHp: 0
-  playerMp: 0
-  playerDef: 0
 --- !u!95 &78044716
 Animator:
   serializedVersion: 5
@@ -3834,7 +3830,6 @@ MonoBehaviour:
   maze: {fileID: 1619700365}
   enemy: {fileID: 5856706148905956642, guid: d94c761f0ad4b7c47b37fe3a1b65d0c2, type: 3}
   noOfEnemies: 10
-  <Enemies>k__BackingField: []
 --- !u!4 &1736115221
 Transform:
   m_ObjectHideFlags: 0
@@ -3870,17 +3865,17 @@ PrefabInstance:
     - target: {fileID: 3107701385378077895, guid: a95ce393ba9badc44806a4e2d566de8f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.425186
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: 3107701385378077895, guid: a95ce393ba9badc44806a4e2d566de8f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.55
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 3107701385378077895, guid: a95ce393ba9badc44806a4e2d566de8f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.3581166
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3107701385378077895, guid: a95ce393ba9badc44806a4e2d566de8f,
         type: 3}
@@ -3951,6 +3946,9 @@ MonoBehaviour:
   maze: {fileID: 1619700365}
   spawner: {fileID: 1736115220}
   surface: {fileID: 11387390}
+  enemies: []
+  endScene:
+    m_Handle: 0
 --- !u!4 &1929256019
 Transform:
   m_ObjectHideFlags: 0

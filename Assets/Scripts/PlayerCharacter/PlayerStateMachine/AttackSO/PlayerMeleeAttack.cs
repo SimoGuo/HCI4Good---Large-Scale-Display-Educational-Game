@@ -17,14 +17,13 @@ namespace PlayerCharacter.PlayerStateMachine.AttackSO {
 
         public override void EnterState() {
             base.EnterState();
-            anim.Play("normal attack");
         }
 
         public override void FrameUpdate() {
             base.FrameUpdate();
             if (Player.InAttackRange && (Time.time > _lastAttacked + cooldown)) {
                 _lastAttacked = Time.time;
-                Player.TargetedEnemy.Damage(damageAmount);
+                Player.TargetedEnemy.Damage(10000);
             }
         }
 
