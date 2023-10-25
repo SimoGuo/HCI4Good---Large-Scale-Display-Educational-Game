@@ -14,7 +14,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private NavMeshAgent agent;
     
     //Player position
-    [SerializeField] private Transform player;
+   // [SerializeField] private Transform player;
     [SerializeField] private LayerMask groundLayer, playerLayer;
 
     [SerializeField]
@@ -29,13 +29,13 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
 
     //Variables for testing
     private float distance;
-    // player = GameObject.Find("PlayerCharacter").transform;
     [field: SerializeField] public float maxHealth { get; set; } = 100;
     public float currentHealth { get; set; }
     private Renderer _maze;
     private ParticleSystem _particles;
     private Animator _animator;
 
+    [SerializeField] private Transform player;
     [SerializeField] private Transform healthBar;
 
     [SerializeField]
@@ -45,6 +45,8 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
     private healthBar _myHealthBar;
     
     private void Start() {
+
+        agent = GetComponent<NavMeshAgent>();
         _maze = GameObject.FindGameObjectWithTag("Maze").GetComponent<Renderer>();
         _particles = GetComponentInChildren<ParticleSystem>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
@@ -53,7 +55,7 @@ public class EnemyMeleeUnit: MonoBehaviour, IDamageable
         _myHealthBar.SetMaxHealth(maxHealth);
         walkPoint = transform.position;
         walkPointSet = true;
-        agent = GetComponent<NavMeshAgent>();
+        
         _animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
