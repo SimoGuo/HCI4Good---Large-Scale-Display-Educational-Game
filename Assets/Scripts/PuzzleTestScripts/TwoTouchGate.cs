@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutComplete : MonoBehaviour
+public class TwoTouchGate : MonoBehaviour
 {
     bool hasGroundTouched = false;
     bool hasWindTouched = false;
+    bool hasTriggered = false;
     private Transform target;
 
     private Transform target2;
 
     [SerializeField] GameObject player1;
     [SerializeField] GameObject player2;
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject door;
 
 
     void Start(){
@@ -22,13 +23,13 @@ public class TutComplete : MonoBehaviour
 
     void Update(){
 
-        if(hasGroundTouched && hasWindTouched){
-                player1.transform.position = new Vector3(105,4,-15);
-                player2.transform.position = new Vector3(100,2,-15);
-                camera.transform.position = new Vector3(100,60,-5);
+        if(hasGroundTouched && hasWindTouched && !hasTriggered){
+                
+                door.transform.position += new Vector3(0,100,0);
 
                 hasGroundTouched = false;
                 hasWindTouched = false;
+                hasTriggered = true;
         }
     }
 
