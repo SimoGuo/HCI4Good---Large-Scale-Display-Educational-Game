@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Player3Proto.unity
     guid: fd7d91dc337fbfe439f2aa04ba142d21
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Prototype.unity
     guid: cdade23a37f5b9c43870f0ecb6b4ffb2
   - enabled: 0
