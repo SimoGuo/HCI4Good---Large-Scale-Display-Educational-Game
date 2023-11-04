@@ -68,7 +68,12 @@ namespace PlayerCharacter {
             // Set initial state to Idle
             _stateMachine.Init(_idleState);
         }
+        private void FixedUpdate()
+        {
+            Move();
+            _stateMachine.CurrentPlayerState.PhysicsUpdate();
 
+        }
         private void Update() {
             // Update the Animator flags based on player's state
             _anim.SetBool("Moving", _isMoving);
