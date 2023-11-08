@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - Canvas
   - Wind
+  - Cube
   layers:
   - Default
   - TransparentFX
