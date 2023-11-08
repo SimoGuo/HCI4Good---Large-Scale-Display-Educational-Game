@@ -12,6 +12,7 @@ TagManager:
   - Maze
   - GameManager
   - Canvas
+  - Wind
   layers:
   - Default
   - TransparentFX
