@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
  *
  * @author: Simo Guo with support and documentation from Madeleine Nykl
  */
-public class EndLevelTrigger : MonoBehaviour
+public class LevelComplete : MonoBehaviour
 {
     private bool isActivated = false;
     public GameObject popupPanel; 
@@ -25,7 +25,7 @@ public class EndLevelTrigger : MonoBehaviour
     // This checks if the character has made contact with the "door" pressure plate
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isActivated)
+        if ((other.CompareTag("Ground") || other.CompareTag("Wind")) && !isActivated)
         {
             popupPanel.SetActive(true);
         }
@@ -47,4 +47,3 @@ public class EndLevelTrigger : MonoBehaviour
         popupPanel.SetActive(false);
     }
 }
-
