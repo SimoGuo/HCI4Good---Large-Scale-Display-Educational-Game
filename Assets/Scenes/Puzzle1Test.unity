@@ -3631,7 +3631,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308140646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7}
   m_LocalScale: {x: 0.5733863, y: 0.32403818, z: 0.33522263}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3640,7 +3640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 7.423416}
+  m_AnchoredPosition: {x: 0.7, y: 7.423416}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308140648
@@ -3665,7 +3665,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 13
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -3676,15 +3676,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "This scene has buttons that activate a door. There is also a pressure
-    plate which does the same thing as the trigger but when you leave the plate it
-    returns the object back to its original position. It contains a \u201Ctele-porter\u201D
-    that when both characters interact with it they and the camera are transferred
-    to a new location. There\u2019s a both character button which does the same as
-    the regular button but requires both characters with ground/wind tags to touch
-    to activate. There\u2019s a switch which adds y-value/takes away y-value to different
-    doors creating a situation where one of the doors is always blocking their respective
-    paths but you can switch which path is blocked. "
+  m_Text: The scene features buttons to activate doors, a pressure plate that returns
+    objects to their original positions, a "teleporter" that transfers characters
+    and the camera to new locations, a both-character button that requires both characters
+    with ground/wind tags to touch, and a switch that adds or takes y-value to doors,
+    allowing users to switch which path is blocked.
 --- !u!222 &1308140649
 CanvasRenderer:
   m_ObjectHideFlags: 0
