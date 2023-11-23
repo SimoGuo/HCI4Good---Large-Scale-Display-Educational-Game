@@ -13,6 +13,10 @@ TagManager:
   - GameManager
   - Canvas
   - Wind
+  - Door1
+  - Door2
+  - Door3
+  - Door4
   layers:
   - Default
   - TransparentFX
@@ -22,7 +26,7 @@ TagManager:
   - UI
   - Player
   - 
-  - 
+  - Door2Layer
   - 
   - 
   - 

@@ -20,6 +20,12 @@ public class CharacterController : MonoBehaviour
                 moveDirection.Normalize();
 
                 transform.position += moveDirection * moveSpeed * Time.deltaTime;
+
+                if (moveDirection != Vector3.zero)
+                {
+                    Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
+                }
             }
         }
     }
