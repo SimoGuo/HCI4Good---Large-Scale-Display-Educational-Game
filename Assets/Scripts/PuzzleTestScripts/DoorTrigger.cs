@@ -8,6 +8,7 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] GameObject door;
     bool isOpened = false;
 
+    //When a collider enters it will grab the door and move it upwards out of the way
     void OnTriggerEnter(Collider col){
         if(!isOpened){
             isOpened = true;

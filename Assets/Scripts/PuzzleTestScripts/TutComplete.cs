@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class TutComplete : MonoBehaviour
 {
+
+    //These booleans will keep track 
     bool hasGroundTouched = false;
     bool hasWindTouched = false;
-    private Transform target;
 
-    private Transform target2;
-
+    //grabs the game objects
     [SerializeField] GameObject player1;
     [SerializeField] GameObject player2;
     [SerializeField] GameObject camera;
 
+    //Vectors for the telportation locations
+    [SerializeField] Vector3 teleportPointChar1;
+    [SerializeField] Vector3 teleportPointChar2;
+    [SerializeField] Vector3 teleportPointCamera;
 
-    void Start(){
-        target = GameObject.FindGameObjectWithTag("Ground").transform; 
-        target2= GameObject.FindGameObjectWithTag("Wind").transform;
-    }
 
+    
+
+    //Every frame check to see if both characters have touched the object, if do move them to desired area
     void Update(){
-
+        
+        //Moves characters, then resets the flags so they aren't repeatadly teleported
         if(hasGroundTouched && hasWindTouched){
-                player1.transform.position = new Vector3(105,4,-15);
-                player2.transform.position = new Vector3(100,2,-15);
-                camera.transform.position = new Vector3(100,60,-5);
+                player1.transform.position =  (teleportPointChar1);
+                player2.transform.position = (teleportPointChar2);
+                camera.transform.position = (teleportPointCamera);
 
                 hasGroundTouched = false;
                 hasWindTouched = false;
@@ -33,6 +37,7 @@ public class TutComplete : MonoBehaviour
     }
 
 
+    //On collision checks to see if the collider has a tag of the desired character.
     void OnTriggerEnter(Collider col){
         
         if(col.CompareTag("Ground")){
