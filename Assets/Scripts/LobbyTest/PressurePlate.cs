@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
  *
  * @author: Simo Guo with support and documentation from Madeleine Nykl
  */
-public class LevelComplete : MonoBehaviour
+public class PressurePlate : MonoBehaviour
 {
     private bool isActivated = false;
     public GameObject popupPanel;
@@ -28,7 +28,7 @@ public class LevelComplete : MonoBehaviour
     // This checks if the character has made contact with the "door" pressure plate
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Ground") || other.CompareTag("Wind")) && !isActivated)
+        if (other.CompareTag("Player") && !isActivated)
         {
             popupPanel.SetActive(true);
         }
