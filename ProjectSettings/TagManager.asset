@@ -18,6 +18,7 @@ TagManager:
   - Door3
   - Door4
   - Wall
+  - Spartan
   layers:
   - Default
   - TransparentFX
