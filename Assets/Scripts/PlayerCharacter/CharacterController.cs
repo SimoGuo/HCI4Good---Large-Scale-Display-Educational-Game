@@ -19,8 +19,40 @@ public class CharacterController : MonoBehaviour
                 moveDirection.y = 0f; 
                 moveDirection.Normalize();
 
-                transform.position += moveDirection * moveSpeed * Time.deltaTime;
+                if (!IsCollidingWithWall(moveDirection))
+                {
+                    MoveCharacter(moveDirection);
+                    RotateCharacter(moveDirection);
+                }
             }
         }
     }
+
+    void MoveCharacter(Vector3 moveDirection)
+    {
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+    }
+
+    void RotateCharacter(Vector3 moveDirection)
+    {
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
+        }
+    }
+
+    bool IsCollidingWithWall(Vector3 moveDirection)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, moveDirection, out hit, 0.5f))
+        {
+            if (hit.collider.CompareTag("Wall"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
