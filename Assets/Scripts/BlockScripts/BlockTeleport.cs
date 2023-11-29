@@ -9,6 +9,7 @@ public class BlockTeleport : MonoBehaviour
 
     [SerializeField] Vector3 TeleportLocation;
     
+    
     // Start is called before the first frame update
     void OnTriggerEnter(Collider col){
         

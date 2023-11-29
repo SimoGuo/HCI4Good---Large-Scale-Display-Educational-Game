@@ -16,5 +16,5 @@ MonoBehaviour:
     type: 3}
   speed: 10
   damageAmount: 1
-  attackRange: 10
+  attackRange: 1.5
   coolDown: 0.5
