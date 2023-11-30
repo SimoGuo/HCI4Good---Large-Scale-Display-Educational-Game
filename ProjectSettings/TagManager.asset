@@ -19,6 +19,8 @@ TagManager:
   - Door4
   - Wall
   - Grass
+  - Cube
+  - Metal
   layers:
   - Default
   - TransparentFX
