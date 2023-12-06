@@ -18,6 +18,7 @@ namespace PlayerCharacter {
         private PlayerMoveState _moveState;
         private PlayerIdleState _idleState;
         private bool _isMoving;
+        private bool _isOnGround;
 
         [SerializeField] public SphereCollider attackZone;
         [field: SerializeField] public bool InAttackRange { get; private set; }
@@ -25,6 +26,7 @@ namespace PlayerCharacter {
         [SerializeField] private PlayerIdleSO playerIdleBase;
         [SerializeField] private PlayerMoveSO playerMoveBase;
         [SerializeField] private PlayerAttackSO playerAttackBase;
+        [SerializeField] private LayerMask groundLayer;
  
         public float maxHealth { get; set; }
         public float currentHealth { get; set; }
@@ -43,12 +45,14 @@ namespace PlayerCharacter {
             _idleState = new PlayerIdleState(this, _stateMachine);
             _moveState = new PlayerMoveState(this, _stateMachine);
             _attackState = new PlayerAttackState(this, _stateMachine);
-
+            
+            _stateMachine.Init(_idleState);
         }
 
         private void Start() {
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
             _anim = GetComponent<Animator>();
             
             PlayerIdleInstance.Initialize(gameObject, this);
@@ -61,7 +65,7 @@ namespace PlayerCharacter {
         private void FixedUpdate() {
             Move();
             _stateMachine.CurrentPlayerState.PhysicsUpdate();
-            
+            CheckForEdges();
             
         }
 
@@ -157,6 +161,47 @@ namespace PlayerCharacter {
         public void Kill() {
             throw new NotImplementedException();
         }
-        
-    }
+
+        private void CheckForEdges()
+        {
+            // Only perform edge checking for the Spartan character
+            if (!gameObject.CompareTag("Spartan"))
+            {
+                return;
+            }
+
+            SphereCollider sphereCollider = GetComponent<SphereCollider>();
+
+            if (sphereCollider == null)
+            {
+                // If the Sphere Collider component is not attached, return
+                return;
+            }
+
+            // Cast a ray straight down to find the nearest point on the ground
+            RaycastHit hit;
+            float raycastDistance = 2.0f; // Adjust this value based on your game's scale
+
+            if (Physics.Raycast(sphereCollider.bounds.center, Vector3.down, out hit, raycastDistance, groundLayer))
+            {
+                // Calculate the difference in height between the current position and the hit point
+                float heightDifference = hit.point.y - sphereCollider.bounds.min.y;
+
+                // If the height difference is below a certain threshold, move the player up
+                if (Mathf.Abs(heightDifference) < 0.1f)
+                {
+                    transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                    _isOnGround = true;
+                }
+                else
+                {
+                    _isOnGround = false;
+                }
+            }
+            else
+            {
+                _isOnGround = false;
+            }
+        }
+    } 
 }

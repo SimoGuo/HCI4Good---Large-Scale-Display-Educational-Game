@@ -21,6 +21,7 @@ TagManager:
   - Grass
   - Cube
   - Metal
+  - Spartan
   layers:
   - Default
   - TransparentFX

@@ -3373,6 +3373,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 26d49bb8bbefb2f448aba522be9576ef,
         type: 2}
+    - target: {fileID: 886938593, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 886938595, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
       propertyPath: m_Radius
       value: 1.5
@@ -3440,7 +3444,7 @@ PrefabInstance:
     - target: {fileID: 3073262231848406968, guid: 08ab27739569f684181971d7eda8cc12,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Spartan
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4792575682666247296, guid: 08ab27739569f684181971d7eda8cc12, type: 3}
@@ -5030,7 +5034,7 @@ BoxCollider:
   m_GameObject: {fileID: 1840995192}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
