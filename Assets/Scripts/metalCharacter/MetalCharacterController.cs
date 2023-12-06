@@ -3,7 +3,7 @@
 * This class is to implement the metal player is able to push
 * large cubes.
 */
-using UnityEngine;
+/*using UnityEngine;
 
 public class MetalCharacterController : MonoBehaviour
 {
@@ -46,4 +46,4 @@ public class MetalCharacterController : MonoBehaviour
             collision.transform.Translate(pushDirection * pushForce * Time.deltaTime);
         }
     }
-}
+}*/
