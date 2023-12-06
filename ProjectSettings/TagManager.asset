@@ -18,6 +18,10 @@ TagManager:
   - Door3
   - Door4
   - Wall
+  - Grass
+  - Cube
+  - Metal
+  - Spartan
   layers:
   - Default
   - TransparentFX

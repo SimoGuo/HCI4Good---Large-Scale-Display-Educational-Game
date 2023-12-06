@@ -15,10 +15,7 @@ public class TutComplete : MonoBehaviour
     [SerializeField] GameObject camera;
 
 
-    void Start(){
-        target = GameObject.FindGameObjectWithTag("Ground").transform; 
-        target2= GameObject.FindGameObjectWithTag("Wind").transform;
-    }
+
 
     void Update(){
 
