@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    public float moveSpeed = 5f;
+
+    private Animator animator;
+    private bool isMoving = false;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
+            isMoving = true;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -25,7 +35,12 @@ public class CharacterController : MonoBehaviour
                     RotateCharacter(moveDirection);
                 }
             }
+        }else{
+            isMoving = false;
         }
+
+        animator.SetBool("StartMoving", isMoving);
+        animator.SetBool("StopMoving", !isMoving);
     }
 
     void MoveCharacter(Vector3 moveDirection)
