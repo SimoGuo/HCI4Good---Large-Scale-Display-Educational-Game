@@ -66,14 +66,11 @@ namespace PlayerCharacter {
             Move();
             _stateMachine.CurrentPlayerState.PhysicsUpdate();
             CheckForEdges();
+            
         }
 
         private void Update() {
-            // if (_stateMachine == null) Debug.Log("statemachine null");
-            // if (_stateMachine.CurrentPlayerState == null) Debug.Log("currentState null");
-            // Debug.Log(NeedsPlayerFinger + " " + TargetFinger);
             _stateMachine.CurrentPlayerState.FrameUpdate();
-            // Debug.Log(rb.velocity.magnitude);
             _anim.SetBool("Moving", _isMoving);
             _anim.SetBool("Attack", InAttackRange);
             if (TargetedEnemy == null) {
@@ -91,6 +88,9 @@ namespace PlayerCharacter {
 
             if (_isMoving) {
                 _stateMachine.ChangeState(_moveState);
+            }
+            if (gameObject.CompareTag("Wind")) {
+                MakePlayerFloat();
             }
         }
 
@@ -121,6 +121,14 @@ namespace PlayerCharacter {
                 }
             }
 
+        }
+
+        private void MakePlayerFloat() {
+            float floatingHeight = 5.0f; 
+
+            Vector3 newPosition = transform.position;
+            newPosition.y = Mathf.Lerp(newPosition.y, floatingHeight, Time.deltaTime);
+            transform.position = newPosition;
         }
 
         private void OnTriggerEnter(Collider other) {
